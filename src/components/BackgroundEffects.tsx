@@ -99,7 +99,7 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
         const px = mouse.x * -34 * cloud.z;
         const py = mouse.y * -18 * cloud.z;
 
-        const baseAlpha = (dark ? 0.05 : 0.30) + cloud.z * (dark ? 0.055 : 0.22);
+        const baseAlpha = (dark ? 0.14 : 0.35) + cloud.z * (dark ? 0.16 : 0.25);
 
         for (const puff of cloud.puffs) {
           const cx = cloud.x + puff.dx + px;
@@ -108,13 +108,13 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
 
           const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, puff.r);
           if (puff.top) {
-            // Lit top — hint of cyan from the aurora above
-            grad.addColorStop(0, `rgba(${dark ? '186, 230, 253' : '255, 255, 255'}, ${baseAlpha * 1.5})`);
-            grad.addColorStop(0.55, `rgba(${dark ? '125, 211, 252' : '255, 255, 255'}, ${baseAlpha * 0.5})`);
+            // Lit top — bright cyan-tinted highlight
+            grad.addColorStop(0, `rgba(${dark ? '224, 247, 255' : '255, 255, 255'}, ${Math.min(baseAlpha * 1.9, 0.75)})`);
+            grad.addColorStop(0.55, `rgba(${dark ? '125, 211, 252' : '255, 255, 255'}, ${baseAlpha * 0.7})`);
           } else {
-            // Shaded body — slate mist in dark, soft white in light
-            grad.addColorStop(0, `rgba(${dark ? '148, 163, 184' : '255, 255, 255'}, ${baseAlpha})`);
-            grad.addColorStop(0.55, `rgba(${dark ? '99, 112, 140' : '226, 232, 240'}, ${baseAlpha * 0.55})`);
+            // Shaded body — visible slate mist in dark, soft white in light
+            grad.addColorStop(0, `rgba(${dark ? '186, 200, 224' : '255, 255, 255'}, ${baseAlpha})`);
+            grad.addColorStop(0.55, `rgba(${dark ? '120, 133, 163' : '226, 232, 240'}, ${baseAlpha * 0.6})`);
           }
           grad.addColorStop(1, 'rgba(148, 163, 184, 0)');
           ctx.fillStyle = grad;
@@ -176,8 +176,8 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
         }}
       />
 
-      {/* 3D cloud field */}
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      {/* 3D cloud field — screen blend makes clouds glow over the dark bg */}
+      <canvas ref={canvasRef} className={`absolute inset-0 ${dark ? 'mix-blend-screen' : ''}`} />
     </div>
   );
 };
