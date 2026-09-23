@@ -45,12 +45,10 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 1. RESUME MODAL */}
       {resumeModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-4xl max-h-[90vh] rounded-3xl border shadow-2xl flex flex-col overflow-hidden transition-all ${
-            theme === 'dark' ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
-          }`}>
+          <div className={`w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all glass-deep text-white`}>
             
             {/* Modal Header */}
-            <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
                   <FileText className="w-5 h-5 text-cyan-400" />
@@ -83,7 +81,7 @@ export const Modals: React.FC<ModalsProps> = ({
                 <button
                   onClick={onCloseResumeModal}
                   aria-label="Close Resume Modal"
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300"
+                  className="p-2 rounded-xl glass text-slate-300 hover:text-white"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -179,11 +177,9 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 2. PROJECT DETAIL & ARCHITECTURE MODAL */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-3xl max-h-[90vh] rounded-3xl border shadow-2xl flex flex-col overflow-hidden ${
-            theme === 'dark' ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
-          }`}>
+          <div className={`w-full max-w-3xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden glass-deep text-white`}>
             
-            <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
               <div className="flex items-center gap-3">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-slate-950 uppercase">
                   {selectedProject.category}
@@ -192,7 +188,7 @@ export const Modals: React.FC<ModalsProps> = ({
               </div>
               <button
                 onClick={onCloseProjectModal}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300"
+                className="p-2 rounded-xl glass text-slate-300 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -201,7 +197,7 @@ export const Modals: React.FC<ModalsProps> = ({
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               
               {/* Architecture Diagram or Project Banner */}
-              <div className="relative h-64 rounded-2xl overflow-hidden border border-slate-800">
+              <div className="relative h-64 rounded-2xl overflow-hidden border border-white/10">
                 <img
                   src={selectedProject.architectureDiagram || selectedProject.image}
                   alt={selectedProject.title}
@@ -246,7 +242,7 @@ export const Modals: React.FC<ModalsProps> = ({
               </div>
 
               {selectedProject.githubUrl && (
-                <div className="pt-4 border-t border-slate-800 flex justify-end">
+                <div className="pt-4 border-t border-white/10 flex justify-end">
                   <a
                     href={selectedProject.githubUrl}
                     target="_blank"
@@ -267,15 +263,13 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 3. CERTIFICATE VERIFICATION MODAL */}
       {selectedCert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-lg rounded-3xl border shadow-2xl overflow-hidden ${
-            theme === 'dark' ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
-          }`}>
+          <div className={`w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden glass-deep text-white`}>
             
-            <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
               <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
                 <ShieldCheck className="w-5 h-5" /> Credential Verification
               </div>
-              <button onClick={onCloseCertModal} className="p-2 rounded-xl bg-slate-800 text-slate-300">
+              <button onClick={onCloseCertModal} className="p-2 rounded-xl glass text-slate-300 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -316,10 +310,10 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 4. PRIVACY POLICY MODAL */}
       {privacyModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl border border-slate-800 bg-slate-950 text-white p-6 overflow-y-auto space-y-4">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4">
+            <div className="flex justify-between items-center border-b border-white/10 pb-3">
               <h3 className="text-lg font-bold">Privacy Policy</h3>
-              <button onClick={onClosePrivacyModal} className="p-1.5 rounded-lg bg-slate-800"><X className="w-4 h-4" /></button>
+              <button onClick={onClosePrivacyModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               This portfolio website respects visitor privacy. No personal tracking data is stored or distributed. Any inquiries submitted through the contact form are kept strictly confidential for direct professional communication with Muhammad Azhar.
@@ -331,10 +325,10 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 5. TERMS & CONDITIONS MODAL */}
       {termsModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl border border-slate-800 bg-slate-950 text-white p-6 overflow-y-auto space-y-4">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4">
+            <div className="flex justify-between items-center border-b border-white/10 pb-3">
               <h3 className="text-lg font-bold">Terms & Conditions</h3>
-              <button onClick={onCloseTermsModal} className="p-1.5 rounded-lg bg-slate-800"><X className="w-4 h-4" /></button>
+              <button onClick={onCloseTermsModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               All content, design assets, and project descriptions on this personal portfolio belong to Muhammad Azhar. Visitors are welcome to view, share, and review material for hiring and professional evaluation purposes.
@@ -346,12 +340,12 @@ export const Modals: React.FC<ModalsProps> = ({
       {/* 6. SITEMAP MODAL */}
       {sitemapModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl border border-slate-800 bg-slate-950 text-white p-6 overflow-y-auto space-y-4 font-mono text-xs">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-3 font-sans">
+          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4 font-mono text-xs">
+            <div className="flex justify-between items-center border-b border-white/10 pb-3 font-sans">
               <h3 className="text-lg font-bold">Sitemap & robots.txt</h3>
-              <button onClick={onCloseSitemapModal} className="p-1.5 rounded-lg bg-slate-800"><X className="w-4 h-4" /></button>
+              <button onClick={onCloseSitemapModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
             </div>
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-cyan-300">
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2 text-cyan-300">
               <p>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
               <p>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</p>
               <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>

@@ -173,11 +173,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
 
       {/* Floating Chat Window Modal */}
       {isOpen && (
-        <div className={`w-[90vw] sm:w-[400px] h-[550px] rounded-3xl border shadow-2xl flex flex-col overflow-hidden transition-all duration-300 animate-fadeIn ${
-          theme === 'dark'
-            ? 'bg-slate-950/95 border-slate-800 text-white backdrop-blur-2xl'
-            : 'bg-white/95 border-slate-200 text-slate-900 backdrop-blur-2xl'
-        }`}>
+        <div className={`w-[90vw] sm:w-[400px] h-[550px] rounded-3xl shadow-2xl flex flex-col overflow-hidden glass-deep text-white`}>
           
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 text-white flex items-center justify-between">
@@ -236,10 +232,8 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                 <div
                   className={`p-3.5 rounded-2xl max-w-[85%] leading-relaxed ${
                     msg.sender === 'user'
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-tr-none shadow-md'
-                      : theme === 'dark'
-                      ? 'bg-slate-900 border border-slate-800 text-slate-200 rounded-tl-none'
-                      : 'bg-slate-100 border border-slate-200 text-slate-800 rounded-tl-none'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-tr-none shadow-lg shadow-cyan-500/25'
+                      : 'glass text-slate-200 rounded-tl-none'
                   }`}
                 >
                   <p className="whitespace-pre-line">{msg.text}</p>
@@ -256,11 +250,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                       <button
                         key={sIdx}
                         onClick={() => handleSendMessage(sug)}
-                        className={`text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left ${
-                          theme === 'dark'
-                            ? 'bg-slate-900 border-slate-700 text-cyan-300 hover:border-cyan-400'
-                            : 'bg-white border-slate-300 text-cyan-700 hover:border-cyan-600 shadow-sm'
-                        }`}
+                        className={`text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left glass text-cyan-300 hover:border-cyan-400/60 hover:bg-cyan-500/10`}
                       >
                         {sug}
                       </button>
@@ -271,7 +261,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
             ))}
 
             {isTyping && (
-              <div className="flex items-center gap-2 p-3 rounded-2xl bg-slate-900/50 border border-slate-800 w-fit text-slate-400">
+              <div className={`flex items-center gap-2 p-3 rounded-2xl glass w-fit text-slate-400`}>
                 <div className="flex gap-1">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"></span>
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce delay-150"></span>
@@ -285,7 +275,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
           </div>
 
           {/* Input Footer */}
-          <div className="p-3 border-t border-slate-800/60 bg-slate-900/40">
+          <div className="p-3 border-t border-white/10 bg-white/5">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -298,9 +288,9 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                 placeholder="Ask about Muhammad Azhar..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className={`flex-1 px-4 py-2.5 rounded-2xl text-xs font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
+                className={`flex-1 px-4 py-2.5 rounded-2xl text-xs font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
                   theme === 'dark'
-                    ? 'bg-slate-900 border-slate-800 text-white placeholder-slate-500'
+                    ? 'bg-white/5 border-white/10 text-white placeholder-slate-500'
                     : 'bg-white border-slate-200 text-slate-900 placeholder-slate-400'
                 }`}
               />
