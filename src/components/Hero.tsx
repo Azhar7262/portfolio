@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO, STATS } from '../data/portfolioData';
 import { Download, Rocket, Send, Mail, ShieldCheck, Cloud, MapPin, CheckCircle2, Award, Server, GraduationCap } from 'lucide-react';
-import { useTilt, Reveal } from './ui';
+import { useTilt, Reveal, CountUp } from './ui';
 
 interface HeroProps {
   theme: 'dark' | 'light';
@@ -290,7 +290,10 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                     {stat.label}
                   </span>
                 </div>
-                <div className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
+                <div className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
+                  <CountUp end={stat.numericValue} suffix={stat.suffix ?? ''} />
+                </div>
+                <div className={`text-sm font-bold mt-0.5 ${dark ? 'text-cyan-300' : 'text-cyan-700'}`}>
                   {stat.value}
                 </div>
                 <p className={`text-xs mt-1 font-medium ${dark ? 'text-slate-400' : 'text-slate-600'}`}>

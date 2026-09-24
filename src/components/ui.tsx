@@ -82,6 +82,52 @@ export const SectionHeading: React.FC<{
 };
 
 /* ---------------------------------- */
+/* Animated Count-Up Number           */
+/* ---------------------------------- */
+export const CountUp: React.FC<{
+  end: number;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+}> = ({ end, suffix = '', duration = 1600, className = '' }) => {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const [val, setVal] = useState(0);
+  const started = useRef(false);
+  const decimals = Number.isInteger(end) ? 0 : 2;
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const t0 = performance.now();
+          const tick = (now: number) => {
+            const p = Math.min((now - t0) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setVal(end * eased);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return (
+    <span ref={ref} className={className}>
+      {val.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
+};
+
+/* ---------------------------------- */
 /* 3D Tilt on mouse (subtle)          */
 /* ---------------------------------- */
 export const useTilt = (max = 8) => {

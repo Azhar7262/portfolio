@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Cloud, FileText, Send, ChevronRight } from 'lucide-react';
+import { Menu, X, Cloud, FileText, Send, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   theme: 'dark' | 'light';
-  toggleTheme: () => void;
   activeSection: string;
   onOpenResumeModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   theme,
-  toggleTheme,
   activeSection,
   onOpenResumeModal
 }) => {
@@ -124,18 +122,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Actions */}
           <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle Theme"
-              className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-105 ${
-                dark
-                  ? 'bg-white/5 border border-white/10 text-cyan-300 hover:bg-white/10 hover:shadow-cyan-500/30'
-                  : 'bg-slate-900/5 border border-slate-900/10 text-amber-600 hover:bg-slate-900/10'
-              }`}
-            >
-              {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
             <button
               onClick={onOpenResumeModal}
               className={`hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 hover:scale-[1.03] ${

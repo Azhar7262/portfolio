@@ -16,7 +16,6 @@ import { Modals } from './components/Modals';
 import { Project, Certification } from './types';
 
 export default function App() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [activeSection, setActiveSection] = useState<string>('hero');
 
   // Modal states
@@ -26,11 +25,6 @@ export default function App() {
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
   const [sitemapModalOpen, setSitemapModalOpen] = useState(false);
-
-  // Toggle Theme between Dark & Light
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   // Observe active section on scroll
   useEffect(() => {
@@ -56,18 +50,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 font-sans selection:bg-cyan-500 selection:text-slate-950 ${
-      theme === 'dark'
-        ? 'bg-slate-950 text-slate-100'
-        : 'bg-slate-50 text-slate-900'
-    }`}>
+    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
       {/* Dynamic Canvas Background particles & glow */}
-      <BackgroundEffects theme={theme} />
+      <BackgroundEffects theme="dark" />
 
       {/* Sticky Navigation Header */}
       <Navbar
-        theme={theme}
-        toggleTheme={toggleTheme}
+        theme="dark"
         activeSection={activeSection}
         onOpenResumeModal={() => setResumeModalOpen(true)}
       />
@@ -75,45 +64,45 @@ export default function App() {
       {/* Main Content Sections */}
       <main className="relative z-10">
         <Hero
-          theme={theme}
+          theme="dark"
           onOpenResumeModal={() => setResumeModalOpen(true)}
         />
 
-        <About theme={theme} />
+        <About theme="dark" />
 
-        <Education theme={theme} />
+        <Education theme="dark" />
 
-        <Experience theme={theme} />
+        <Experience theme="dark" />
 
-        <Skills theme={theme} />
+        <Skills theme="dark" />
 
         <Certifications
-          theme={theme}
+          theme="dark"
           onSelectCert={(cert) => setSelectedCert(cert)}
         />
 
         <Projects
-          theme={theme}
+          theme="dark"
           onSelectProject={(proj) => setSelectedProject(proj)}
         />
 
         <ResumeSection
-          theme={theme}
+          theme="dark"
           onOpenResumeModal={() => setResumeModalOpen(true)}
         />
 
-        <Contact theme={theme} />
+        <Contact theme="dark" />
       </main>
 
       {/* Floating AI Portfolio Assistant Chatbot */}
       <AIChatbot
-        theme={theme}
+        theme="dark"
         onOpenResumeModal={() => setResumeModalOpen(true)}
       />
 
       {/* Footer */}
       <Footer
-        theme={theme}
+        theme="dark"
         onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
         onOpenTermsModal={() => setTermsModalOpen(true)}
         onOpenSitemapModal={() => setSitemapModalOpen(true)}
@@ -121,7 +110,7 @@ export default function App() {
 
       {/* Modals & Dialogs */}
       <Modals
-        theme={theme}
+        theme="dark"
         resumeModalOpen={resumeModalOpen}
         onCloseResumeModal={() => setResumeModalOpen(false)}
         selectedProject={selectedProject}
