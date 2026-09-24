@@ -36,14 +36,14 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
       value: PERSONAL_INFO.email,
       subtext: 'Direct Inbox Response',
       href: `mailto:${PERSONAL_INFO.email}`,
-      icon: <Mail className="w-5 h-5 text-cyan-400" />
+      icon: <Mail className="w-5 h-5 text-amber-400" />
     },
     {
       label: 'Phone Call',
       value: PERSONAL_INFO.phone,
       subtext: 'Mobile & Direct Line',
       href: `tel:${PERSONAL_INFO.phone}`,
-      icon: <Phone className="w-5 h-5 text-blue-400" />
+      icon: <Phone className="w-5 h-5 text-amber-400" />
     },
     {
       label: 'WhatsApp Chat',
@@ -57,11 +57,11 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
       value: PERSONAL_INFO.location,
       subtext: PERSONAL_INFO.hometown,
       href: '#map',
-      icon: <MapPin className="w-5 h-5 text-sky-400" />
+      icon: <MapPin className="w-5 h-5 text-amber-400" />
     }
   ];
 
-  const inputClass = `w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 ${
+  const inputClass = `w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 ${
     dark
       ? 'bg-white/5 border-white/10 text-white placeholder-slate-500'
       : 'bg-white/80 border-slate-900/10 text-slate-900 placeholder-slate-400'
@@ -89,13 +89,13 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
                 rel="noopener noreferrer"
                 className={`block p-6 rounded-3xl glass-sheen glow-hover group h-full ${dark ? 'glass' : 'glass-light'}`}
               >
-                <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 w-fit mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-all duration-300">
+                <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-400/20 w-fit mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-300">
                   {card.icon}
                 </div>
                 <span className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
                   {card.label}
                 </span>
-                <p className="text-sm font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors break-all">
+                <p className="text-sm font-bold text-amber-400 group-hover:text-amber-300 transition-colors break-all">
                   {card.value}
                 </p>
                 <p className={`text-xs mt-1 ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
@@ -169,7 +169,7 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-400/50 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-amber-500 via-orange-600 to-orange-600 hover:from-amber-400 hover:to-orange-500 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0"
                   >
                     <Send className="w-4 h-4" />
                     <span>{isSubmitting ? 'Sending Message...' : 'Send Message'}</span>
@@ -185,8 +185,8 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
             <div className={`p-8 rounded-3xl glass-sheen ${dark ? 'glass-deep' : 'glass-deep-light'}`}>
 
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-400/20">
-                  <MapPin className="w-5 h-5 text-cyan-400" />
+                <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-400/20">
+                  <MapPin className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
                   <h3 className={`text-base font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Location & Hub</h3>
@@ -210,11 +210,11 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
 
               <div className={`space-y-2 text-xs ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-cyan-400" />
+                  <Clock className="w-4 h-4 text-amber-400" />
                   <span>Timezone: PKT (UTC+5) • Responsive & Available</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-cyan-400" />
+                  <Globe className="w-4 h-4 text-amber-400" />
                   <span>Languages: English (C2 Proficient), Urdu (Native)</span>
                 </div>
               </div>
@@ -244,7 +244,7 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
         <a
           href={`tel:${PERSONAL_INFO.phone}`}
           aria-label="Call Muhammad Azhar"
-          className="p-3.5 rounded-full bg-cyan-500 text-slate-950 shadow-xl shadow-cyan-500/40 hover:bg-cyan-400 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+          className="p-3.5 rounded-full bg-amber-500 text-slate-950 shadow-xl shadow-amber-500/40 hover:bg-amber-400 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
         >
           <Phone className="w-6 h-6" />
           <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 text-xs font-bold">

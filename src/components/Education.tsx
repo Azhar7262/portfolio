@@ -29,7 +29,7 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
           <Reveal className="lg:col-span-6">
             <div className={`p-8 rounded-3xl glass-sheen relative h-full ${dark ? 'glass' : 'glass-light'}`}>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold border ${dark ? 'bg-cyan-500/10 text-cyan-300 border-cyan-400/20' : 'bg-cyan-50 text-cyan-700 border-cyan-200'}`}>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold border ${dark ? 'bg-amber-500/10 text-amber-300 border-amber-400/20' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>
                   {EDUCATION_DATA.period}
                 </span>
                 <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 border ${dark ? 'bg-emerald-500/10 text-emerald-300 border-emerald-400/20' : 'bg-emerald-50 text-emerald-700 border-emerald-200'}`}>
@@ -40,7 +40,7 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
               <h3 className={`text-xl sm:text-2xl font-bold tracking-tight mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>
                 {EDUCATION_DATA.degree}
               </h3>
-              <p className="text-sm font-semibold text-cyan-400 mb-1">
+              <p className="text-sm font-semibold text-amber-400 mb-1">
                 {EDUCATION_DATA.shortDegree} • {EDUCATION_DATA.department}
               </p>
               <p className={`text-xs sm:text-sm font-medium mb-6 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -50,7 +50,7 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
               {/* Coursework */}
               <div className={`space-y-3 pt-4 border-t ${dark ? 'border-white/10' : 'border-slate-900/10'}`}>
                 <span className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-                  <BookOpen className="w-4 h-4 text-cyan-400" /> Key Coursework & Specializations
+                  <BookOpen className="w-4 h-4 text-amber-400" /> Key Coursework & Specializations
                 </span>
                 <div className="flex flex-wrap gap-2 pt-1">
                   {EDUCATION_DATA.relevantCoursework.map((course, idx) => (
@@ -58,8 +58,8 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
                       key={idx}
                       className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-all duration-300 hover:-translate-y-0.5 ${
                         dark
-                          ? 'bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300'
-                          : 'bg-white/70 border-slate-900/10 text-slate-700 hover:border-cyan-600/50'
+                          ? 'bg-white/5 border-white/10 text-slate-300 hover:border-amber-400/50 hover:text-amber-300'
+                          : 'bg-white/70 border-slate-900/10 text-slate-700 hover:border-amber-600/50'
                       }`}
                     >
                       {course}
@@ -73,16 +73,16 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
           {/* Thesis Card */}
           <Reveal delay={120} className="lg:col-span-6">
             <div className={`p-8 rounded-3xl glass-sheen relative overflow-hidden h-full group ${dark ? 'glass-deep border-glow' : 'glass-deep-light border-glow'}`}>
-              <div className="absolute top-0 right-0 translate-x-8 -translate-y-8 w-36 h-36 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 translate-x-8 -translate-y-8 w-36 h-36 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
 
               <div className="flex items-center justify-between mb-4 relative">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${dark ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400/30' : 'bg-cyan-100 text-cyan-800 border-cyan-300'}`}>
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${dark ? 'bg-amber-500/20 text-amber-300 border-amber-400/30' : 'bg-amber-100 text-amber-800 border-amber-300'}`}>
                   <Sparkles className="w-3.5 h-3.5" /> Final Year Thesis Project
                 </span>
-                <span className="text-xs font-mono text-cyan-400">AWS + IoT</span>
+                <span className="text-xs font-mono text-amber-400">AWS + IoT</span>
               </div>
 
-              <h3 className={`text-xl font-bold tracking-tight mb-3 transition-colors group-hover:text-cyan-300 ${dark ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-xl font-bold tracking-tight mb-3 transition-colors group-hover:text-amber-300 ${dark ? 'text-white' : 'text-slate-900'}`}>
                 {EDUCATION_DATA.finalYearProject.title}
               </h3>
 
@@ -94,7 +94,7 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
               <div className="space-y-2 mb-6">
                 {EDUCATION_DATA.finalYearProject.highlights.map((highlight, idx) => (
                   <div key={idx} className={`flex items-start gap-2.5 text-xs ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                     <span>{highlight}</span>
                   </div>
                 ))}
@@ -109,7 +109,7 @@ export const Education: React.FC<EducationProps> = ({ theme }) => {
                   {EDUCATION_DATA.finalYearProject.techStack.map((tech, idx) => (
                     <span
                       key={idx}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium border ${dark ? 'bg-cyan-500/10 text-cyan-300 border-cyan-400/20' : 'bg-cyan-50 text-cyan-700 border-cyan-200'}`}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium border ${dark ? 'bg-amber-500/10 text-amber-300 border-amber-400/20' : 'bg-amber-50 text-amber-700 border-amber-200'}`}
                     >
                       {tech}
                     </span>

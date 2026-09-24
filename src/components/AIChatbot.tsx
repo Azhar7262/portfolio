@@ -154,19 +154,19 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open AI Assistant Chat"
-          className="group relative flex items-center gap-3 p-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white shadow-2xl shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
+          className="group relative flex items-center gap-3 p-4 rounded-full bg-gradient-to-r from-amber-500 via-orange-600 to-orange-600 text-white shadow-2xl shadow-amber-500/40 hover:scale-105 transition-all duration-300"
         >
           <div className="relative">
             <Bot className="w-7 h-7" />
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-300"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-300"></span>
             </span>
           </div>
 
           <div className="hidden sm:block text-left pr-2">
             <span className="block text-xs font-extrabold leading-tight">Ask Azhar AI</span>
-            <span className="block text-[10px] text-cyan-200">Instant Portfolio Q&A</span>
+            <span className="block text-[10px] text-amber-200">Instant Portfolio Q&A</span>
           </div>
         </button>
       )}
@@ -176,16 +176,16 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
         <div className={`w-[90vw] sm:w-[400px] h-[550px] rounded-3xl shadow-2xl flex flex-col overflow-hidden glass-deep text-white`}>
           
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 text-white flex items-center justify-between">
+          <div className="p-4 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 text-white flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                <Bot className="w-6 h-6 text-cyan-200" />
+                <Bot className="w-6 h-6 text-amber-200" />
               </div>
               <div>
                 <h3 className="text-sm font-extrabold flex items-center gap-1.5">
                   Azhar AI Assistant <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                 </h3>
-                <p className="text-[10px] text-cyan-100 flex items-center gap-1">
+                <p className="text-[10px] text-amber-100 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                   Powered by Knowledge Base & Gemini AI
                 </p>
@@ -196,7 +196,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
               <button
                 onClick={() => setSoundEnabled(!soundEnabled)}
                 aria-label="Toggle Sound"
-                className="p-1.5 rounded-lg hover:bg-white/10 text-cyan-100"
+                className="p-1.5 rounded-lg hover:bg-white/10 text-amber-100"
               >
                 {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
               </button>
@@ -232,7 +232,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                 <div
                   className={`p-3.5 rounded-2xl max-w-[85%] leading-relaxed ${
                     msg.sender === 'user'
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-tr-none shadow-lg shadow-cyan-500/25'
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-tr-none shadow-lg shadow-amber-500/25'
                       : 'glass text-slate-200 rounded-tl-none'
                   }`}
                 >
@@ -250,7 +250,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                       <button
                         key={sIdx}
                         onClick={() => handleSendMessage(sug)}
-                        className={`text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left glass text-cyan-300 hover:border-cyan-400/60 hover:bg-cyan-500/10`}
+                        className={`text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left glass text-amber-300 hover:border-amber-400/60 hover:bg-amber-500/10`}
                       >
                         {sug}
                       </button>
@@ -263,9 +263,9 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
             {isTyping && (
               <div className={`flex items-center gap-2 p-3 rounded-2xl glass w-fit text-slate-400`}>
                 <div className="flex gap-1">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"></span>
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce delay-150"></span>
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce delay-300"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-bounce"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-bounce delay-150"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-bounce delay-300"></span>
                 </div>
                 <span className="text-[11px]">Azhar AI is typing...</span>
               </div>
@@ -288,7 +288,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                 placeholder="Ask about Muhammad Azhar..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className={`flex-1 px-4 py-2.5 rounded-2xl text-xs font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
+                className={`flex-1 px-4 py-2.5 rounded-2xl text-xs font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/50 ${
                   theme === 'dark'
                     ? 'bg-white/5 border-white/10 text-white placeholder-slate-500'
                     : 'bg-white border-slate-200 text-slate-900 placeholder-slate-400'
@@ -298,7 +298,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
               <button
                 type="submit"
                 disabled={!input.trim()}
-                className="p-2.5 rounded-2xl text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 disabled:opacity-40 transition-all shadow-md shadow-cyan-500/20"
+                className="p-2.5 rounded-2xl text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 disabled:opacity-40 transition-all shadow-md shadow-amber-500/20"
               >
                 <Send className="w-4 h-4" />
               </button>

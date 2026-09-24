@@ -147,10 +147,10 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
       const nodeAlpha = dark ? 0.55 : 0.65;
       const fillAlpha = dark ? 0.05 : 0.14;
 
-      const lineColor = dark ? '103, 232, 249' : '2, 132, 199';      // cyan-300 / sky-600
-      const nodeColor = dark ? '165, 243, 252' : '3, 105, 161';      // bright / deep
-      const podColor = dark ? '129, 140, 248' : '79, 70, 229';       // indigo
-      const packetColor = dark ? '224, 252, 255' : '2, 132, 199';
+      const lineColor = dark ? '252, 211, 77' : '217, 119, 6';        // amber-300 / amber-600
+      const nodeColor = dark ? '253, 230, 138' : '180, 83, 9';         // bright / deep
+      const podColor = dark ? '251, 146, 60' : '234, 88, 12';          // orange
+      const packetColor = dark ? '255, 247, 214' : '217, 119, 6';
 
       for (const platform of platforms) {
         platform.x += platform.speed;
@@ -277,8 +277,8 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
         className="aurora-blob absolute -top-32 -left-32 w-[38rem] h-[38rem] rounded-full blur-3xl"
         style={{
           background: dark
-            ? 'radial-gradient(circle, rgba(34,211,238,0.10) 0%, rgba(34,211,238,0) 70%)'
-            : 'radial-gradient(circle, rgba(34,211,238,0.14) 0%, rgba(34,211,238,0) 70%)',
+            ? 'radial-gradient(circle, rgba(251, 146, 60, 0.10) 0%, rgba(251, 146, 60, 0) 70%)'
+            : 'radial-gradient(circle, rgba(251, 146, 60, 0.14) 0%, rgba(251, 146, 60, 0) 70%)',
           animation: 'aurora-drift-1 34s ease-in-out infinite'
         }}
       />
@@ -288,8 +288,8 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ theme }) =
         className="aurora-blob absolute -bottom-40 -right-40 w-[44rem] h-[44rem] rounded-full blur-3xl"
         style={{
           background: dark
-            ? 'radial-gradient(circle, rgba(99,102,241,0.09) 0%, rgba(99,102,241,0) 70%)'
-            : 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, rgba(99,102,241,0) 70%)',
+            ? 'radial-gradient(circle, rgba(245, 158, 11, 0.09) 0%, rgba(245, 158, 11, 0) 70%)'
+            : 'radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0) 70%)',
           animation: 'aurora-drift-2 42s ease-in-out infinite'
         }}
       />

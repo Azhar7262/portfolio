@@ -28,13 +28,13 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
           <div className={`p-8 sm:p-12 rounded-3xl glass-sheen relative overflow-hidden text-center max-w-4xl mx-auto ${dark ? 'glass-deep border-glow' : 'glass-deep-light border-glow'}`}>
 
             {/* Glow accents */}
-            <div className="absolute -top-20 left-1/4 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 right-1/4 w-72 h-72 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-20 left-1/4 w-72 h-72 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 right-1/4 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 p-px mx-auto shadow-xl shadow-cyan-500/40 flex items-center justify-center animate-float-soft">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px mx-auto shadow-xl shadow-amber-500/40 flex items-center justify-center animate-float-soft">
                 <div className={`w-full h-full rounded-2xl flex items-center justify-center ${dark ? 'bg-slate-950' : 'bg-white'}`}>
-                  <FileText className="w-7 h-7 text-cyan-400" />
+                  <FileText className="w-7 h-7 text-amber-400" />
                 </div>
               </div>
 
@@ -51,7 +51,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-left py-2">
                 {['AWS Certified Architect', '4+ Yrs Leadership', 'BS CS CGPA 3.32'].map((item, idx) => (
                   <div key={idx} className={`flex items-center gap-2 p-3 rounded-xl border ${dark ? 'bg-white/5 border-white/10 text-slate-200' : 'bg-white/70 border-slate-900/10 text-slate-700'}`}>
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -61,7 +61,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                 <button
                   onClick={onOpenResumeModal}
-                  className="group relative overflow-hidden flex items-center gap-2.5 px-8 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-400/50 hover:-translate-y-1 transition-all duration-300"
+                  className="group relative overflow-hidden flex items-center gap-2.5 px-8 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-amber-500 via-orange-600 to-orange-600 hover:from-amber-400 hover:to-orange-500 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:-translate-y-1 transition-all duration-300"
                 >
                   <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                     <span className="absolute top-0 left-0 h-full w-1/3 bg-white/25 blur-md" style={{ animation: 'shine-sweep 1.2s ease infinite' }} />
@@ -73,10 +73,10 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
                 <button
                   onClick={onOpenResumeModal}
                   className={`flex items-center gap-2.5 px-6 py-4 rounded-2xl text-sm font-bold glass-sheen transition-all hover:-translate-y-1 ${
-                    dark ? 'glass text-slate-200 hover:text-cyan-300 border-cyan-400/30' : 'glass-light text-slate-700 hover:text-cyan-700 border-cyan-600/30'
+                    dark ? 'glass text-slate-200 hover:text-amber-300 border-amber-400/30' : 'glass-light text-slate-700 hover:text-amber-700 border-amber-600/30'
                   }`}
                 >
-                  <FileText className="w-5 h-5 text-cyan-400" />
+                  <FileText className="w-5 h-5 text-amber-400" />
                   <span>View Full Screen PDF</span>
                 </button>
               </div>

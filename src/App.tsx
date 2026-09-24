@@ -50,7 +50,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
+    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
       {/* Dynamic Canvas Background particles & glow */}
       <BackgroundEffects theme="dark" />
 

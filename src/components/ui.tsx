@@ -56,11 +56,11 @@ export const SectionHeading: React.FC<{
       <div
         className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-5 glass-sheen ${
           dark
-            ? 'glass text-cyan-300'
-            : 'glass-light text-cyan-700'
+            ? 'glass text-amber-300'
+            : 'glass-light text-amber-700'
         }`}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
         {badge}
       </div>
       <h2
@@ -76,7 +76,7 @@ export const SectionHeading: React.FC<{
           {subtitle}
         </p>
       )}
-      <div className="mt-6 mx-auto h-px w-28 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+      <div className="mt-6 mx-auto h-px w-28 bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
     </Reveal>
   );
 };

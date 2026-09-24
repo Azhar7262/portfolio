@@ -31,7 +31,7 @@ const SkillBar: React.FC<{ level: number; dark: boolean }> = ({ level, dark }) =
   return (
     <div ref={ref} className={`h-2 w-full rounded-full overflow-hidden ${dark ? 'bg-white/10' : 'bg-slate-900/10'}`}>
       <div
-        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_12px_rgba(34,211,238,0.6)] transition-all duration-1000 ease-out"
+        className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-orange-500 shadow-[0_0_12px_rgba(34,211,238,0.6)] transition-all duration-1000 ease-out"
         style={{ width: `${width}%` }}
       />
     </div>
@@ -77,7 +77,7 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
               placeholder="Search skills (e.g., AWS EC2, Active Directory, Python)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs sm:text-sm font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 ${
+              className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs sm:text-sm font-medium border transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 ${
                 dark
                   ? 'glass border-white/10 text-white placeholder-slate-500'
                   : 'glass-light border-slate-900/10 text-slate-900 placeholder-slate-400'
@@ -86,7 +86,7 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-cyan-300"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-amber-300"
               >
                 Clear
               </button>
@@ -100,10 +100,10 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
                 onClick={() => setActiveCategory(catName)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
                   activeCategory === catName
-                    ? 'bg-gradient-to-r from-cyan-500 to-indigo-600 text-white shadow-lg shadow-cyan-500/30'
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/30'
                     : dark
-                    ? 'glass text-slate-300 hover:text-cyan-300 hover:bg-white/10'
-                    : 'glass-light text-slate-600 hover:text-cyan-700 hover:bg-white'
+                    ? 'glass text-slate-300 hover:text-amber-300 hover:bg-white/10'
+                    : 'glass-light text-slate-600 hover:text-amber-700 hover:bg-white'
                 }`}
               >
                 {catName}
@@ -120,8 +120,8 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
 
                 {/* Header */}
                 <div className={`flex items-center gap-3 pb-4 mb-4 border-b ${dark ? 'border-white/10' : 'border-slate-900/10'}`}>
-                  <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-400/20 shadow-inner">
-                    {React.createElement(getIcon(category.iconName), { className: 'w-5 h-5 text-cyan-400' })}
+                  <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-400/20 shadow-inner">
+                    {React.createElement(getIcon(category.iconName), { className: 'w-5 h-5 text-amber-400' })}
                   </div>
                   <div>
                     <h3 className={`text-base font-bold tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>{category.name}</h3>
@@ -135,10 +135,10 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
                     <div key={idx} className="space-y-1.5">
                       <div className="flex items-center justify-between text-xs">
                         <span className={`font-semibold flex items-center gap-1.5 ${dark ? 'text-slate-200' : 'text-slate-800'}`}>
-                          {skill.highlight && <Sparkles className="w-3 h-3 text-cyan-400 shrink-0" />}
+                          {skill.highlight && <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />}
                           {skill.name}
                         </span>
-                        <span className="font-mono text-cyan-400 text-[11px] font-bold">{skill.level}%</span>
+                        <span className="font-mono text-amber-400 text-[11px] font-bold">{skill.level}%</span>
                       </div>
 
                       <SkillBar level={skill.level} dark={dark} />

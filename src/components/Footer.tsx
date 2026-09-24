@@ -46,14 +46,14 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand & Bio */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 p-px shadow-lg shadow-cyan-500/30">
-                <div className={`w-full h-full rounded-xl flex items-center justify-center text-cyan-400 font-bold text-base ${dark ? 'bg-slate-950' : 'bg-white'}`}>
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px shadow-lg shadow-orange-500/30">
+                <div className={`w-full h-full rounded-xl flex items-center justify-center text-amber-400 font-bold text-base ${dark ? 'bg-slate-950' : 'bg-white'}`}>
                   MA
                 </div>
               </div>
               <div>
                 <h3 className={`text-base font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Muhammad Azhar</h3>
-                <p className="text-xs text-cyan-400 flex items-center gap-1 font-semibold">
+                <p className="text-xs text-amber-400 flex items-center gap-1 font-semibold">
                   <Cloud className="w-3.5 h-3.5" /> AWS Certified Solutions Architect
                 </p>
               </div>
@@ -72,10 +72,10 @@ export const Footer: React.FC<FooterProps> = ({
                   target={social.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/20 ${
+                  className={`p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/20 ${
                     dark
-                      ? 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-400/50'
-                      : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-cyan-700 hover:border-cyan-600/50'
+                      ? 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-300 hover:border-amber-400/50'
+                      : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-amber-700 hover:border-amber-600/50'
                   }`}
                 >
                   {social.icon}
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`transition-colors py-1 ${dark ? 'text-slate-400 hover:text-cyan-300' : 'text-slate-600 hover:text-cyan-700'}`}
+                  className={`transition-colors py-1 ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}
                 >
                   {link.name}
                 </a>
@@ -105,18 +105,18 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className={`text-xs font-bold uppercase tracking-wider ${dark ? 'text-white' : 'text-slate-900'}`}>Contact & Legal</h4>
             <div className={`space-y-1.5 text-xs ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
               <p>Islamabad, Pakistan</p>
-              <p className="font-mono text-cyan-400">{PERSONAL_INFO.email}</p>
+              <p className="font-mono text-amber-400">{PERSONAL_INFO.email}</p>
               <p>{PERSONAL_INFO.phone}</p>
             </div>
 
             <div className="pt-2 flex flex-col space-y-1 text-xs">
-              <button onClick={onOpenPrivacyModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-cyan-300' : 'text-slate-600 hover:text-cyan-700'}`}>
+              <button onClick={onOpenPrivacyModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
                 Privacy Policy
               </button>
-              <button onClick={onOpenTermsModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-cyan-300' : 'text-slate-600 hover:text-cyan-700'}`}>
+              <button onClick={onOpenTermsModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
                 Terms & Conditions
               </button>
-              <button onClick={onOpenSitemapModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-cyan-300' : 'text-slate-600 hover:text-cyan-700'}`}>
+              <button onClick={onOpenSitemapModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
                 Sitemap & XML Structure
               </button>
             </div>
@@ -132,8 +132,8 @@ export const Footer: React.FC<FooterProps> = ({
             onClick={scrollToTop}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:-translate-y-0.5 ${
               dark
-                ? 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-400/50'
-                : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-cyan-700 hover:border-cyan-600/50'
+                ? 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-300 hover:border-amber-400/50'
+                : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-amber-700 hover:border-amber-600/50'
             }`}
           >
             <span>Back to Top</span>

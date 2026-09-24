@@ -50,8 +50,8 @@ export const Modals: React.FC<ModalsProps> = ({
             {/* Modal Header */}
             <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-                  <FileText className="w-5 h-5 text-cyan-400" />
+                <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                  <FileText className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold">Muhammad Azhar - Resume PDF</h3>
@@ -64,7 +64,7 @@ export const Modals: React.FC<ModalsProps> = ({
                   onClick={handlePrintResume}
                   className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-200 hover:text-white flex items-center gap-1.5"
                 >
-                  <Printer className="w-3.5 h-3.5 text-cyan-400" /> Print
+                  <Printer className="w-3.5 h-3.5 text-amber-400" /> Print
                 </button>
 
                 <a
@@ -73,7 +73,7 @@ export const Modals: React.FC<ModalsProps> = ({
                     e.preventDefault();
                     window.print();
                   }}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-600 text-white flex items-center gap-1.5 shadow-md"
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 to-orange-600 text-white flex items-center gap-1.5 shadow-md"
                 >
                   <Download className="w-3.5 h-3.5" /> Download
                 </a>
@@ -100,7 +100,7 @@ export const Modals: React.FC<ModalsProps> = ({
                   <p className="text-xs font-semibold text-slate-600">
                     {PERSONAL_INFO.hometown} | {PERSONAL_INFO.phone} | {PERSONAL_INFO.email}
                   </p>
-                  <p className="text-xs font-semibold text-cyan-700">
+                  <p className="text-xs font-semibold text-amber-700">
                     {PERSONAL_INFO.linkedin} | {PERSONAL_INFO.github}
                   </p>
                 </div>
@@ -181,7 +181,7 @@ export const Modals: React.FC<ModalsProps> = ({
             
             <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-slate-950 uppercase">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-slate-950 uppercase">
                   {selectedProject.category}
                 </span>
                 <h3 className="text-base font-bold">{selectedProject.title}</h3>
@@ -205,7 +205,7 @@ export const Modals: React.FC<ModalsProps> = ({
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/90 text-cyan-300 border border-cyan-500/30">
+                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/90 text-amber-300 border border-amber-500/30">
                   Architecture Overview
                 </span>
               </div>
@@ -221,7 +221,7 @@ export const Modals: React.FC<ModalsProps> = ({
                 <div className="space-y-2">
                   {selectedProject.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -234,7 +234,7 @@ export const Modals: React.FC<ModalsProps> = ({
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.technologies.map((tech, idx) => (
-                    <span key={idx} className="px-3 py-1 rounded-xl text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                    <span key={idx} className="px-3 py-1 rounded-xl text-xs font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">
                       {tech}
                     </span>
                   ))}
@@ -247,7 +247,7 @@ export const Modals: React.FC<ModalsProps> = ({
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-cyan-500 text-slate-950 hover:bg-cyan-400 flex items-center gap-2 shadow-md"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 hover:bg-amber-400 flex items-center gap-2 shadow-md"
                   >
                     <Code className="w-4 h-4" /> View GitHub Repository
                   </a>
@@ -266,7 +266,7 @@ export const Modals: React.FC<ModalsProps> = ({
           <div className={`w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden glass-deep text-white`}>
             
             <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
-              <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+              <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
                 <ShieldCheck className="w-5 h-5" /> Credential Verification
               </div>
               <button onClick={onCloseCertModal} className="p-2 rounded-xl glass text-slate-300 hover:text-white">
@@ -275,12 +275,12 @@ export const Modals: React.FC<ModalsProps> = ({
             </div>
 
             <div className="p-6 space-y-4 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 mx-auto flex items-center justify-center">
-                <Award className="w-8 h-8 text-cyan-400" />
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 mx-auto flex items-center justify-center">
+                <Award className="w-8 h-8 text-amber-400" />
               </div>
 
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">{selectedCert.organization}</span>
+                <span className="text-xs font-mono text-amber-400 uppercase tracking-wider">{selectedCert.organization}</span>
                 <h3 className="text-xl font-extrabold text-white mt-1">{selectedCert.title}</h3>
                 <p className="text-xs text-slate-400 mt-1">Credential ID: {selectedCert.credentialId}</p>
               </div>
@@ -296,7 +296,7 @@ export const Modals: React.FC<ModalsProps> = ({
                 href={selectedCert.verifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md"
               >
                 <span>Open Issuer Portal</span>
                 <ExternalLink className="w-4 h-4" />
@@ -345,7 +345,7 @@ export const Modals: React.FC<ModalsProps> = ({
               <h3 className="text-lg font-bold">Sitemap & robots.txt</h3>
               <button onClick={onCloseSitemapModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2 text-cyan-300">
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2 text-amber-300">
               <p>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
               <p>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</p>
               <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>

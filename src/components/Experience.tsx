@@ -37,7 +37,7 @@ export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
                     onClick={() => setSelectedExpId(item.id)}
                     className={`w-full text-left p-5 rounded-2xl glass-sheen transition-all duration-300 flex items-center justify-between group ${
                       isSelected
-                        ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/10 border border-cyan-400/60 shadow-lg shadow-cyan-500/20 scale-[1.02]'
+                        ? 'bg-gradient-to-r from-amber-500/20 to-orange-500/10 border border-amber-400/60 shadow-lg shadow-amber-500/20 scale-[1.02]'
                         : dark
                         ? 'glass border-white/10 hover:bg-white/10'
                         : 'glass-light border-slate-900/10 hover:bg-white'
@@ -47,21 +47,21 @@ export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
                       <div className="flex items-center gap-2">
                         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
                           item.type === 'Full-time'
-                            ? 'bg-cyan-500/15 text-cyan-300 border-cyan-400/30'
+                            ? 'bg-amber-500/15 text-amber-300 border-amber-400/30'
                             : item.type === 'Internship'
-                            ? 'bg-indigo-500/15 text-indigo-300 border-indigo-400/30'
+                            ? 'bg-orange-500/15 text-amber-300 border-amber-400/30'
                             : 'bg-amber-500/15 text-amber-300 border-amber-400/30'
                         }`}>
                           {item.type}
                         </span>
                         <span className={`text-xs font-mono ${dark ? 'text-slate-400' : 'text-slate-500'}`}>{item.period}</span>
                       </div>
-                      <h3 className={`text-base font-bold ${isSelected ? 'text-cyan-300' : dark ? 'text-white' : 'text-slate-900'}`}>
+                      <h3 className={`text-base font-bold ${isSelected ? 'text-amber-300' : dark ? 'text-white' : 'text-slate-900'}`}>
                         {item.role}
                       </h3>
                       <p className={`text-xs ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{item.company}</p>
                     </div>
-                    <ChevronRight className={`w-5 h-5 transition-transform ${isSelected ? 'text-cyan-400 translate-x-1' : 'text-slate-500 group-hover:translate-x-0.5'}`} />
+                    <ChevronRight className={`w-5 h-5 transition-transform ${isSelected ? 'text-amber-400 translate-x-1' : 'text-slate-500 group-hover:translate-x-0.5'}`} />
                   </button>
                 </Reveal>
               );
@@ -78,27 +78,27 @@ export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
                     <h3 className="text-2xl font-bold tracking-tight text-gradient">{selectedExp.role}</h3>
                     <div className={`flex flex-wrap items-center gap-4 text-xs font-semibold mt-1.5 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
                       <span className={`flex items-center gap-1 ${dark ? 'text-slate-200' : 'text-slate-800'}`}>
-                        <Building className="w-3.5 h-3.5 text-cyan-400" /> {selectedExp.company}
+                        <Building className="w-3.5 h-3.5 text-amber-400" /> {selectedExp.company}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-cyan-400" /> {selectedExp.location}
+                        <MapPin className="w-3.5 h-3.5 text-amber-400" /> {selectedExp.location}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-cyan-400" /> {selectedExp.period}
+                        <Calendar className="w-3.5 h-3.5 text-amber-400" /> {selectedExp.period}
                       </span>
                     </div>
                   </div>
 
-                  <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold border ${dark ? 'bg-cyan-500/10 border-cyan-400/20 text-cyan-300' : 'bg-cyan-50 border-cyan-200 text-cyan-700'}`}>
+                  <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold border ${dark ? 'bg-amber-500/10 border-amber-400/20 text-amber-300' : 'bg-amber-50 border-amber-200 text-amber-700'}`}>
                     {selectedExp.type}
                   </span>
                 </div>
 
                 {/* Highlight banner */}
                 {selectedExp.highlight && (
-                  <div className={`my-6 p-4 rounded-2xl border flex items-start gap-3 ${dark ? 'bg-cyan-500/10 border-cyan-400/30' : 'bg-cyan-50 border-cyan-200'}`}>
-                    <Award className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
-                    <p className={`text-xs sm:text-sm font-medium ${dark ? 'text-cyan-200' : 'text-cyan-900'}`}>
+                  <div className={`my-6 p-4 rounded-2xl border flex items-start gap-3 ${dark ? 'bg-amber-500/10 border-amber-400/30' : 'bg-amber-50 border-amber-200'}`}>
+                    <Award className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                    <p className={`text-xs sm:text-sm font-medium ${dark ? 'text-amber-200' : 'text-amber-900'}`}>
                       {selectedExp.highlight}
                     </p>
                   </div>
@@ -107,12 +107,12 @@ export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
                 {/* Responsibilities */}
                 <div className="space-y-4 my-6">
                   <h4 className={`text-xs font-bold uppercase tracking-wider flex items-center gap-2 ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Key Responsibilities & Contributions
+                    <CheckCircle2 className="w-4 h-4 text-amber-400" /> Key Responsibilities & Contributions
                   </h4>
                   <div className="grid grid-cols-1 gap-2.5">
                     {selectedExp.responsibilities.map((task, idx) => (
                       <div key={idx} className={`flex items-start gap-3 text-xs sm:text-sm ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
-                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 shrink-0 mt-2 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 shrink-0 mt-2 shadow-[0_0_8px_rgba(251,146,60,0.8)]" />
                         <span>{task}</span>
                       </div>
                     ))}
@@ -122,13 +122,13 @@ export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
                 {/* Skills chips */}
                 <div className={`pt-6 border-t ${dark ? 'border-white/10' : 'border-slate-900/10'}`}>
                   <h4 className={`text-xs font-bold uppercase tracking-wider space-x-0 flex items-center gap-2 ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-                    <Wrench className="w-4 h-4 text-cyan-400" /> Skills & Tools Employed
+                    <Wrench className="w-4 h-4 text-amber-400" /> Skills & Tools Employed
                   </h4>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {selectedExp.skills.map((skill, idx) => (
                       <span
                         key={idx}
-                        className={`px-3 py-1 rounded-xl text-xs font-semibold border transition-all hover:-translate-y-0.5 ${dark ? 'bg-white/5 text-cyan-300 border-white/10 hover:border-cyan-400/40' : 'bg-white/70 text-cyan-700 border-slate-900/10'}`}
+                        className={`px-3 py-1 rounded-xl text-xs font-semibold border transition-all hover:-translate-y-0.5 ${dark ? 'bg-white/5 text-amber-300 border-white/10 hover:border-amber-400/40' : 'bg-white/70 text-amber-700 border-slate-900/10'}`}
                       >
                         {skill}
                       </span>
