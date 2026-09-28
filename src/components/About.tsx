@@ -2,6 +2,7 @@ import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Cloud, Server, Cpu, Network } from 'lucide-react';
 import { SectionHeading, Reveal } from './ui';
+import profileImg from '../assets/profile.jpg';
 
 interface AboutProps {
   theme: 'dark' | 'light';
@@ -56,10 +57,15 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
               <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="flex items-center gap-4 mb-6 relative">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px shadow-xl shadow-amber-500/30">
-                  <div className={`w-full h-full rounded-2xl flex items-center justify-center text-amber-400 font-extrabold text-xl ${dark ? 'bg-slate-950' : 'bg-white'}`}>
-                    MA
+                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px shadow-xl shadow-amber-500/30">
+                  <div className={`w-full h-full rounded-2xl overflow-hidden ${dark ? 'bg-slate-950' : 'bg-white'}`}>
+                    <img
+                      src={profileImg}
+                      alt="Muhammad Azhar"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  <span className="absolute -bottom-1.5 -right-1.5 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-950 animate-pulse" />
                 </div>
                 <div>
                   <h3 className={`text-lg font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Muhammad Azhar</h3>

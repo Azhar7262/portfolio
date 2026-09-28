@@ -1,6 +1,7 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Cloud, Github, Linkedin, Mail, MessageSquare, ArrowUp } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 interface FooterProps {
   theme: 'dark' | 'light';
@@ -46,10 +47,12 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand & Bio */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px shadow-lg shadow-orange-500/30">
-                <div className={`w-full h-full rounded-xl flex items-center justify-center text-amber-400 font-bold text-base ${dark ? 'bg-slate-950' : 'bg-white'}`}>
-                  MA
-                </div>
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-0.5 shadow-lg shadow-orange-500/30">
+                <img
+                  src={profileImg}
+                  alt="Muhammad Azhar"
+                  className="w-full h-full rounded-[0.5rem] object-cover"
+                />
               </div>
               <div>
                 <h3 className={`text-base font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Muhammad Azhar</h3>

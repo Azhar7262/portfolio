@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Cloud, FileText, Send, ChevronRight } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 interface NavbarProps {
   theme: 'dark' | 'light';
@@ -77,8 +78,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               handleNavClick('#hero');
             }}
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-600 to-orange-600 text-white font-bold text-sm shadow-lg shadow-amber-500/30 group-hover:scale-105 group-hover:shadow-amber-400/50 transition-all duration-300">
-              <span>MA</span>
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-600 to-orange-600 p-0.5 text-white font-bold text-sm shadow-lg shadow-amber-500/30 group-hover:scale-105 group-hover:shadow-amber-400/50 transition-all duration-300">
+              <img
+                src={profileImg}
+                alt="Muhammad Azhar logo"
+                className="w-full h-full rounded-[0.625rem] object-cover"
+              />
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400" />

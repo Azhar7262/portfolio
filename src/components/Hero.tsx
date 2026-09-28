@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO, STATS } from '../data/portfolioData';
 import { Download, Rocket, Send, Mail, ShieldCheck, Cloud, MapPin, CheckCircle2, Award, Server, GraduationCap } from 'lucide-react';
 import { useTilt, Reveal, CountUp } from './ui';
+import profileImg from '../assets/profile.jpg';
 
 interface HeroProps {
   theme: 'dark' | 'light';
@@ -198,6 +199,29 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
               >
                 {/* Glow aura behind card */}
                 <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-amber-500/25 via-orange-600/20 to-amber-600/25 blur-2xl animate-pulse-glow pointer-events-none" />
+
+                {/* Portrait with glowing gradient ring */}
+                <div className="relative mx-auto w-fit mb-10">
+                  {/* Soft glow aura behind portrait */}
+                  <div className="absolute -inset-5 rounded-full bg-amber-500/25 blur-2xl animate-pulse-glow pointer-events-none" />
+                  {/* Rotating conic gradient ring */}
+                  <div className="absolute -inset-1.5 rounded-full bg-[conic-gradient(from_0deg,#fbbf24,#f97316,#ea580c,#fbbf24)] animate-spin-slow blur-[1px]" />
+                  {/* Photo */}
+                  <div className={`relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 shadow-2xl shadow-amber-500/40 ${dark ? 'border-slate-950' : 'border-white'}`}>
+                    <img
+                      src={profileImg}
+                      alt="Muhammad Azhar — Portrait"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* Availability status dot */}
+                  <div className={`absolute bottom-2 right-2 flex items-center justify-center w-8 h-8 rounded-full shadow-xl ${dark ? 'bg-slate-950 border border-emerald-400/40' : 'bg-white border border-emerald-500/40'}`}>
+                    <span className="relative flex h-3.5 w-3.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-slate-950" />
+                    </span>
+                  </div>
+                </div>
 
                 {/* Liquid Glass Card */}
                 <div className="relative p-px rounded-3xl bg-gradient-to-b from-amber-400/40 via-orange-500/20 to-orange-400/30">

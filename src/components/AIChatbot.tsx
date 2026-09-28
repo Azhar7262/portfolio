@@ -8,24 +8,43 @@ interface AIChatbotProps {
   onOpenResumeModal: () => void;
 }
 
+const CHAT_HISTORY_KEY = 'azhar-ai-chat-history';
+const MAX_STORED_MESSAGES = 100;
+
+const createWelcomeMessage = (): ChatMessage => ({
+  id: `welcome-${Date.now()}`,
+  sender: 'assistant',
+  text: `Hello! 👋 I'm Muhammad Azhar's AI Portfolio Assistant. How can I assist you today?`,
+  timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  suggestions: [
+    'Who is Muhammad Azhar?',
+    'Tell me about his education',
+    'What AWS services does he know?',
+    'What certifications has he earned?',
+    'What projects has he completed?',
+    'How can I contact him?'
+  ]
+});
+
+// Restore chat history from localStorage so it survives close/reopen and refreshes
+const loadChatHistory = (): ChatMessage[] => {
+  try {
+    const saved = localStorage.getItem(CHAT_HISTORY_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch {
+    // Ignore corrupted storage and fall back to a fresh welcome message
+  }
+  return [createWelcomeMessage()];
+};
+
 export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome-1',
-      sender: 'assistant',
-      text: `Hello! 👋 I'm Muhammad Azhar's AI Portfolio Assistant. How can I assist you today?`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      suggestions: [
-        'Who is Muhammad Azhar?',
-        'Tell me about his education',
-        'What AWS services does he know?',
-        'What certifications has he earned?',
-        'What projects has he completed?',
-        'How can I contact him?'
-      ]
-    }
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>(loadChatHistory);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -37,6 +56,15 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping, isOpen]);
+
+  // Persist chat history so it survives closing/reopening the chat and page refreshes
+  useEffect(() => {
+    try {
+      localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages.slice(-MAX_STORED_MESSAGES)));
+    } catch {
+      // Storage unavailable (e.g. private browsing); keep chat in memory only
+    }
+  }, [messages]);
 
   // Local knowledge-base answer matcher algorithm
   const findLocalAnswer = (query: string): string => {
@@ -193,6 +221,15 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
             </div>
 
             <div className="flex items-center gap-1">
+              <button
+                onClick={() => setMessages([createWelcomeMessage()])}
+                aria-label="Clear Chat History"
+                title="Clear chat history"
+                className="p-1.5 rounded-lg hover:bg-white/10 text-amber-100"
+              >
+                <RefreshCw className="w-4 h-4" />
+              </button>
+
               <button
                 onClick={() => setSoundEnabled(!soundEnabled)}
                 aria-label="Toggle Sound"
