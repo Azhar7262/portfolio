@@ -22,12 +22,13 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   const navLinks = [
+    { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
-    { name: 'Education', href: '#education' },
-    { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Certifications', href: '#certifications' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Education', href: '#education' },
+    { name: 'Achievements', href: '#achievements' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -47,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand & Bio */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-0.5 shadow-lg shadow-orange-500/30">
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-400 via-purple-600 to-purple-600 p-0.5 shadow-lg shadow-violet-600/30">
                 <img
                   src={profileImg}
                   alt="Muhammad Azhar"
@@ -56,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div>
                 <h3 className={`text-base font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Muhammad Azhar</h3>
-                <p className="text-xs text-amber-400 flex items-center gap-1 font-semibold">
+                <p className="text-xs text-indigo-400 flex items-center gap-1 font-semibold">
                   <Cloud className="w-3.5 h-3.5" /> AWS Certified Solutions Architect
                 </p>
               </div>
@@ -75,10 +76,10 @@ export const Footer: React.FC<FooterProps> = ({
                   target={social.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/20 ${
+                  className={`p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-600/20 ${
                     dark
-                      ? 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-300 hover:border-amber-400/50'
-                      : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-amber-700 hover:border-amber-600/50'
+                      ? 'bg-white/5 border-white/10 text-slate-300 hover:text-indigo-300 hover:border-indigo-400/50'
+                      : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-violet-700 hover:border-violet-600/50'
                   }`}
                 >
                   {social.icon}
@@ -95,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`transition-colors py-1 ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}
+                  className={`transition-colors py-1 ${dark ? 'text-slate-400 hover:text-indigo-300' : 'text-slate-600 hover:text-violet-700'}`}
                 >
                   {link.name}
                 </a>
@@ -108,18 +109,18 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className={`text-xs font-bold uppercase tracking-wider ${dark ? 'text-white' : 'text-slate-900'}`}>Contact & Legal</h4>
             <div className={`space-y-1.5 text-xs ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
               <p>Islamabad, Pakistan</p>
-              <p className="font-mono text-amber-400">{PERSONAL_INFO.email}</p>
+              <p className="font-mono text-indigo-400">{PERSONAL_INFO.email}</p>
               <p>{PERSONAL_INFO.phone}</p>
             </div>
 
             <div className="pt-2 flex flex-col space-y-1 text-xs">
-              <button onClick={onOpenPrivacyModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
+              <button onClick={onOpenPrivacyModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-indigo-300' : 'text-slate-600 hover:text-violet-700'}`}>
                 Privacy Policy
               </button>
-              <button onClick={onOpenTermsModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
+              <button onClick={onOpenTermsModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-indigo-300' : 'text-slate-600 hover:text-violet-700'}`}>
                 Terms & Conditions
               </button>
-              <button onClick={onOpenSitemapModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-amber-300' : 'text-slate-600 hover:text-amber-700'}`}>
+              <button onClick={onOpenSitemapModal} className={`text-left transition-colors ${dark ? 'text-slate-400 hover:text-indigo-300' : 'text-slate-600 hover:text-violet-700'}`}>
                 Sitemap & XML Structure
               </button>
             </div>
@@ -135,8 +136,8 @@ export const Footer: React.FC<FooterProps> = ({
             onClick={scrollToTop}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:-translate-y-0.5 ${
               dark
-                ? 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-300 hover:border-amber-400/50'
-                : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-amber-700 hover:border-amber-600/50'
+                ? 'bg-white/5 border-white/10 text-slate-300 hover:text-indigo-300 hover:border-indigo-400/50'
+                : 'bg-white/70 border-slate-900/10 text-slate-600 hover:text-violet-700 hover:border-violet-600/50'
             }`}
           >
             <span>Back to Top</span>

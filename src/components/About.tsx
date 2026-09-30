@@ -15,22 +15,22 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
     {
       title: "AWS Cloud Solutions",
       description: "Designing multi-tier VPCs, IAM policies, S3 static sites, EC2 instances, and Lambda serverless functions.",
-      icon: <Cloud className="w-5 h-5 text-amber-400" />
+      icon: <Cloud className="w-5 h-5 text-indigo-400" />
     },
     {
       title: "Enterprise System Admin",
       description: "Managing Active Directory Domain Services, Windows Server, Group Policies (GPO), and M365 ecosystems.",
-      icon: <Server className="w-5 h-5 text-amber-400" />
+      icon: <Server className="w-5 h-5 text-indigo-400" />
     },
     {
       title: "Network Infrastructure",
       description: "Configuring TCP/IP routing, DNS, DHCP scopes, VPN tunnels, and Wi-Fi access points for corporate IT.",
-      icon: <Network className="w-5 h-5 text-amber-400" />
+      icon: <Network className="w-5 h-5 text-indigo-400" />
     },
     {
       title: "IoT & Smart Telemetry",
       description: "Building ESP32 microservices communicating over MQTT to AWS IoT Core with DynamoDB and QuickSight.",
-      icon: <Cpu className="w-5 h-5 text-amber-400" />
+      icon: <Cpu className="w-5 h-5 text-indigo-400" />
     }
   ];
 
@@ -53,11 +53,11 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
           <Reveal className="lg:col-span-5">
             <div className={`p-8 rounded-3xl glass-sheen relative overflow-hidden ${dark ? 'glass' : 'glass-light'}`}>
               {/* Accent glow */}
-              <div className="absolute -top-16 -right-16 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -top-16 -right-16 w-48 h-48 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="flex items-center gap-4 mb-6 relative">
-                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 via-orange-600 to-orange-600 p-px shadow-xl shadow-amber-500/30">
+                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-400 via-purple-600 to-purple-600 p-px shadow-xl shadow-indigo-500/30">
                   <div className={`w-full h-full rounded-2xl overflow-hidden ${dark ? 'bg-slate-950' : 'bg-white'}`}>
                     <img
                       src={profileImg}
@@ -69,7 +69,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                 </div>
                 <div>
                   <h3 className={`text-lg font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>Muhammad Azhar</h3>
-                  <p className="text-xs text-amber-400 font-semibold">AWS Certified Solutions Architect – Associate</p>
+                  <p className="text-xs text-indigo-400 font-semibold">AWS Certified Solutions Architect – Associate</p>
                   <p className={`text-xs ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Islamabad, Pakistan</p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
             {highlights.map((item, index) => (
               <Reveal key={index} delay={index * 90}>
                 <div className={`p-6 rounded-2xl glass-sheen glow-hover group h-full ${dark ? 'glass' : 'glass-light'}`}>
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-400/20 w-fit mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-300">
+                  <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-400/20 w-fit mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
                     {item.icon}
                   </div>
                   <h3 className={`text-base font-bold mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>

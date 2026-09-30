@@ -29,7 +29,7 @@ export default function App() {
   // Observe active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'education', 'experience', 'skills', 'certifications', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'education', 'achievements', 'resume', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -50,7 +50,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-slate-950">
       {/* Dynamic Canvas Background particles & glow */}
       <BackgroundEffects theme="dark" />
 
@@ -70,20 +70,20 @@ export default function App() {
 
         <About theme="dark" />
 
-        <Education theme="dark" />
-
-        <Experience theme="dark" />
-
         <Skills theme="dark" />
 
-        <Certifications
-          theme="dark"
-          onSelectCert={(cert) => setSelectedCert(cert)}
-        />
+        <Experience theme="dark" />
 
         <Projects
           theme="dark"
           onSelectProject={(proj) => setSelectedProject(proj)}
+        />
+
+        <Education theme="dark" />
+
+        <Certifications
+          theme="dark"
+          onSelectCert={(cert) => setSelectedCert(cert)}
         />
 
         <ResumeSection

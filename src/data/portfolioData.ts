@@ -165,46 +165,60 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    name: "Cloud Computing & DevOps",
+    name: "Cloud / DevOps",
     iconName: "Cloud",
-    description: "Designing, architecting, and deploying resilient cloud solutions on Amazon Web Services",
+    description: "Architecting and deploying resilient solutions on Amazon Web Services",
     skills: [
       { name: "AWS EC2", level: 92, highlight: true, tags: ["Infrastructure", "Compute"] },
       { name: "AWS S3", level: 95, highlight: true, tags: ["Storage", "Static Web"] },
       { name: "AWS IAM", level: 90, highlight: true, tags: ["Security", "Access Control"] },
-      { name: "AWS VPC", level: 88, highlight: true, tags: ["Networking", "Subnets"] },
+      { name: "AWS VPC", level: 88, highlight: true, tags: ["Subnets", "Topology"] },
       { name: "AWS Lambda", level: 85, highlight: true, tags: ["Serverless", "Python"] },
-      { name: "AWS DynamoDB", level: 82, highlight: true, tags: ["NoSQL", "Database"] },
       { name: "AWS IoT Core", level: 85, highlight: true, tags: ["IoT", "MQTT"] },
-      { name: "Amazon QuickSight", level: 80, tags: ["Analytics", "BI"] },
-      { name: "Amazon Rekognition", level: 78, tags: ["AI", "Vision"] },
-      { name: "Amazon Lex", level: 80, tags: ["AI", "Chatbot"] },
       { name: "AWS Route 53", level: 82, tags: ["DNS", "Domain"] },
-      { name: "AWS CloudFront", level: 80, tags: ["CDN", "Edge"] }
+      { name: "AWS CloudFront", level: 80, tags: ["CDN", "Edge"] },
+      { name: "AWS CLI", level: 86, tags: ["Automation"] }
     ]
   },
   {
-    name: "System Administration",
-    iconName: "Server",
-    description: "Managing enterprise IT infrastructure, servers, directory services, and user environments",
+    name: "Programming",
+    iconName: "Code",
+    description: "Writing scripts, automation utilities, and data pipelines",
     skills: [
-      { name: "Windows Server", level: 92, highlight: true, tags: ["Active Directory", "DNS"] },
-      { name: "Active Directory (AD)", level: 94, highlight: true, tags: ["Domain Controller", "Users"] },
-      { name: "Microsoft 365 Admin", level: 90, highlight: true, tags: ["Exchange", "Teams", "Admin"] },
-      { name: "Group Policy (GPO)", level: 88, tags: ["Security", "Policies"] },
-      { name: "User Account & RBAC", level: 95, tags: ["Permission", "Access"] },
-      { name: "File Sharing & SMB", level: 90, tags: ["Permissions", "NAS"] },
-      { name: "Backup Management", level: 85, tags: ["Disaster Recovery"] },
-      { name: "CCTV & Hardware Admin", level: 88, tags: ["Infrastructure"] }
+      { name: "Python (boto3, NumPy, Pandas)", level: 88, highlight: true, tags: ["AWS SDK", "Data"] },
+      { name: "Java & C++", level: 78, tags: ["Core CS"] },
+      { name: "R", level: 75, tags: ["Statistics"] },
+      { name: "PowerShell Automation", level: 84, tags: ["Windows", "Onboarding"] }
+    ]
+  },
+  {
+    name: "Web Development",
+    iconName: "Globe",
+    description: "Building responsive interfaces and static hosting architectures",
+    skills: [
+      { name: "HTML5 & CSS3", level: 90, highlight: true, tags: ["Frontend", "Tailwind"] },
+      { name: "JavaScript ES6", level: 85, highlight: true, tags: ["Frontend", "DOM"] },
+      { name: "React Fundamentals", level: 80, tags: ["SPA"] },
+      { name: "S3 + CloudFront Hosting", level: 88, tags: ["Static Sites"] }
+    ]
+  },
+  {
+    name: "Databases & Analytics",
+    iconName: "Database",
+    description: "NoSQL storage, SQL queries, and BI visualization",
+    skills: [
+      { name: "AWS DynamoDB", level: 82, highlight: true, tags: ["NoSQL"] },
+      { name: "SQL", level: 75, tags: ["Queries"] },
+      { name: "Amazon QuickSight", level: 80, tags: ["BI", "Dashboards"] }
     ]
   },
   {
     name: "Networking",
     iconName: "Network",
-    description: "Configuring, troubleshooting, and securing corporate & cloud network topologies",
+    description: "Configuring, troubleshooting, and securing network topologies",
     skills: [
       { name: "TCP/IP & OSI Model", level: 92, highlight: true },
-      { name: "DNS & DHCP Protocols", level: 90, highlight: true },
+      { name: "DNS & DHCP", level: 90, highlight: true },
       { name: "VPN & Remote Tunneling", level: 88, highlight: true },
       { name: "Routing & Switching", level: 85 },
       { name: "Wi-Fi & AP Configuration", level: 88 },
@@ -212,49 +226,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ]
   },
   {
-    name: "Programming & Scripts",
-    iconName: "Code",
-    description: "Writing scripts, automation utilities, data pipelines, and web interfaces",
-    skills: [
-      { name: "Python (NumPy, Pandas, boto3)", level: 88, highlight: true, tags: ["AWS SDK", "Data"] },
-      { name: "HTML5 & CSS3", level: 90, highlight: true, tags: ["Frontend", "Tailwind"] },
-      { name: "JavaScript ES6", level: 85, highlight: true, tags: ["Frontend", "DOM"] },
-      { name: "Java & C++", level: 78, tags: ["Core CS"] },
-      { name: "R & SQL", level: 75, tags: ["Data Queries"] }
-    ]
-  },
-  {
-    name: "Development & Tools",
+    name: "Tools & Technologies",
     iconName: "Wrench",
-    description: "Tooling for version control, project tracking, IDEs, and documentation",
+    description: "Systems, directory services, version control, and day-to-day tooling",
     skills: [
+      { name: "Windows Server", level: 92, highlight: true, tags: ["AD DS"] },
+      { name: "Active Directory & GPO", level: 94, highlight: true, tags: ["Domain", "Policies"] },
+      { name: "Microsoft 365 Admin", level: 90, highlight: true, tags: ["Exchange", "Teams"] },
       { name: "Git & GitHub", level: 90, highlight: true },
+      { name: "Linux (Ubuntu / Amazon Linux)", level: 82 },
       { name: "Visual Studio Code", level: 92 },
-      { name: "Jira & Agile Workflows", level: 85 },
-      { name: "Overleaf / LaTeX", level: 82 },
-      { name: "AWS CLI", level: 86 }
-    ]
-  },
-  {
-    name: "Operating Systems",
-    iconName: "Monitor",
-    description: "Proficiency in desktop, server, and embedded platform environments",
-    skills: [
-      { name: "Windows 10/11 & Server", level: 96, highlight: true },
-      { name: "Linux (Ubuntu / Amazon Linux)", level: 82, highlight: true },
-      { name: "ESP32 / Embedded IoT OS", level: 80 }
-    ]
-  },
-  {
-    name: "Professional Soft Skills",
-    iconName: "Users",
-    description: "Core leadership and communication strengths proven in enterprise and university roles",
-    skills: [
-      { name: "Leadership & Team Management", level: 95, highlight: true },
-      { name: "Problem Solving & Analytical Thinking", level: 95, highlight: true },
-      { name: "Technical Communication", level: 92, highlight: true },
-      { name: "Time Management & Prioritization", level: 90 },
-      { name: "Project Coordination & Execution", level: 92 }
+      { name: "Jira & Agile", level: 85 }
     ]
   }
 ];

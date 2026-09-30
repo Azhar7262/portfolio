@@ -18,21 +18,21 @@ export const Certifications: React.FC<CertificationsProps> = ({ theme, onSelectC
       particleCount: 80,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#fbbf24', '#fb923c', '#f59e0b', '#fdba74', '#f97316']
+      colors: ['#818cf8', '#a78bfa', '#6366f1', '#a5b4fc', '#8b5cf6']
     });
     onSelectCert(cert);
   };
 
   return (
-    <section id="certifications" className="py-20 lg:py-28 relative overflow-hidden">
+    <section id="achievements" className="py-20 lg:py-28 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <SectionHeading
           theme={theme}
-          badge="Credentials & Licenses"
-          title="Certifications &"
-          highlight="Honors"
-          subtitle="Industry-recognized credentials validating AWS cloud expertise, technical mastery, and executive leadership."
+          badge="Credentials & Honors"
+          title="Achievements &"
+          highlight="Leadership"
+          subtitle="Industry-recognized credentials, academic honors, and leadership roles validating technical mastery and executive involvement."
         />
 
         {/* Certificate Glass Cards */}
@@ -52,13 +52,13 @@ export const Certifications: React.FC<CertificationsProps> = ({ theme, onSelectC
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
 
                   {/* Verified pill */}
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-400/90 text-slate-950 shadow-lg shadow-amber-500/40 flex items-center gap-1.5">
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-400/90 text-slate-950 shadow-lg shadow-indigo-500/40 flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Verified</span>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-[11px] font-semibold text-amber-300 uppercase tracking-wider">
+                    <p className="text-[11px] font-semibold text-indigo-300 uppercase tracking-wider">
                       {cert.organization}
                     </p>
                     <h3 className="text-lg font-extrabold text-white leading-snug">
@@ -82,7 +82,7 @@ export const Certifications: React.FC<CertificationsProps> = ({ theme, onSelectC
                       {cert.skillsVerified.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className={`px-2.5 py-1 rounded-lg text-xs font-medium border ${dark ? 'bg-amber-500/10 text-amber-300 border-amber-400/20' : 'bg-amber-50 text-amber-700 border-amber-200'}`}
+                          className={`px-2.5 py-1 rounded-lg text-xs font-medium border ${dark ? 'bg-indigo-500/10 text-indigo-300 border-indigo-400/20' : 'bg-indigo-50 text-violet-700 border-indigo-200'}`}
                         >
                           {skill}
                         </span>
@@ -94,18 +94,18 @@ export const Certifications: React.FC<CertificationsProps> = ({ theme, onSelectC
                   <div className={`pt-4 border-t flex flex-wrap items-center justify-between gap-3 text-xs ${dark ? 'border-white/10' : 'border-slate-900/10'}`}>
                     <div className={`space-y-1 font-mono text-[11px] ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                        <Calendar className="w-3.5 h-3.5 text-indigo-400" />
                         <span>Issued: {cert.issueDate}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Hash className="w-3.5 h-3.5 text-amber-400" />
+                        <Hash className="w-3.5 h-3.5 text-indigo-400" />
                         <span>ID: {cert.credentialId}</span>
                       </div>
                     </div>
 
                     <button
                       onClick={() => handleVerifyClick(cert)}
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 shadow-lg shadow-amber-500/30 hover:shadow-amber-400/50 hover:-translate-y-0.5 transition-all"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-violet-600 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-400/50 hover:-translate-y-0.5 transition-all"
                     >
                       <span>Verify Credential</span>
                       <ExternalLink className="w-3.5 h-3.5" />
