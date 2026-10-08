@@ -201,7 +201,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
 
       {/* Floating Chat Window Modal */}
       {isOpen && (
-        <div className={`w-[90vw] sm:w-[400px] h-[550px] rounded-3xl shadow-2xl flex flex-col overflow-hidden glass-deep text-white`}>
+        <div className="w-[90vw] sm:w-[400px] h-[550px] rounded-3xl shadow-2xl flex flex-col overflow-hidden bg-[#12162a]/95 border border-white/10 text-white backdrop-blur-xl">
           
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 text-white flex items-center justify-between">
@@ -270,7 +270,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                   className={`p-3.5 rounded-2xl max-w-[85%] leading-relaxed ${
                     msg.sender === 'user'
                       ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-tr-none shadow-lg shadow-indigo-500/25'
-                      : 'glass text-slate-200 rounded-tl-none'
+                      : 'bg-white/8 text-slate-200 rounded-tl-none'
                   }`}
                 >
                   <p className="whitespace-pre-line">{msg.text}</p>
@@ -287,7 +287,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
                       <button
                         key={sIdx}
                         onClick={() => handleSendMessage(sug)}
-                        className={`text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left glass text-indigo-300 hover:border-indigo-400/60 hover:bg-indigo-500/10`}
+                        className="text-[11px] font-medium px-2.5 py-1 rounded-full border transition-all text-left bg-white/5 border-white/10 text-indigo-300 hover:border-indigo-400/60 hover:bg-indigo-500/10"
                       >
                         {sug}
                       </button>
@@ -298,7 +298,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
             ))}
 
             {isTyping && (
-              <div className={`flex items-center gap-2 p-3 rounded-2xl glass w-fit text-slate-400`}>
+              <div className="flex items-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/10 w-fit text-slate-400">
                 <div className="flex gap-1">
                   <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce"></span>
                   <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce delay-150"></span>

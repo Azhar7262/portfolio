@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Project, Certification } from '../types';
-import { PERSONAL_INFO, EDUCATION_DATA, EXPERIENCE_DATA, SKILL_CATEGORIES, CERTIFICATIONS } from '../data/portfolioData';
-import { X, Download, ExternalLink, Printer, ShieldCheck, CheckCircle2, Award, FileText, Globe, Code, Building, MapPin, Calendar, Mail, Phone } from 'lucide-react';
+import { PERSONAL_INFO, EDUCATION_DATA, EXPERIENCE_DATA, CERTIFICATIONS } from '../data/portfolioData';
+import { X, Download, ExternalLink, Printer, ShieldCheck, CheckCircle2, Award, FileText, Code, Monitor, Github } from 'lucide-react';
 
 interface ModalsProps {
   theme: 'dark' | 'light';
@@ -32,290 +32,378 @@ export const Modals: React.FC<ModalsProps> = ({
   termsModalOpen,
   onCloseTermsModal,
   sitemapModalOpen,
-  onCloseSitemapModal
+  onCloseSitemapModal,
 }) => {
-  const [activeResumeTab, setActiveResumeTab] = useState<'preview' | 'text'>('preview');
+  const dark = theme === 'dark';
 
   const handlePrintResume = () => {
     window.print();
   };
 
+  const paperClassName = `max-w-3xl rounded-2xl border p-8 sm:p-12 text-slate-900 shadow-2xl ${
+    dark ? 'border-slate-200' : 'border-slate-200'
+  }`;
+
   return (
     <>
       {/* 1. RESUME MODAL */}
       {resumeModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all glass-deep text-white`}>
-            
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div
+            className={`flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl shadow-2xl transition-all ${
+              dark ? 'border-white/10 bg-slate-950/90 text-white' : 'border-slate-200 bg-white text-[#0b0d17]'
+            }`}
+          >
             {/* Modal Header */}
-            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
+            <div className={`flex flex-shrink-0 items-center justify-between border-b p-5 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'}`}>
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20">
-                  <FileText className="w-5 h-5 text-indigo-400" />
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xl border ${dark ? 'bg-primary-500/10 border-primary-400/20 text-primary-300' : 'bg-primary-100 border-primary-400/30 text-primary-700'}`}>
+                  <FileText className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold">Muhammad Azhar - Resume PDF</h3>
-                  <p className="text-xs text-slate-400">AWS Certified Solutions Architect – Associate</p>
+                  <h3 className={`text-base font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                    Muhammad Azhar — Resume
+                  </h3>
+                  <p className={`text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    AWS Certified Solutions Architect – Associate
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrintResume}
-                  className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-200 hover:text-white flex items-center gap-1.5"
+                  className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    dark
+                      ? 'bg-white/5 text-ink-soft hover:bg-white/10 hover:text-primary-300'
+                      : 'bg-white text-ink-faint hover:bg-slate-100 hover:text-primary-700'
+                  }`}
                 >
-                  <Printer className="w-3.5 h-3.5 text-indigo-400" /> Print
+                  <Printer className="h-3.5 w-3.5" />
+                  Print
                 </button>
-
-                <a
-                  href="#download"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-500 to-purple-600 text-white flex items-center gap-1.5 shadow-md"
-                >
-                  <Download className="w-3.5 h-3.5" /> Download
-                </a>
 
                 <button
                   onClick={onCloseResumeModal}
                   aria-label="Close Resume Modal"
-                  className="p-2 rounded-xl glass text-slate-300 hover:text-white"
+                  className={`flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${
+                    dark
+                      ? 'bg-white/5 text-ink-soft hover:bg-white/10 hover:text-primary-300'
+                      : 'bg-white text-ink-faint hover:bg-slate-100 hover:text-primary-700'
+                  }`}
                 >
-                  <X className="w-5 h-5" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
             </div>
 
-            {/* Modal Body: Embedded Resume Paper Simulation */}
-            <div className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-8 bg-slate-950/60 font-sans">
-              <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-2xl bg-white text-slate-900 shadow-2xl border border-slate-200 space-y-6">
-                
+            {/* Modal Body */}
+            <div className={`flex flex-1 flex-col overflow-y-auto p-5 sm:p-8 space-y-6 ${dark ? 'bg-slate-950/40' : 'bg-slate-50'}`}>
+              <div
+                className={`${paperClassName} space-y-6`}
+              >
                 {/* Resume Header */}
-                <div className="text-center border-b pb-6 border-slate-200 space-y-2">
-                  <h1 className="text-3xl font-extrabold text-slate-900 uppercase tracking-tight">
+                <div className={`rounded-xl border p-5 text-center ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+                  <h1 className={`text-3xl font-extrabold tracking-tight uppercase ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
                     MUHAMMAD AZHAR
                   </h1>
-                  <p className="text-xs font-semibold text-slate-600">
-                    {PERSONAL_INFO.hometown} | {PERSONAL_INFO.phone} | {PERSONAL_INFO.email}
+                  <p className={`mt-1 font-mono text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    {PERSONAL_INFO.hometown} · {PERSONAL_INFO.phone} · {PERSONAL_INFO.email}
                   </p>
-                  <p className="text-xs font-semibold text-violet-700">
-                    {PERSONAL_INFO.linkedin} | {PERSONAL_INFO.github}
+                  <p className={`mt-1 font-mono text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    {PERSONAL_INFO.linkedin} · {PERSONAL_INFO.github}
                   </p>
                 </div>
 
                 {/* Professional Summary */}
-                <div className="space-y-1">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1">
-                    PROFESSIONAL SUMMARY
+                <div>
+                  <h2 className={`text-xs font-bold uppercase tracking-wider ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    Professional Summary
                   </h2>
-                  <p className="text-xs leading-relaxed text-slate-700 pt-1">
+                  <p className={`mt-1 text-sm leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
                     {PERSONAL_INFO.summary}
                   </p>
                 </div>
 
                 {/* Education */}
-                <div className="space-y-2">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1">
-                    EDUCATION
+                <div>
+                  <h2 className={`text-xs font-bold uppercase tracking-wider mb-2 ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    Education
                   </h2>
-                  <div className="text-xs space-y-1">
-                    <div className="flex justify-between font-bold text-slate-900">
+                  <div className={`space-y-2 text-sm ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    <div className="flex items-center justify-between gap-2 font-bold">
                       <span>{EDUCATION_DATA.degree}</span>
                       <span>{EDUCATION_DATA.period}</span>
                     </div>
-                    <p className="text-slate-600 italic">{EDUCATION_DATA.institution}</p>
-                    <p className="font-semibold text-slate-800">• CGPA: {EDUCATION_DATA.cgpa}</p>
-                    <p className="font-semibold text-slate-800">• Thesis: {EDUCATION_DATA.finalYearProject.title}</p>
+                    <p className={`italic ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>{EDUCATION_DATA.institution}</p>
+                    <p className={`font-semibold ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                      · CGPA: {EDUCATION_DATA.cgpa}
+                    </p>
+                    <p className={`font-semibold ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                      · Thesis: {EDUCATION_DATA.finalYearProject.title}
+                    </p>
                   </div>
                 </div>
 
                 {/* Work Experience */}
-                <div className="space-y-3">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1">
-                    WORK EXPERIENCE
+                <div>
+                  <h2 className={`text-xs font-bold uppercase tracking-wider mb-2 ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    Work Experience
                   </h2>
-                  {EXPERIENCE_DATA.map((exp) => (
-                    <div key={exp.id} className="text-xs space-y-1">
-                      <div className="flex justify-between font-bold text-slate-900">
-                        <span>{exp.role} – {exp.company}</span>
-                        <span>{exp.period}</span>
+                  <div className="space-y-3">
+                    {EXPERIENCE_DATA.map((exp) => (
+                      <div key={exp.id} className={`rounded-xl border p-4 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white'}`}>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-bold">{exp.role} — {exp.company}</span>
+                          <span className="font-mono text-xs">{exp.period}</span>
+                        </div>
+                        <p className={`font-mono text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>{exp.location}</p>
+                        <ul className="mt-1 list-disc space-y-1 pl-4 text-xs">
+                          {exp.responsibilities.map((r, i) => (
+                            <li key={i}>{r}</li>
+                          ))}
+                        </ul>
                       </div>
-                      <p className="text-slate-600 italic">{exp.location}</p>
-                      <ul className="list-disc list-inside space-y-1 text-slate-700 pt-0.5">
-                        {exp.responsibilities.slice(0, 3).map((r, i) => (
-                          <li key={i}>{r}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
                 {/* Certifications */}
-                <div className="space-y-2">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1">
-                    CERTIFICATIONS & HONORS
+                <div>
+                  <h2 className={`text-xs font-bold uppercase tracking-wider mb-2 ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                    Certifications & Honors
                   </h2>
-                  <ul className="list-disc list-inside text-xs space-y-1 text-slate-700">
+                  <ul className="space-y-1 text-sm">
                     {CERTIFICATIONS.map((cert) => (
-                      <li key={cert.id}>
-                        <span className="font-bold text-slate-900">{cert.title}</span> — {cert.organization} ({cert.issueDate})
+                      <li key={cert.id} className={dark ? 'text-ink-soft' : 'text-ink-faint'}>
+                        <span className="font-semibold">{cert.title}</span> — {cert.organization} ({cert.issueDate})
                       </li>
                     ))}
-                    <li>Gold Medal in Co-Curricular Activities — AWKUM (Oct 2025)</li>
+                    <li className={`font-semibold ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                      Gold Medal in Co-Curricular Activities — AWKUM (Oct 2025)
+                    </li>
                   </ul>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
       )}
 
       {/* 2. PROJECT DETAIL & ARCHITECTURE MODAL */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-3xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden glass-deep text-white`}>
-            
-            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500 text-slate-950 uppercase">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedProject.title} details`}
+          onClick={onCloseProjectModal}
+        >
+          <div
+            className={`max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border p-5 sm:p-8 shadow-2xl ${
+              dark ? 'border-white/10 bg-slate-950/90 text-white' : 'border-slate-200 bg-white text-[#0b0d17]'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${
+                    dark ? 'bg-primary-500/10 text-primary-300' : 'bg-primary-100 text-primary-700'
+                  }`}
+                >
                   {selectedProject.category}
                 </span>
-                <h3 className="text-base font-bold">{selectedProject.title}</h3>
+                <h3 className={`mt-2 text-2xl font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                  {selectedProject.title}
+                </h3>
               </div>
               <button
                 onClick={onCloseProjectModal}
-                className="p-2 rounded-xl glass text-slate-300 hover:text-white"
+                aria-label="Close project details"
+                className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                  dark ? 'bg-white/5 text-ink-soft hover:bg-white/10' : 'bg-slate-100 text-ink-faint hover:bg-slate-200'
+                }`}
               >
-                <X className="w-5 h-5" />
+                <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              
-              {/* Architecture Diagram or Project Banner */}
-              <div className="relative h-64 rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src={selectedProject.architectureDiagram || selectedProject.image}
-                  alt={selectedProject.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/90 text-indigo-300 border border-indigo-500/30">
-                  Architecture Overview
-                </span>
-              </div>
+            <p className={`mt-4 text-sm leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+              {selectedProject.description}
+            </p>
 
-              <p className="text-sm leading-relaxed text-slate-300">
-                {selectedProject.description}
-              </p>
-
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Key Architectural Features
-                </h4>
-                <div className="space-y-2">
-                  {selectedProject.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </div>
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className={`rounded-xl border p-4 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+                <h5 className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                  Key Features
+                </h5>
+                <ul className="mt-2 space-y-1.5">
+                  {selectedProject.features.map((feat, i) => (
+                    <li key={i} className={`flex items-start gap-2 text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+                      {feat}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
-
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <div className={`rounded-xl border p-4 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+                <h5 className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                  <Code className="h-3.5 w-3.5 text-primary-400" />
                   Tech Stack
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech, idx) => (
-                    <span key={idx} className="px-3 py-1 rounded-xl text-xs font-mono bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                </h5>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className={`rounded-md px-2.5 py-1 text-[11px] font-mono font-medium ${
+                        dark ? 'bg-white/5 text-ink-soft' : 'bg-slate-100 text-ink-faint'
+                      }`}
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-
-              {selectedProject.githubUrl && (
-                <div className="pt-4 border-t border-white/10 flex justify-end">
-                  <a
-                    href={selectedProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-500 text-slate-950 hover:bg-indigo-400 flex items-center gap-2 shadow-md"
-                  >
-                    <Code className="w-4 h-4" /> View GitHub Repository
-                  </a>
-                </div>
-              )}
-
             </div>
 
+            <div className="mt-5 flex flex-wrap justify-end gap-3">
+              {selectedProject.githubUrl && (
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 px-5 py-2.5 text-xs font-bold text-white shadow-lg transition-all hover:-translate-y-0.5"
+                >
+                  <Github className="h-4 w-4" />
+                  View GitHub Repository
+                </a>
+              )}
+              {selectedProject.demoUrl && (
+                <a
+                  href={selectedProject.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-bold transition-all hover:-translate-y-0.5 ${
+                    dark
+                      ? 'border-white/10 bg-white/5 text-ink-soft hover:border-primary-400/40 hover:text-primary-300'
+                      : 'border-slate-200 bg-white text-ink-faint hover:border-primary-400 hover:text-primary-700'
+                  }`}
+                >
+                  <Monitor className="h-4 w-4" />
+                  Live Demo
+                </a>
+              )}
+            </div>
           </div>
         </div>
       )}
 
       {/* 3. CERTIFICATE VERIFICATION MODAL */}
       {selectedCert && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className={`w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden glass-deep text-white`}>
-            
-            <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/5">
-              <div className="flex items-center gap-2 text-indigo-400 font-bold text-sm">
-                <ShieldCheck className="w-5 h-5" /> Credential Verification
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Verify ${selectedCert.title}`}
+          onClick={onCloseCertModal}
+        >
+          <div
+            className={`max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border p-5 sm:p-8 shadow-2xl ${
+              dark ? 'border-white/10 bg-slate-950/90 text-white' : 'border-slate-200 bg-white text-[#0b0d17]'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`flex flex-shrink-0 items-center justify-between border-b p-5 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+              <div className="flex items-center gap-2 font-bold">
+                <ShieldCheck className="h-5 w-5 text-primary-400" />
+                Credential Verification
               </div>
-              <button onClick={onCloseCertModal} className="p-2 rounded-xl glass text-slate-300 hover:text-white">
-                <X className="w-5 h-5" />
+              <button
+                onClick={onCloseCertModal}
+                aria-label="Close credential verification"
+                className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                  dark ? 'bg-white/5 text-ink-soft hover:bg-white/10' : 'bg-slate-100 text-ink-faint hover:bg-slate-200'
+                }`}
+              >
+                <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="p-6 space-y-4 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 mx-auto flex items-center justify-center">
-                <Award className="w-8 h-8 text-indigo-400" />
+            <div className="space-y-4 text-center">
+              <div className={`mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border ${dark ? 'border-primary-500/20 bg-primary-500/10 text-primary-300' : 'border-primary-300 bg-primary-100 text-primary-700'}`}>
+                <Award className="h-8 w-8" />
               </div>
 
-              <div>
-                <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">{selectedCert.organization}</span>
-                <h3 className="text-xl font-extrabold text-white mt-1">{selectedCert.title}</h3>
-                <p className="text-xs text-slate-400 mt-1">Credential ID: {selectedCert.credentialId}</p>
-              </div>
+              <p className={`font-mono text-xs uppercase tracking-wider ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                {selectedCert.organization}
+              </p>
+              <h3 className={`text-xl font-extrabold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                {selectedCert.title}
+              </h3>
+              <p className={`font-mono text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                Credential ID: {selectedCert.credentialId}
+              </p>
 
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 font-medium text-left space-y-1">
-                <div className="flex items-center gap-2 font-bold">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Official Status: Verified Active
+              <div
+                className={`rounded-xl border p-4 text-left space-y-1 ${
+                  dark ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-300' : 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                }`}
+              >
+                <div className="flex items-center justify-center gap-2 font-bold">
+                  <CheckCircle2 className="h-4 w-4" />
+                  Official Status: Verified Active
                 </div>
-                <p>Issued: {selectedCert.issueDate} • Validated for Cloud Solutions Architecture</p>
+                <p className="text-xs">
+                  Issued: {selectedCert.issueDate} · Validated for Cloud Solutions Architecture
+                </p>
               </div>
 
               <a
                 href={selectedCert.verifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-indigo-400 hover:bg-indigo-300 shadow-md"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 px-5 py-3 text-xs font-bold text-white shadow-lg transition-all hover:-translate-y-0.5"
               >
-                <span>Open Issuer Portal</span>
-                <ExternalLink className="w-4 h-4" />
+                Open Issuer Portal
+                <ExternalLink className="h-4 w-4" />
               </a>
             </div>
-
           </div>
         </div>
       )}
 
       {/* 4. PRIVACY POLICY MODAL */}
       {privacyModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-              <h3 className="text-lg font-bold">Privacy Policy</h3>
-              <button onClick={onClosePrivacyModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Privacy Policy"
+          onClick={onClosePrivacyModal}
+        >
+          <div
+            className={`max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl border p-6 shadow-2xl ${
+              dark ? 'border-white/10 bg-slate-950/90 text-white' : 'border-slate-200 bg-white text-[#0b0d17]'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`flex items-center justify-between border-b pb-3 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+              <h3 className={`text-base font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                Privacy Policy
+              </h3>
+              <button
+                onClick={onClosePrivacyModal}
+                aria-label="Close privacy policy"
+                className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
+                  dark ? 'bg-white/5 text-ink-soft hover:bg-white/10' : 'bg-slate-100 text-ink-faint hover:bg-slate-200'
+                }`}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className={`text-sm leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
               This portfolio website respects visitor privacy. No personal tracking data is stored or distributed. Any inquiries submitted through the contact form are kept strictly confidential for direct professional communication with Muhammad Azhar.
             </p>
           </div>
@@ -324,13 +412,34 @@ export const Modals: React.FC<ModalsProps> = ({
 
       {/* 5. TERMS & CONDITIONS MODAL */}
       {termsModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-              <h3 className="text-lg font-bold">Terms & Conditions</h3>
-              <button onClick={onCloseTermsModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Terms & Conditions"
+          onClick={onCloseTermsModal}
+        >
+          <div
+            className={`max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl border p-6 shadow-2xl ${
+              dark ? 'border-white/10 bg-slate-950/90 text-white' : 'border-slate-200 bg-white text-[#0b0d17]'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`flex items-center justify-between border-b pb-3 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+              <h3 className={`text-base font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                Terms & Conditions
+              </h3>
+              <button
+                onClick={onCloseTermsModal}
+                aria-label="Close terms and conditions"
+                className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
+                  dark ? 'bg-white/5 text-ink-soft hover:bg-white/10' : 'bg-slate-100 text-ink-faint hover:bg-slate-200'
+                }`}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className={`text-sm leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
               All content, design assets, and project descriptions on this personal portfolio belong to Muhammad Azhar. Visitors are welcome to view, share, and review material for hiring and professional evaluation purposes.
             </p>
           </div>
@@ -339,20 +448,41 @@ export const Modals: React.FC<ModalsProps> = ({
 
       {/* 6. SITEMAP MODAL */}
       {sitemapModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="w-full max-w-2xl max-h-[80vh] rounded-3xl glass-deep text-white p-6 overflow-y-auto space-y-4 font-mono text-xs">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3 font-sans">
-              <h3 className="text-lg font-bold">Sitemap & robots.txt</h3>
-              <button onClick={onCloseSitemapModal} className="p-1.5 rounded-lg glass text-slate-300 hover:text-white"><X className="w-4 h-4" /></button>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Sitemap"
+          onClick={onCloseSitemapModal}
+        >
+          <div
+            className={`max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl border p-6 shadow-2xl font-mono text-xs ${
+              dark ? 'border-white/10 bg-slate-950/90 text-[#939ab7]' : 'border-slate-200 bg-white text-[#5c667a]'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`flex items-center justify-between border-b pb-3 ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+              <h3 className={`font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                Sitemap & Robots
+              </h3>
+              <button
+                onClick={onCloseSitemapModal}
+                aria-label="Close sitemap"
+                className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
+                  dark ? 'bg-white/5 text-ink-soft hover:bg-white/10' : 'bg-slate-100 text-ink-faint hover:bg-slate-200'
+                }`}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2 text-indigo-300">
-              <p>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
-              <p>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/#about&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/#education&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/#experience&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar.portfolio/#projects&lt;/loc&gt;&lt;/url&gt;</p>
+            <div className="space-y-2 p-4 rounded-xl border border-white/5">
+              <p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</p>
+              <p>&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#about&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#education&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#experience&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#projects&lt;/loc&gt;&lt;/url&gt;</p>
               <p>&lt;/urlset&gt;</p>
             </div>
           </div>
@@ -361,3 +491,4 @@ export const Modals: React.FC<ModalsProps> = ({
     </>
   );
 };
+

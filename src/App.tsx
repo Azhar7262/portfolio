@@ -15,10 +15,23 @@ import { Footer } from './components/Footer';
 import { Modals } from './components/Modals';
 import { Project, Certification } from './types';
 
-export default function App() {
-  const [activeSection, setActiveSection] = useState<string>('hero');
+type Theme = 'dark' | 'light';
 
-  // Modal states
+const THEME_KEY = 'azhar-theme';
+
+function getInitialTheme(): Theme {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+  } catch {
+    // Storage unavailable — fall through to default.
+  }
+  return 'dark'; // Dark-first, per design.
+}
+
+export default function App() {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [activeSection, setActiveSection] = useState<string>('hero');
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
@@ -26,12 +39,20 @@ export default function App() {
   const [termsModalOpen, setTermsModalOpen] = useState(false);
   const [sitemapModalOpen, setSitemapModalOpen] = useState(false);
 
-  // Observe active section on scroll
+  // Persist theme and reflect it on <html data-theme="...">.
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // Storage unavailable — theme stays in memory for this session.
+    }
+  }, [theme]);
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'education', 'achievements', 'resume', 'contact'];
       const scrollPosition = window.scrollY + 200;
-
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -44,73 +65,61 @@ export default function App() {
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-slate-950">
-      {/* Dynamic Canvas Background particles & glow */}
-      <BackgroundEffects theme="dark" />
+    <div className="min-h-screen font-sans bg-[color:var(--color-bg)] text-[color:var(--color-ink)] selection:bg-primary-500/30">
+      <BackgroundEffects theme={theme} />
 
-      {/* Sticky Navigation Header */}
       <Navbar
-        theme="dark"
+        theme={theme}
         activeSection={activeSection}
         onOpenResumeModal={() => setResumeModalOpen(true)}
+        onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
       />
 
-      {/* Main Content Sections */}
       <main className="relative z-10">
-        <Hero
-          theme="dark"
-          onOpenResumeModal={() => setResumeModalOpen(true)}
-        />
+        <Hero theme={theme} />
 
-        <About theme="dark" />
-
-        <Skills theme="dark" />
-
-        <Experience theme="dark" />
+        <About theme={theme} />
+        <Skills theme={theme} />
+        <Experience theme={theme} />
 
         <Projects
-          theme="dark"
+          theme={theme}
           onSelectProject={(proj) => setSelectedProject(proj)}
         />
 
-        <Education theme="dark" />
-
+        <Education theme={theme} />
         <Certifications
-          theme="dark"
+          theme={theme}
           onSelectCert={(cert) => setSelectedCert(cert)}
         />
 
         <ResumeSection
-          theme="dark"
+          theme={theme}
           onOpenResumeModal={() => setResumeModalOpen(true)}
         />
 
-        <Contact theme="dark" />
+        <Contact theme={theme} />
       </main>
 
-      {/* Floating AI Portfolio Assistant Chatbot */}
       <AIChatbot
-        theme="dark"
+        theme={theme}
         onOpenResumeModal={() => setResumeModalOpen(true)}
       />
 
-      {/* Footer */}
       <Footer
-        theme="dark"
+        theme={theme}
         onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
         onOpenTermsModal={() => setTermsModalOpen(true)}
         onOpenSitemapModal={() => setSitemapModalOpen(true)}
       />
 
-      {/* Modals & Dialogs */}
       <Modals
-        theme="dark"
+        theme={theme}
         resumeModalOpen={resumeModalOpen}
         onCloseResumeModal={() => setResumeModalOpen(false)}
         selectedProject={selectedProject}

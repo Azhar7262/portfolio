@@ -1,7 +1,7 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Download, FileText, CheckCircle2 } from 'lucide-react';
-import { SectionHeading, Reveal } from './ui';
+import { SectionHeading } from './ui';
 
 interface ResumeSectionProps {
   theme: 'dark' | 'light';
@@ -12,79 +12,76 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
   const dark = theme === 'dark';
 
   return (
-    <section id="resume" className="py-20 lg:py-28 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="resume" className="relative overflow-hidden pb-[calc(74px+2rem)] pt-20 sm:pt-24 lg:pt-28">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/[0.03] via-transparent to-transparent" />
+      </div>
 
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           theme={theme}
           badge="Curriculum Vitae"
-          title="Professional"
-          highlight="Resume"
+          title="Resume"
+          highlight="Curriculum Vitae"
           subtitle="Complete credentials overview optimized for recruiters, hiring managers, and cloud architecture audit."
         />
 
-        {/* Big glass download callout */}
-        <Reveal>
-          <div className={`p-8 sm:p-12 rounded-3xl glass-sheen relative overflow-hidden text-center max-w-4xl mx-auto ${dark ? 'glass-deep border-glow' : 'glass-deep-light border-glow'}`}>
+        <div className={`relative mx-auto max-w-4xl overflow-hidden rounded-2xl border p-6 sm:p-10 text-center transition-colors duration-[320ms] ${
+          dark ? 'border-white/10 bg-white/[0.03]' : 'border-slate-200/80 bg-white'
+        }`}>
+          <div className="relative z-10">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-400 via-primary-500 to-accent-400 shadow-xl shadow-primary-500/25">
+              <FileText className="h-9 w-9 text-white" />
+            </div>
 
-            {/* Glow accents */}
-            <div className="absolute -top-20 left-1/4 w-72 h-72 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 right-1/4 w-72 h-72 bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
+            <h3 className={`mt-6 text-2xl sm:text-3xl font-extrabold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+              Muhammad Azhar
+              <span className={`block text-sm font-medium ${dark ? 'text-[#939ab7]' : 'text-[#5c667a]'}`}>
+                · Official Resume
+              </span>
+            </h3>
+            <p className={`mt-2 text-sm font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
+              AWS Certified Solutions Architect – Associate · IT Executive · BSCS (Software) Graduate
+            </p>
 
-            <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-400 via-purple-600 to-purple-600 p-px mx-auto shadow-xl shadow-indigo-500/40 flex items-center justify-center animate-float-soft">
-                <div className={`w-full h-full rounded-2xl flex items-center justify-center ${dark ? 'bg-slate-950' : 'bg-white'}`}>
-                  <FileText className="w-7 h-7 text-indigo-400" />
-                </div>
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className={`flex items-center gap-2 rounded-xl border p-3 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white'}`}>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+                <span className={`text-xs font-medium ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>AWS Certified Architect</span>
               </div>
-
-              <div className="space-y-2">
-                <h3 className={`text-2xl sm:text-3xl font-extrabold ${dark ? 'text-white' : 'text-slate-900'}`}>
-                  Muhammad Azhar — <span className="text-gradient">Official Resume</span>
-                </h3>
-                <p className={`text-xs sm:text-sm ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
-                  AWS Certified Solutions Architect – Associate | IT Executive | BSCS (Software) Graduate
-                </p>
+              <div className={`flex items-center gap-2 rounded-xl border p-3 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white'}`}>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+                <span className={`text-xs font-medium ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>4+ Yrs Leadership</span>
               </div>
-
-              {/* Feature checklist */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-left py-2">
-                {['AWS Certified Architect', '4+ Yrs Leadership', 'BS CS CGPA 3.32'].map((item, idx) => (
-                  <div key={idx} className={`flex items-center gap-2 p-3 rounded-xl border ${dark ? 'bg-white/5 border-white/10 text-slate-200' : 'bg-white/70 border-slate-900/10 text-slate-700'}`}>
-                    <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+              <div className={`flex items-center gap-2 rounded-xl border p-3 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white'}`}>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+                <span className={`text-xs font-medium ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>BS CS CGPA 3.32</span>
               </div>
+            </div>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <button
-                  onClick={onOpenResumeModal}
-                  className="group relative overflow-hidden flex items-center gap-2.5 px-8 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-600 to-purple-600 hover:from-indigo-400 hover:to-violet-600 shadow-xl shadow-indigo-500/30 hover:shadow-indigo-400/50 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <span className="absolute top-0 left-0 h-full w-1/3 bg-white/25 blur-md" style={{ animation: 'shine-sweep 1.2s ease infinite' }} />
-                  </span>
-                  <Download className="w-5 h-5" />
-                  <span>Download Resume (PDF)</span>
-                </button>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+              <button
+                onClick={onOpenResumeModal}
+                className="group flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+              >
+                <Download className="h-4 w-4" />
+                <span>Download Resume (PDF)</span>
+              </button>
 
-                <button
-                  onClick={onOpenResumeModal}
-                  className={`flex items-center gap-2.5 px-6 py-4 rounded-2xl text-sm font-bold glass-sheen transition-all hover:-translate-y-1 ${
-                    dark ? 'glass text-slate-200 hover:text-indigo-300 border-indigo-400/30' : 'glass-light text-slate-700 hover:text-violet-700 border-violet-600/30'
-                  }`}
-                >
-                  <FileText className="w-5 h-5 text-indigo-400" />
-                  <span>View Full Screen PDF</span>
-                </button>
-              </div>
-
+              <button
+                onClick={onOpenResumeModal}
+                className={`flex items-center gap-2.5 rounded-xl border px-5 py-3.5 text-sm font-bold transition-all hover:-translate-y-0.5 ${
+                  dark
+                    ? 'border-white/10 bg-white/5 text-ink-soft hover:border-primary-400/40 hover:text-primary-300'
+                    : 'border-slate-200 bg-white text-ink-faint hover:border-primary-400 hover:text-primary-700'
+                }`}
+              >
+                <FileText className="h-4 w-4 text-primary-400" />
+                <span>View Full Screen PDF</span>
+              </button>
             </div>
           </div>
-        </Reveal>
-
+        </div>
       </div>
     </section>
   );

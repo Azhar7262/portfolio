@@ -1,225 +1,225 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Cloud, FileText, Send, ChevronRight } from 'lucide-react';
-import profileImg from '../assets/profile.jpg';
+import React, { useState, useEffect, useCallback } from 'react';
+import {
+  Menu, X, Send, FileText, Moon, Sun
+} from 'lucide-react';
+import { NAV_LINKS } from '../data/portfolioData';
 
 interface NavbarProps {
   theme: 'dark' | 'light';
   activeSection: string;
   onOpenResumeModal: () => void;
+  onToggleTheme: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  theme,
-  activeSection,
-  onOpenResumeModal
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ theme, activeSection, onOpenResumeModal, onToggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
   const dark = theme === 'dark';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollProgress((window.scrollY / totalHeight) * 100);
-      }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0) setScrollProgress((window.scrollY / total) * 100);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Education', href: '#education' },
-    { name: 'Achievements', href: '#achievements' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  const handleNavClick = (href: string) => {
-    setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const navigate = (href: string) => {
+    closeMobile();
+    const el = document.querySelector(href);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 12;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
   return (
     <>
-      {/* Scroll Progress Beam */}
-      <div className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-transparent">
+      {/* Progress bar */}
+      <div className="fixed inset-x-0 top-0 z-50 h-[3px] overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-indigo-400 via-violet-600 to-purple-600 shadow-[0_0_12px_rgba(129,140,248,0.8)] transition-all duration-150 ease-out"
+          className="h-full rounded-r-full bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 transition-[width_150ms_ease-out]"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       <header
-        className={`fixed left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled ? 'top-3 px-4' : 'top-4 px-4'
+        className={`fixed inset-x-0 top-0 z-40 transition-[transform,height] duration-[320ms_ease-out] ${
+          scrolled || mobileOpen
+            ? dark
+              ? 'translate-y-0 rounded-t-[20px] border border-white/10 bg-[#0b0d17]/80 shadow-lg shadow-black/30 backdrop-blur-xl'
+              : 'translate-y-0 rounded-t-[20px] border border-slate-900/10 bg-white/85 shadow-lg shadow-slate-900/10 backdrop-blur-xl'
+            : 'translate-y-0 border-b border-transparent'
         }`}
       >
-        <div
-          className={`max-w-6xl mx-auto flex items-center justify-between gap-4 rounded-2xl px-4 sm:px-5 transition-all duration-500 glass-sheen ${
-            scrolled ? 'py-2.5' : 'py-3'
-          } ${dark ? 'glass-deep' : 'glass-deep-light'}`}
-          style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)' }}
-        >
-          {/* Logo Brand */}
+        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+          {/* Brand */}
           <a
             href="#hero"
-            className="group flex items-center gap-3 text-left focus:outline-none shrink-0"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#hero');
-            }}
+            className="flex items-center gap-3 focus:outline-none"
+            onClick={(e) => { e.preventDefault(); navigate('#hero'); }}
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-600 to-purple-600 p-0.5 text-white font-bold text-sm shadow-lg shadow-indigo-500/30 group-hover:scale-105 group-hover:shadow-indigo-400/50 transition-all duration-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-400 via-primary-500 to-accent-400 p-0.5 shadow-lg shadow-primary-500/30">
               <img
-                src={profileImg}
-                alt="Muhammad Azhar logo"
-                className="w-full h-full rounded-[0.625rem] object-cover"
+                src="/profile.jpg"
+                alt="Muhammad Azhar"
+                className="h-full w-full rounded-[12px] object-cover"
               />
-              <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-400" />
-              </span>
             </div>
-            <div className="hidden sm:block">
-              <span className={`block text-sm font-bold tracking-tight leading-none ${dark ? 'text-white' : 'text-slate-900'}`}>
+            <div>
+              <span className={`block text-sm font-extrabold tracking-tight leading-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
                 Muhammad Azhar
               </span>
-              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-indigo-500 dark:text-indigo-400 mt-1">
-                <Cloud className="w-3 h-3" /> AWS Architect
+              <span className={`block text-[11px] font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
+                Cloud & AI Engineer
               </span>
             </div>
           </a>
 
-          {/* Desktop Nav Pill */}
-          <nav className={`hidden lg:flex items-center gap-1 p-1.5 rounded-full ${dark ? 'bg-white/5 border border-white/10' : 'bg-slate-900/5 border border-slate-900/10'}`}>
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.name.toLowerCase();
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+            {NAV_LINKS.map((link) => {
+              const isActive = activeSection === link.id;
               return (
                 <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={`relative flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md shadow-indigo-500/40 font-semibold'
-                      : dark
-                      ? 'text-slate-300 hover:text-white hover:bg-white/10'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-900/10'
+                      ? dark ? 'bg-white/8 text-primary-300' : 'bg-primary-500/10 text-primary-700'
+                      : dark ? 'text-ink-soft hover:text-[#f1f5f9] hover:bg-white/5' : 'text-ink-faint hover:text-[#0b0d17] hover:bg-slate-900/5'
                   }`}
+                  onClick={(e) => { e.preventDefault(); navigate(link.id); }}
+                 aria-current={isActive ? 'page' : undefined}
                 >
-                  {link.name}
+                  {link.label}
+                  {link.id === 'skills' && (
+                    <span
+                      className={`ml-1.5 size-1.5 rounded-full ring-2 ring-primary-500/40 ${
+                        isActive ? 'animate-ping' : ''
+                      }`}
+                    />
+                  )}
                 </a>
               );
             })}
+            <div className={`ml-3 flex items-center gap-2 pl-3 border-l ${dark ? 'border-white/6' : 'border-slate-900/10'}`}>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); navigate('#contact'); }}
+                className="flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-primary-500 via-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-md shadow-primary-500/25 transition-all"
+              >
+                <Send className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Hire Me</span>
+              </a>
+              <button
+                type="button"
+                onClick={onOpenResumeModal}
+                className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors ${
+                  dark
+                    ? 'text-ink-soft hover:bg-white/5 hover:text-primary-300'
+                    : 'text-ink-faint hover:bg-white/8 hover:text-[#0b0d17]'
+                }`}
+              >
+                <FileText className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Resume</span>
+              </button>
+            </div>
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          {/* Mobile actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
-              onClick={onOpenResumeModal}
-              className={`hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 hover:scale-[1.03] ${
-                dark
-                  ? 'bg-white/5 border border-white/10 text-slate-200 hover:border-indigo-400/50 hover:text-indigo-300'
-                  : 'bg-white/60 border border-slate-900/10 text-slate-700 hover:border-violet-600/50 hover:text-violet-700'
+              type="button"
+              onClick={onToggleTheme}
+              aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className={`flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
+                dark ? 'text-ink-soft hover:bg-white/5 hover:text-primary-300' : 'text-ink-faint hover:bg-slate-900/5 hover:text-primary-700'
               }`}
             >
-              <FileText className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Resume</span>
+              {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
-
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#contact');
-              }}
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 via-purple-600 to-purple-600 hover:from-indigo-400 hover:to-violet-600 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-400/50 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Hire Me</span>
-            </a>
-
-            {/* Mobile toggles */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Navigation Menu"
-              className={`sm:hidden p-2.5 rounded-xl transition-all ${
+              type="button"
+              onClick={onOpenResumeModal}
+              className={`hidden items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors sm:flex ${
                 dark
-                  ? 'bg-white/5 border border-white/10 text-slate-200'
-                  : 'bg-slate-900/5 border border-slate-900/10 text-slate-700'
+                  ? 'text-ink-soft hover:bg-white/5 hover:text-primary-300'
+                  : 'text-ink-faint hover:bg-white/8 hover:text-[#0b0d17]'
               }`}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <FileText className="h-3.5 w-3.5" />
+              <span className="hidden lg:inline">Resume</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
+              className={`flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
+                dark ? 'text-ink-soft hover:bg-white/5' : 'text-ink-faint hover:bg-white/8'
+              }`}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div
-            className={`sm:hidden mt-2 rounded-2xl animate-fadeIn overflow-hidden ${
-              dark ? 'glass-deep' : 'glass-deep-light'
-            }`}
-          >
-            <div className="px-4 pt-3 pb-5 space-y-1.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                    activeSection === link.name.toLowerCase()
-                      ? 'bg-indigo-500/15 text-indigo-400 font-semibold'
-                      : dark
-                      ? 'text-slate-300 hover:bg-white/5'
-                      : 'text-slate-700 hover:bg-slate-900/5'
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  <ChevronRight className="w-4 h-4 opacity-50" />
-                </a>
-              ))}
-
-              <div className="pt-3 grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenResumeModal();
-                  }}
-                  className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-semibold ${
-                    dark ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30' : 'bg-indigo-50 text-violet-700 border border-indigo-200'
-                  }`}
-                >
-                  <FileText className="w-4 h-4" /> View Resume
-                </button>
+        {/* Mobile drawer */}
+        {mobileOpen && (
+          <div className="border-t border-white/8 pb-6 pt-2 lg:hidden animate-fade-in">
+            <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className={`flex items-center gap-3 rounded-xl px-4 py-3.5 text-sm font-medium transition-colors ${
+                      isActive
+                        ? dark ? 'bg-white/8 text-primary-300' : 'bg-white/12 text-white'
+                        : dark ? 'text-ink-soft hover:bg-white/5' : 'text-ink-faint hover:bg-white/8'
+                    }`}
+                    onClick={(e) => { e.preventDefault(); navigate(link.id); }}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center rounded-lg text-[11px] font-bold">
+                      {link.id === 'skills' && <span className="bg-primary-500/40 text-[10px] font-bold text-primary-300 rounded-full px-1.5 py-0.5" />}
+                      {link.label}
+                    </span>
+                  </a>
+                );
+              })}
+              <div className="mt-3 flex flex-col gap-2 pl-4 border-t border-white/8">
                 <a
                   href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick('#contact');
-                  }}
-                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30"
+                  onClick={(e) => { e.preventDefault(); navigate('#contact'); }}
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 via-primary-500 to-accent-500 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-primary-500/25"
                 >
-                  <Send className="w-4 h-4" /> Contact Me
+                  <Send className="h-4 w-4" />
+                  Hire Me
                 </a>
+                <button
+                  type="button"
+                  onClick={() => { closeMobile(); onOpenResumeModal(); }}
+                  className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${
+                    dark
+                      ? 'bg-white/6 text-ink-soft hover:bg-white/10'
+                      : 'bg-white/8 text-ink-faint hover:bg-white/12'
+                  }`}
+                >
+                  <FileText className="h-4 w-4" />
+                  View Resume
+                </button>
               </div>
-            </div>
+            </nav>
           </div>
         )}
       </header>

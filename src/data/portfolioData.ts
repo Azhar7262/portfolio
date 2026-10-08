@@ -1,4 +1,5 @@
 import { Project, ExperienceItem, EducationItem, SkillCategory, Certification, StatItem, KnowledgeItem } from '../types';
+import { Github, Linkedin, Mail, MessageSquare } from 'lucide-react';
 
 export const PERSONAL_INFO = {
   name: "Muhammad Azhar",
@@ -28,6 +29,27 @@ export const PERSONAL_INFO = {
   resumeDownloadUrl: "#resume-pdf",
   availableForWork: true
 };
+
+export const SOCIAL_LINKS = [
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/muhammad-azhar-khan', icon: Linkedin },
+  { label: 'GitHub', href: 'https://github.com/muhammad-azhar-khan', icon: Github },
+  { label: 'Email', href: 'mailto:azharkhan726200@gmail.com', icon: Mail },
+  { label: 'WhatsApp', href: 'https://wa.me/923471969863', icon: MessageSquare },
+];
+
+export const NAV_LINKS = [
+  { id: 'home', label: 'Home', href: '#hero' },
+  { id: 'about', label: 'About', href: '#about' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'education', label: 'Education', href: '#education' },
+  { id: 'achievements', label: 'Achievements', href: '#achievements' },
+  { id: 'resume', label: 'Resume', href: '#resume' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
+];
+
+export const MENU_ITEMS = NAV_LINKS.map((link) => link.id);
 
 export const STATS: StatItem[] = [
   {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { EXPERIENCE_DATA } from '../data/portfolioData';
-import { Briefcase, Calendar, MapPin, Building, Award, Wrench } from 'lucide-react';
-import { SectionHeading, Reveal } from './ui';
+import { ExperienceItem } from '../types';
+import { Briefcase, Calendar, MapPin, Building, Award, Users, GraduationCap } from 'lucide-react';
+import { SectionHeading } from './ui';
 
 interface ExperienceProps {
   theme: 'dark' | 'light';
@@ -9,117 +10,169 @@ interface ExperienceProps {
 
 export const Experience: React.FC<ExperienceProps> = ({ theme }) => {
   const dark = theme === 'dark';
+  const items = EXPERIENCE_DATA;
+
+  const iconFor = (type: ExperienceItem['type']) => {
+    if (type === 'Full-time') return Briefcase;
+    if (type === 'Internship') return GraduationCap;
+    if (type === 'Leadership') return Users;
+    return Briefcase;
+  };
 
   return (
-    <section id="experience" className="py-20 lg:py-28 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="experience" className="relative overflow-hidden pb-[calc(74px+2rem)] pt-20 sm:pt-24 lg:pt-28">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/[0.03] via-transparent to-transparent" />
+      </div>
 
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           theme={theme}
           badge="Career Journey"
-          title="Professional"
-          highlight="Experience"
-          subtitle="A proven track record across enterprise IT administration, AWS cloud engineering, and organizational leadership."
+          title="Experience"
+          highlight="Timeline"
+          subtitle="A proven track record across enterprise IT administration, cloud engineering, and organizational leadership."
         />
 
-        {/* Vertical Timeline */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Timeline spine */}
-          <div className={`absolute left-4 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px ${dark ? 'bg-gradient-to-b from-transparent via-indigo-400/40 to-transparent' : 'bg-gradient-to-b from-transparent via-indigo-500/40 to-transparent'}`} />
+          <div className="h-16" />
 
-          <div className="space-y-10 sm:space-y-14">
-            {EXPERIENCE_DATA.map((item, idx) => {
-              const isLeft = idx % 2 === 0;
+          <div className="space-y-12">
+            {items.map((item, idx) => {
+              const isEven = idx % 2 === 0;
+              const Icon = iconFor(item.type);
+              const first = idx === 0;
+              const last = idx === items.length - 1;
+
               return (
-                <Reveal key={item.id} delay={idx * 60}>
-                  <div className={`relative flex items-start gap-6 sm:gap-0 ${isLeft ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
-
-                    {/* Node on the spine */}
-                    <div className="absolute left-4 sm:left-1/2 top-2 -translate-x-1/2 z-10">
-                      <div className={`w-9 h-9 rounded-2xl flex items-center justify-center border shadow-lg ${dark ? 'bg-slate-900 border-indigo-400/50 shadow-indigo-500/30' : 'bg-white border-indigo-500/50 shadow-indigo-500/20'}`}>
-                        <Briefcase className="w-4 h-4 text-indigo-400" />
-                      </div>
+                <div
+                  key={item.id}
+                  className={`flex items-start gap-6 sm:gap-8 ${
+                    isEven ? 'flex-row' : 'flex-row-reverse'
+                  }`}
+                >
+                  {/* Timeline node */}
+                  <div
+                    className={`relative z-10 flex flex-col items-center sm:flex-col ${
+                      isEven ? 'mr-auto pl-8' : 'ml-auto pr-8'
+                    }`}
+                  >
+                    <div
+                      className={`relative flex h-11 w-11 items-center justify-center rounded-2xl border-2 shadow-lg transition-all duration-[320ms] hover:scale-105 ${
+                        dark
+                          ? 'border-white/10 bg-white/[0.04] text-primary-300'
+                          : 'border-primary-200 bg-white text-primary-700'
+                      }`}
+                    >
+                      <Icon className="h-4 w-4" />
                     </div>
-
-                    {/* Card */}
-                    <div className={`ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] ${isLeft ? 'sm:mr-auto sm:pr-0' : 'sm:ml-auto'}`}>
-                      <div className={`p-6 rounded-3xl glass-sheen glow-hover h-full ${dark ? 'glass' : 'glass-light'}`}>
-
-                        {/* Type + period */}
-                        <div className="flex flex-wrap items-center gap-2 mb-3">
-                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${dark ? 'bg-indigo-500/15 text-indigo-300 border-indigo-400/30' : 'bg-indigo-50 text-indigo-700 border-indigo-200'}`}>
-                            {item.type}
-                          </span>
-                          <span className={`flex items-center gap-1.5 text-xs font-mono ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-                            <Calendar className="w-3.5 h-3.5 text-indigo-400" /> {item.period}
-                          </span>
-                        </div>
-
-                        {/* Role + org */}
-                        <h3 className={`text-lg font-bold tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
-                          {item.role}
-                        </h3>
-                        <div className={`flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold mt-1 mb-4 ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
-                          <span className="flex items-center gap-1.5">
-                            <Building className="w-3.5 h-3.5 text-indigo-400" /> {item.company}
-                          </span>
-                          <span className="flex items-center gap-1.5">
-                            <MapPin className="w-3.5 h-3.5 text-indigo-400" /> {item.location}
-                          </span>
-                        </div>
-
-                        {/* Highlight */}
-                        {item.highlight && (
-                          <div className={`mb-4 p-3.5 rounded-2xl border flex items-start gap-2.5 ${dark ? 'bg-indigo-500/10 border-indigo-400/30' : 'bg-indigo-50 border-indigo-200'}`}>
-                            <Award className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
-                            <p className={`text-xs font-medium leading-relaxed ${dark ? 'text-indigo-200' : 'text-indigo-900'}`}>
-                              {item.highlight}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Responsibilities */}
-                        <ul className="space-y-2 mb-4">
-                          {item.responsibilities.slice(0, 4).map((task, tIdx) => (
-                            <li key={tIdx} className={`flex items-start gap-2.5 text-xs leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
-                              <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 bg-gradient-to-r from-indigo-400 to-purple-500 ${dark ? 'shadow-[0_0_8px_rgba(129,140,248,0.8)]' : ''}`} />
-                              <span>{task}</span>
-                            </li>
-                          ))}
-                          {item.responsibilities.length > 4 && (
-                            <li className={`text-[11px] font-semibold pl-4 ${dark ? 'text-indigo-300/80' : 'text-indigo-600'}`}>
-                              +{item.responsibilities.length - 4} more responsibilities
-                            </li>
-                          )}
-                        </ul>
-
-                        {/* Skills */}
-                        <div className={`pt-4 border-t ${dark ? 'border-white/10' : 'border-slate-900/10'}`}>
-                          <div className="flex flex-wrap gap-1.5">
-                            <Wrench className="w-3.5 h-3.5 text-indigo-400 mt-0.5" />
-                            {item.skills.map((skill, sIdx) => (
-                              <span
-                                key={sIdx}
-                                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold border transition-all hover:-translate-y-0.5 ${dark ? 'bg-white/5 text-indigo-300 border-white/10 hover:border-indigo-400/50' : 'bg-white/70 text-indigo-700 border-slate-900/10'}`}
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    {/* Spacer for the other side */}
-                    <div className="hidden sm:block sm:w-[calc(50%-2.5rem)]" />
+                    {!first && (
+                      <div
+                        className={`absolute top-14 h-full w-px ${
+                          isEven ? 'right-[calc(50%-1.5rem)]' : 'left-[calc(50%-1.5rem)]'
+                        } ${dark ? 'bg-white/10' : 'bg-slate-200/70'}`}
+                      />
+                    )}
+                    {!last && (
+                      <div
+                        className={`absolute top-full h-5 w-0.5 ${
+                          isEven ? 'right-[calc(50%-1.5rem)]' : 'left-[calc(50%-1.5rem)]'
+                        } ${dark ? 'bg-white/10' : 'bg-slate-200/70'}`}
+                      />
+                    )}
                   </div>
-                </Reveal>
+
+                  {/* Card */}
+                  <div
+                    className={`flex-1 w-full max-w-xl rounded-2xl border p-5 sm:p-7 transition-all duration-[300ms] hover:-translate-y-1 hover:shadow-lg ${
+                      dark
+                        ? 'border-white/10 bg-white/[0.03] hover:border-primary-400/20 hover:bg-white/[0.05]'
+                        : 'border-slate-200/80 bg-white hover:border-primary-300/30 hover:shadow-primary-500/8'
+                    }`}
+                  >
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${
+                          dark ? 'bg-white/5 text-ink-soft' : 'bg-slate-100 text-ink-faint'
+                        }`}
+                      >
+                        {item.type}
+                      </span>
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
+                          dark ? 'bg-primary-500/10 text-primary-300' : 'bg-primary-100 text-primary-700'
+                        }`}
+                      >
+                        {item.period}
+                      </span>
+                    </div>
+
+                    <h3 className={`mt-3 text-base font-bold tracking-tight ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
+                      {item.role}
+                    </h3>
+                    <div className={`mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                      <span className="flex items-center gap-1.5">
+                        <Building className="h-3.5 w-3.5" />
+                        {item.company}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5" />
+                        {item.location}
+                      </span>
+                    </div>
+
+                    {item.highlight && (
+                      <div
+                        className={`mt-4 flex items-start gap-2.5 rounded-xl border p-3.5 ${
+                          dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'
+                        }`}
+                      >
+                        <Award className="h-4 w-4 shrink-0 text-primary-400" />
+                        <p className={`text-xs leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                          {item.highlight}
+                        </p>
+                      </div>
+                    )}
+
+                    <ul className="mt-4 space-y-2.5">
+                      {item.responsibilities.map((task, tIdx) => (
+                        <li key={tIdx} className={`flex items-start gap-2.5 text-xs leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                          <span
+                            className={`mt-1.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${
+                              dark ? 'bg-primary-500/15' : 'bg-primary-100'
+                            }`}
+                          >
+                            <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
+                              <path d="M2.5 1.5 L4.5 4.5 L2.5 4.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                          {task}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div
+                      className={`mt-4 flex flex-wrap gap-1.5 border-t pt-4 ${
+                        dark ? 'border-white/10' : 'border-slate-200/80'
+                      }`}
+                    >
+                      {(item.skills ?? []).map((skill) => (
+                        <span
+                          key={skill}
+                          className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${
+                            dark ? 'bg-white/5 text-ink-soft' : 'bg-slate-100 text-ink-faint'
+                          }`}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </div>
         </div>
-
       </div>
     </section>
   );
