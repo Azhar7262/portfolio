@@ -2,6 +2,55 @@
    engineering-portfolio design system. Fonts are loaded via index.html. */
 @import "tailwindcss";
 
+/* ---------- Tailwind theme registration ------------------------------------
+   Static color ramps (components pick light/dark shades explicitly with the
+   `dark` prop, so these must exist in BOTH themes). */
+@theme {
+  --color-primary-50: #f3efff;
+  --color-primary-100: #e9e2ff;
+  --color-primary-200: #d5c8fe;
+  --color-primary-300: #c0b2fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+
+  --color-muted-400: #94a3b8;
+
+  --breakpoint-xs: 30rem;
+}
+
+/* Semantic tokens that FLIP with [data-theme]. `inline` maps the utility
+   straight to the runtime CSS variable so dark/light swaps work. */
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-very-soft: var(--color-ink-very-soft);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-bg: var(--color-bg);
+  --color-bg-elev: var(--color-bg-elev);
+  --color-bg-meta: var(--color-bg-meta);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-primary: var(--color-primary);
+  --color-primary-deep: var(--color-primary-deep);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-primary-vibrant: var(--color-primary-vibrant);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-emerald: var(--color-emerald);
+  --color-sky: var(--color-sky);
+}
+
 :root {
   /* ---------- Brand ---------------------------------------------------------- */
   --color-bg: #0b0d17;
@@ -10,10 +59,11 @@
   --color-surface: #13172b;
   --color-surface-raised: #171c30;
 
-  --color-ink: #0f111a;
-  --color-ink-soft: #475069;
-  --color-ink-faint: #6b7489;
+  --color-ink: #eceffa;
+  --color-ink-soft: #b7bfd8;
+  --color-ink-faint: #8e97b3;
   --color-ink-muted: #939ab7;
+  --color-ink-very-soft: #cfd5e8;
 
   --color-line: rgba(148, 163, 184, 0.14);
   --color-line-strong: rgba(148, 163, 184, 0.26);
@@ -113,6 +163,7 @@
   --color-ink-soft: #3b4257;
   --color-ink-faint: #5c667a;
   --color-ink-muted: #8a94a8;
+  --color-ink-very-soft: #475069;
 
   --color-line: rgba(11, 13, 23, 0.07);
   --color-line-strong: rgba(11, 13, 23, 0.12);
