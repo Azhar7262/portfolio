@@ -268,6 +268,28 @@ export const Modals: React.FC<ModalsProps> = ({
               </div>
             </div>
 
+            {/* Role-based dashboard screenshots */}
+            {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
+              <div className="mt-5">
+                <h5 className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                  <Monitor className="h-3.5 w-3.5 text-primary-400" />
+                  Role-Based Dashboards In Production
+                </h5>
+                <div className="mt-2 grid grid-cols-2 gap-3">
+                  {selectedProject.screenshots.map((shot) => (
+                    <img
+                      key={shot}
+                      src={shot}
+                      alt={`${selectedProject.title} dashboard screenshot`}
+                      className={`w-full rounded-xl border object-cover object-left-top transition-transform duration-300 hover:scale-[1.02] ${
+                        dark ? 'border-white/10' : 'border-slate-200'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-5 flex flex-wrap justify-end gap-3">
               {selectedProject.githubUrl && (
                 <a

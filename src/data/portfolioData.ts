@@ -312,6 +312,32 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "proj-ums-bpo-lms",
+    title: "Enterprise LMS & Employee Portal — UMS BPO",
+    category: "Web",
+    description: "In-development internal web platform for Unified Marketing Systems (UMS BPO) combining a learning management system with employee self-service and attendance management. Delivers role-based access for Super Admin, HR, department managers and employees, with server-side authorization enforced on every action. Active development phase; learning module (courses, lessons, quizzes) is being built out next.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase (PostgreSQL + RLS)", "Vercel", "Hikvision Device Integration"],
+    features: [
+      "Role-based authentication with four access levels (Super Admin, HR, Department Manager, Employee) and server-side authorization with audited sensitive actions",
+      "Employee records: unique IDs, departments, reporting managers, shift and location mapping with duplicate-validated CSV import",
+      "Attendance management: device punch imports with idempotent sync, shift-based daily summaries and an audited correction workflow",
+      "Leave management with configurable types, balances, request submission and approval/rejection trails",
+      "Company document library with category access controls plus targeted announcements and in-app notifications",
+      "Management reporting filtered by employee, department, shift and date range with CSV/Excel/PDF export",
+      "Hikvision attendance-device integration layer with a validated CSV import fallback until the device interface is fully verified",
+      "PostgreSQL Row-Level Security isolating every employee's private records by role and scope"
+    ],
+    image: "/ums-lms-command-center.png",
+    screenshots: [
+      "/ums-lms-command-center.png",
+      "/ums-lms-role-hr.png",
+      "/ums-lms-role-manager.png",
+      "/ums-lms-role-employee.png"
+    ],
+    date: "Oct 2026 – Present",
+    featured: true
+  },
+  {
     id: "proj-smart-agri",
     title: "Smart Agriculture IoT using AWS Cloud",
     category: "IoT",
@@ -437,8 +463,8 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     category: "Certifications"
   },
   {
-    keywords: ["projects", "project", "smart agriculture", "iot", "chatbot", "rekognition", "s3 website"],
-    answer: "Key Projects:\n1. Smart Agriculture IoT using AWS Cloud (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n2. AWS-Powered Conversational AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n3. Image Label Generator using Amazon Rekognition (S3, Rekognition, boto3)\n4. Static Website Hosting on Amazon S3 & CloudFront.",
+    keywords: ["projects", "project", "smart agriculture", "iot", "chatbot", "rekognition", "s3 website", "lms", "portal", "ums"],
+    answer: "Key Projects:\n1. Enterprise LMS & Employee Portal for UMS BPO — in-development internal platform (Next.js, TypeScript, Supabase/PostgreSQL with Row-Level Security): role-based auth, employee records, attendance tracking with device integration, leave management, document library and management reports\n2. Smart Agriculture IoT using AWS Cloud (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n3. AWS-Powered Conversational AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n4. Image Label Generator using Amazon Rekognition (S3, Rekognition, boto3)\n5. Static Website Hosting on Amazon S3 & CloudFront.",
     category: "Projects"
   },
   {
