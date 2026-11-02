@@ -347,12 +347,6 @@ interface SkillCardProps {
 
 export const SkillCard: React.FC<SkillCardProps> = ({ skill, dark, onClick, onKeyDown, ariaLabel }) => {
   const Icon = getIcon(skill.iconName);
-  const levelStyles: Record<string, string> = {
-    Advanced: dark ? 'bg-emerald-500/10 text-emerald-300' : 'bg-emerald-100 text-emerald-700',
-    Intermediate: dark ? 'bg-amber-500/10 text-amber-300' : 'bg-amber-100 text-amber-700',
-    'Working Knowledge': dark ? 'bg-sky-500/10 text-sky-300' : 'bg-sky-100 text-sky-700',
-    Familiar: dark ? 'bg-white/5 text-ink-soft' : 'bg-slate-100 text-ink-faint',
-  };
 
   return (
     <button
@@ -384,13 +378,6 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill, dark, onClick, onKe
           <span className={`text-sm font-semibold truncate ${dark ? 'text-[#f1f5f9]' : 'text-[#0b0d17]'}`}>
             {skill.name}
           </span>
-          <span
-            className={`flex-shrink-0 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide ${
-              levelStyles[skill.level] ?? (dark ? 'bg-white/5 text-ink-soft' : 'bg-slate-100 text-ink-faint')
-            }`}
-          >
-            {skill.level}
-          </span>
         </div>
         <p
           className={`mt-1 text-xs leading-relaxed line-clamp-2 ${
@@ -419,17 +406,6 @@ interface SkillModalProps {
 }
 
 export const SkillModal: React.FC<SkillModalProps> = ({ category, skill, dark, onClose }) => {
-  const levelLabel =
-    skill?.level === 'Advanced'
-      ? 'Advanced'
-      : skill?.level === 'Intermediate'
-        ? 'Intermediate'
-        : skill?.level === 'Working Knowledge'
-          ? 'Working Knowledge'
-          : skill?.level === 'Familiar'
-            ? 'Familiar'
-            : '';
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -489,15 +465,6 @@ export const SkillModal: React.FC<SkillModalProps> = ({ category, skill, dark, o
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span
-              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${
-                dark
-                  ? 'bg-amber-500/10 text-amber-300'
-                  : 'bg-amber-100 text-amber-700'
-              }`}
-            >
-              {levelLabel}
-            </span>
             <button
               type="button"
               onClick={onClose}

@@ -247,15 +247,6 @@ export const Skills: React.FC<SkillsProps> = ({ theme }) => {
             })
           )}
         </div>
-
-        {/* Legend */}
-        <div className={`mt-6 flex flex-wrap items-center gap-3 text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
-          <span className="font-medium">Levels:</span>
-          <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-emerald-300">Advanced</span>
-          <span className="rounded-full bg-amber-500/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-amber-300">Intermediate</span>
-          <span className="rounded-full bg-sky-500/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-sky-300">Working Knowledge</span>
-          <span className="rounded-full bg-white/5 px-2.5 py-1 font-mono text-[11px] font-semibold">Familiar</span>
-        </div>
       </div>
 
       {/* Modal */}
