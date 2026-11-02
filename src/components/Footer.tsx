@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Github, Linkedin, Mail, MessageSquare, ArrowUp, Cloud, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageSquare, ArrowUp, X } from 'lucide-react';
 
 interface FooterProps {
   theme: 'dark' | 'light';
@@ -18,14 +19,14 @@ export const Footer: React.FC<FooterProps> = ({
   const dark = theme === 'dark';
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Education', href: '#education' },
-    { name: 'Achievements', href: '#achievements' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Skills', to: '/skills' },
+    { name: 'Experience', to: '/experience' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Education', to: '/education' },
+    { name: 'Achievements', to: '/achievements' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   const socials = [
@@ -93,15 +94,15 @@ export const Footer: React.FC<FooterProps> = ({
               </h4>
               <div className="mt-3 space-y-1.5">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
-                    href={link.href}
-                    className={`block text-xs transition-colors hover:text-primary-300 ${
+                    to={link.to}
+                    className={`block text-xs transition-all duration-200 hover:translate-x-0.5 hover:text-primary-500 ${
                       dark ? 'text-[#939ab7]' : 'text-[#5c667a]'
                     }`}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

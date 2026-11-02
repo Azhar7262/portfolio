@@ -38,15 +38,16 @@ export const SOCIAL_LINKS = [
 ];
 
 export const NAV_LINKS = [
-  { id: 'home', label: 'Home', href: '#hero' },
-  { id: 'about', label: 'About', href: '#about' },
-  { id: 'skills', label: 'Skills', href: '#skills' },
-  { id: 'experience', label: 'Experience', href: '#experience' },
-  { id: 'projects', label: 'Projects', href: '#projects' },
-  { id: 'education', label: 'Education', href: '#education' },
-  { id: 'achievements', label: 'Achievements', href: '#achievements' },
-  { id: 'resume', label: 'Resume', href: '#resume' },
-  { id: 'contact', label: 'Contact', href: '#contact' },
+  // `path` drives the multi-page router; `id` stays for anchors/keys.
+  { id: 'home', label: 'Home', path: '/' },
+  { id: 'about', label: 'About', path: '/about' },
+  { id: 'skills', label: 'Skills', path: '/skills' },
+  { id: 'experience', label: 'Experience', path: '/experience' },
+  { id: 'projects', label: 'Projects', path: '/projects' },
+  { id: 'education', label: 'Education', path: '/education' },
+  { id: 'achievements', label: 'Achievements', path: '/achievements' },
+  { id: 'resume', label: 'Resume', path: '/resume' },
+  { id: 'contact', label: 'Contact', path: '/contact' },
 ];
 
 export const MENU_ITEMS = NAV_LINKS.map((link) => link.id);

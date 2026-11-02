@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Education } from './components/Education';
-import { Experience } from './components/Experience';
-import { Skills } from './components/Skills';
-import { Certifications } from './components/Certifications';
-import { Projects } from './components/Projects';
-import { ResumeSection } from './components/ResumeSection';
-import { Contact } from './components/Contact';
 import { AIChatbot } from './components/AIChatbot';
 import { Footer } from './components/Footer';
 import { Modals } from './components/Modals';
+import {
+  HomePage,
+  AboutPage,
+  SkillsPage,
+  ExperiencePage,
+  ProjectsPage,
+  EducationPage,
+  AchievementsPage,
+  ResumePage,
+  ContactPage,
+} from './pages';
 import { Project, Certification } from './types';
 
 type Theme = 'dark' | 'light';
 
-const THEME_KEY = 'azhar-theme';
+const THEME_KEY = 'azhar-theme-v2'; // v2: multi-page site defaults to the professional light theme
 
 function getInitialTheme(): Theme {
   try {
@@ -26,12 +30,166 @@ function getInitialTheme(): Theme {
   } catch {
     // Storage unavailable — fall through to default.
   }
-  return 'dark'; // Dark-first, per design.
+  return 'light'; // Light-first professional design.
 }
+
+const BASE_TITLE = 'Muhammad Azhar — AWS Certified Solutions Architect & IT Executive';
+
+const PAGE_TITLES: Record<string, string> = {
+  '/': BASE_TITLE,
+  '/about': `About · Muhammad Azhar`,
+  '/skills': `Skills · Muhammad Azhar`,
+  '/experience': `Experience · Muhammad Azhar`,
+  '/projects': `Projects · Muhammad Azhar`,
+  '/education': `Education · Muhammad Azhar`,
+  '/achievements': `Achievements · Muhammad Azhar`,
+  '/resume': `Resume · Muhammad Azhar`,
+  '/contact': `Contact · Muhammad Azhar`,
+};
+
+/* All routes of the app — one keyed component so AnimatePresence can animate it. */
+const AnimatedRoutes: React.FC<{
+  location: ReturnType<typeof useLocation>;
+  theme: Theme;
+  onSelectProject: (p: Project) => void;
+  onSelectCert: (c: Certification) => void;
+  onOpenResumeModal: () => void;
+}> = ({ location, theme, onSelectProject, onSelectCert, onOpenResumeModal }) => (
+  <Routes location={location}>
+    <Route path="/" element={<HomePage theme={theme} />} />
+    <Route path="/about" element={<AboutPage theme={theme} />} />
+    <Route path="/skills" element={<SkillsPage theme={theme} />} />
+    <Route path="/experience" element={<ExperiencePage theme={theme} />} />
+    <Route
+      path="/projects"
+      element={<ProjectsPage theme={theme} onSelectProject={onSelectProject} />}
+    />
+    <Route path="/education" element={<EducationPage theme={theme} />} />
+    <Route
+      path="/achievements"
+      element={<AchievementsPage theme={theme} onSelectCert={onSelectCert} />}
+    />
+    <Route
+      path="/resume"
+      element={<ResumePage theme={theme} onOpenResumeModal={onOpenResumeModal} />}
+    />
+    <Route path="/contact" element={<ContactPage theme={theme} />} />
+    <Route path="*" element={<HomePage theme={theme} />} />
+  </Routes>
+);
+
+interface ShellProps {
+  theme: Theme;
+  setTheme: (updater: (t: Theme) => Theme) => void;
+  onSelectProject: (p: Project) => void;
+  onSelectCert: (c: Certification) => void;
+  onOpenResumeModal: () => void;
+  onCloseProject: () => void;
+  onCloseCert: () => void;
+  onCloseResumeModal: () => void;
+  onOpenPrivacyModal: () => void;
+  onOpenTermsModal: () => void;
+  onOpenSitemapModal: () => void;
+  onClosePrivacyModal: () => void;
+  onCloseTermsModal: () => void;
+  onCloseSitemapModal: () => void;
+  selectedProject: Project | null;
+  selectedCert: Certification | null;
+  resumeModalOpen: boolean;
+  privacyModalOpen: boolean;
+  termsModalOpen: boolean;
+  sitemapModalOpen: boolean;
+}
+
+/* Routed shell: chrome (navbar/footer/chatbot/modals) is persistent, while the
+   page swaps with a keyed rise+fade transition. Also resets scroll and updates
+   the tab title per route so every page feels like a real, separate page. */
+const Shell: React.FC<ShellProps> = ({
+  theme,
+  setTheme,
+  onSelectProject,
+  onSelectCert,
+  onOpenResumeModal,
+  onCloseProject,
+  onCloseCert,
+  onCloseResumeModal,
+  onOpenPrivacyModal,
+  onOpenTermsModal,
+  onOpenSitemapModal,
+  onClosePrivacyModal,
+  onCloseTermsModal,
+  onCloseSitemapModal,
+  selectedProject,
+  selectedCert,
+  resumeModalOpen,
+  privacyModalOpen,
+  termsModalOpen,
+  sitemapModalOpen,
+}) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = PAGE_TITLES[location.pathname] ?? BASE_TITLE;
+  }, [location.pathname]);
+
+  return (
+    <div className="min-h-screen font-sans bg-[color:var(--color-bg)] text-[color:var(--color-ink)] selection:bg-primary-500/30">
+      <BackgroundEffects theme={theme} />
+
+      <Navbar
+        theme={theme}
+        onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+        onOpenResumeModal={onOpenResumeModal}
+      />
+
+      <main className="relative z-10">
+        <AnimatePresence mode="wait" initial={false}>
+          {/* key = pathname so route changes re-mount the page with its entrance animation */}
+          <AnimatedRoutes
+            key={location.pathname}
+            location={location}
+            theme={theme}
+            onSelectProject={onSelectProject}
+            onSelectCert={onSelectCert}
+            onOpenResumeModal={onOpenResumeModal}
+          />
+        </AnimatePresence>
+      </main>
+
+      <AIChatbot
+        theme={theme}
+        onOpenResumeModal={onOpenResumeModal}
+      />
+
+      <Footer
+        theme={theme}
+        onOpenPrivacyModal={onOpenPrivacyModal}
+        onOpenTermsModal={onOpenTermsModal}
+        onOpenSitemapModal={onOpenSitemapModal}
+      />
+
+      <Modals
+        theme={theme}
+        resumeModalOpen={resumeModalOpen}
+        onCloseResumeModal={onCloseResumeModal}
+        selectedProject={selectedProject}
+        onCloseProjectModal={onCloseProject}
+        selectedCert={selectedCert}
+        onCloseCertModal={onCloseCert}
+        privacyModalOpen={privacyModalOpen}
+        onClosePrivacyModal={onClosePrivacyModal}
+        termsModalOpen={termsModalOpen}
+        onCloseTermsModal={onCloseTermsModal}
+        sitemapModalOpen={sitemapModalOpen}
+        onCloseSitemapModal={onCloseSitemapModal}
+      />
+    </div>
+  );
+};
 
 export default function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
-  const [activeSection, setActiveSection] = useState<string>('hero');
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
@@ -49,90 +207,30 @@ export default function App() {
     }
   }, [theme]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'education', 'achievements', 'resume', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen font-sans bg-[color:var(--color-bg)] text-[color:var(--color-ink)] selection:bg-primary-500/30">
-      <BackgroundEffects theme={theme} />
-
-      <Navbar
+    <BrowserRouter>
+      <Shell
         theme={theme}
-        activeSection={activeSection}
+        setTheme={setTheme}
+        onSelectProject={setSelectedProject}
+        onSelectCert={setSelectedCert}
         onOpenResumeModal={() => setResumeModalOpen(true)}
-        onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-      />
-
-      <main className="relative z-10">
-        <Hero theme={theme} />
-
-        <About theme={theme} />
-        <Skills theme={theme} />
-        <Experience theme={theme} />
-
-        <Projects
-          theme={theme}
-          onSelectProject={(proj) => setSelectedProject(proj)}
-        />
-
-        <Education theme={theme} />
-        <Certifications
-          theme={theme}
-          onSelectCert={(cert) => setSelectedCert(cert)}
-        />
-
-        <ResumeSection
-          theme={theme}
-          onOpenResumeModal={() => setResumeModalOpen(true)}
-        />
-
-        <Contact theme={theme} />
-      </main>
-
-      <AIChatbot
-        theme={theme}
-        onOpenResumeModal={() => setResumeModalOpen(true)}
-      />
-
-      <Footer
-        theme={theme}
+        onCloseProject={() => setSelectedProject(null)}
+        onCloseCert={() => setSelectedCert(null)}
+        onCloseResumeModal={() => setResumeModalOpen(false)}
         onOpenPrivacyModal={() => setPrivacyModalOpen(true)}
         onOpenTermsModal={() => setTermsModalOpen(true)}
         onOpenSitemapModal={() => setSitemapModalOpen(true)}
-      />
-
-      <Modals
-        theme={theme}
-        resumeModalOpen={resumeModalOpen}
-        onCloseResumeModal={() => setResumeModalOpen(false)}
-        selectedProject={selectedProject}
-        onCloseProjectModal={() => setSelectedProject(null)}
-        selectedCert={selectedCert}
-        onCloseCertModal={() => setSelectedCert(null)}
-        privacyModalOpen={privacyModalOpen}
         onClosePrivacyModal={() => setPrivacyModalOpen(false)}
-        termsModalOpen={termsModalOpen}
         onCloseTermsModal={() => setTermsModalOpen(false)}
-        sitemapModalOpen={sitemapModalOpen}
         onCloseSitemapModal={() => setSitemapModalOpen(false)}
+        selectedProject={selectedProject}
+        selectedCert={selectedCert}
+        resumeModalOpen={resumeModalOpen}
+        privacyModalOpen={privacyModalOpen}
+        termsModalOpen={termsModalOpen}
+        sitemapModalOpen={sitemapModalOpen}
       />
-    </div>
+    </BrowserRouter>
   );
 }
