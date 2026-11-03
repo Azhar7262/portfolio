@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Cloud, Server, Network, Cpu, Award, GraduationCap, ShieldCheck, Zap, Mail, ArrowRight } from 'lucide-react';
 import { SectionHeading } from './ui';
@@ -13,21 +14,25 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
   const cards = [
     {
       title: 'Cloud Computing',
+      to: '/projects',
       description: 'Designing resilient, cost-optimized architectures on AWS — compute, storage, networking, security, and serverless',
       icon: <Cloud className="h-5 w-5 text-primary-300" />,
     },
     {
       title: 'System Administration',
+      to: '/experience',
       description: 'Managing enterprise infrastructure: Active Directory, Windows Server, Group Policy, and Microsoft 365',
       icon: <Server className="h-5 w-5 text-primary-300" />,
     },
     {
       title: 'Networking',
+      to: '/skills',
       description: 'Routing, switching, DNS, DHCP, VPN, and firewall configuration across corporate networks',
       icon: <Network className="h-5 w-5 text-primary-300" />,
     },
     {
       title: 'IoT & Data',
+      to: '/projects',
       description: 'Building sensor telemetry pipelines, cloud analytics dashboards, and AI-assisted automation',
       icon: <Cpu className="h-5 w-5 text-primary-300" />,
     },
@@ -78,17 +83,15 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-3">
-                  <a
-                    href="#projects"
-                    onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-                    className="inline-flex items-center gap-2 rounded-xl border border-primary-400/30 bg-primary-500/10 px-4 py-2 text-xs font-bold text-primary-300 transition-all hover:bg-primary-500/20"
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 rounded-xl border border-primary-400/30 bg-primary-500/10 px-4 py-2 text-xs font-bold text-primary-300 transition-all hover:-translate-y-0.5 hover:bg-primary-500/20"
                   >
                     <Cloud className="h-3.5 w-3.5" />
                     Explore my work
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  </Link>
+                  <Link
+                    to="/contact"
                     className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-xs font-bold transition-all hover:-translate-y-0.5 ${
                       dark
                         ? 'border-white/10 bg-white/5 text-ink-soft hover:border-primary-400/40 hover:text-primary-300'
@@ -97,7 +100,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                   >
                     <Mail className="h-3.5 w-3.5" />
                     Get in touch
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -106,10 +109,9 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
           {/* Right: cards */}
           <div className="lg:col-span-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {cards.map((card) => (
-              <a
+              <Link
                 key={card.title}
-                href="#projects"
-                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: document.querySelector('#projects')?.getBoundingClientRect().top + window.scrollY - 12, behavior: 'smooth' }); }}
+                to={card.to}
                 className={`group flex flex-col gap-3 rounded-2xl border p-6 transition-all duration-[320ms] hover:-translate-y-1 hover:shadow-lg ${
                   dark
                     ? 'border-white/10 bg-white/[0.03] hover:border-primary-400/20 hover:shadow-primary-500/8'
@@ -129,7 +131,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                 <p className={`text-xs leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
                   {card.description}
                 </p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

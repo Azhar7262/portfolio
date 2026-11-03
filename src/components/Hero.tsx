@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PERSONAL_INFO, STATS, SOCIAL_LINKS } from '../data/portfolioData';
 import { Mail, Github, Linkedin, MapPin, Cloud, Zap, ShieldCheck, ArrowRight, CheckCircle2, Briefcase } from 'lucide-react';
 import { SectionHeading, Stats as StatsCard, getIcon } from './ui';
@@ -89,17 +90,15 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
               subtitle={PERSONAL_INFO.summary}
               action={
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
-                  <a
-                    href="#projects"
-                    onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  <Link
+                    to="/projects"
                     className="group flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-primary-500 via-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5"
                   >
                     View Projects
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  </Link>
+                  <Link
+                    to="/contact"
                     className={`flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-bold transition-all hover:-translate-y-0.5 ${
                       dark
                         ? 'border-white/10 bg-white/5 text-ink-soft hover:border-primary-400/40 hover:text-primary-300'
@@ -107,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
                     }`}
                   >
                     Contact Me
-                  </a>
+                  </Link>
                 </div>
               }
             />
