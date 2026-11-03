@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, MessageSquare } from 'lucide-react';
 
 export const PERSONAL_INFO = {
   name: "Muhammad Azhar",
-  title: "IT Executive | AWS Certified Solutions Architect – Associate | Cloud Computing & System Administration Enthusiast",
+  title: "IT, Software & Cloud Engineer | AWS Certified Solutions Architect – Associate | System Administration Enthusiast",
   roles: [
     "IT Executive",
     "AWS Certified",
