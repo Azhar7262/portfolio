@@ -33,7 +33,7 @@ function getInitialTheme(): Theme {
   return 'light'; // Light-first professional design.
 }
 
-const BASE_TITLE = 'Muhammad Azhar — AWS Certified Solutions Architect & IT Executive';
+const BASE_TITLE = 'Muhammad Azhar — IT, Software & Cloud Engineer';
 
 const PAGE_TITLES: Record<string, string> = {
   '/': BASE_TITLE,

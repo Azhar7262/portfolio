@@ -500,11 +500,16 @@ export const Modals: React.FC<ModalsProps> = ({
             <div className="space-y-2 p-4 rounded-xl border border-white/5">
               <p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</p>
               <p>&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#about&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#education&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#experience&lt;/loc&gt;&lt;/url&gt;</p>
-              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio.vercel.app/#projects&lt;/loc&gt;&lt;/url&gt;</p>
+              <p>Also served live at &lt;link rel="canonical"&gt; and /robots.txt — every page below is a real route:</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/about&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/skills&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/experience&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/projects&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/education&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/achievements&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/resume&lt;/loc&gt;&lt;/url&gt;</p>
+              <p className="pl-4">&lt;url&gt;&lt;loc&gt;https://muhammad-azhar-portfolio-xi.vercel.app/contact&lt;/loc&gt;&lt;/url&gt;</p>
               <p>&lt;/urlset&gt;</p>
             </div>
           </div>
