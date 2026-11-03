@@ -8,11 +8,11 @@ interface HeroProps {
   theme: 'dark' | 'light';
 }
 
-type Role = 'Cloud & AI Engineer' | 'Software Engineer' | 'System Architect';
+type Role = 'IT, Software & Cloud Engineer' | 'Software Engineer' | 'System Architect';
 
 export const Hero: React.FC<HeroProps> = ({ theme }) => {
   const dark = theme === 'dark';
-  const [selected, setSelected] = useState<Role>('Cloud & AI Engineer');
+  const [selected, setSelected] = useState<Role>('IT, Software & Cloud Engineer');
   const intervalRef = useRef<number | null>(null);
 
   const stats = [
@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
   ];
 
   useEffect(() => {
-    const rotators: Role[] = ['Cloud & AI Engineer', 'Software Engineer', 'System Architect'];
+    const rotators: Role[] = ['IT, Software & Cloud Engineer', 'Software Engineer', 'System Architect'];
     const idx = rotators.indexOf(selected);
     if (idx === -1) return;
     const step = () => {

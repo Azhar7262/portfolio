@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({
                     Muhammad Azhar
                   </h3>
                   <p className={`text-xs font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
-                    Cloud & AI Engineer
+                    IT, Software & Cloud Engineer
                   </p>
                 </div>
               </div>
