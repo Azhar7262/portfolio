@@ -423,6 +423,22 @@ export const PROJECTS: Project[] = [
     featured: false
   },
   {
+    id: "proj-employee-idle-alert",
+    title: "Employee Check-In and Idle Alert System",
+    category: "System",
+    description: "A workforce monitoring tool developed at UMS that automates employee PC tracking — screen monitoring with periodic screen capture, check-in/check-out timing with pause and break-time options, and automated idle alerts — to know exactly how many hours each employee works.",
+    technologies: ["Python", "Windows Desktop Agent", "Screen Capture", "REST API", "Web Dashboard", "SQL Database"],
+    features: [
+      "Screen monitoring with periodic screen captures of employee PCs to verify on-duty activity",
+      "Check-in/check-out timing with pause and break-time options for accurate productive-hours calculation",
+      "Automated idle detection — if a PC is on but the employee is not on break and there is no movement for 2 minutes, a notification is sent to the Super Admin",
+      "Super Admin dashboard showing live employee status, break states, and daily worked-hours reports"
+    ],
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80",
+    date: "2026",
+    featured: false
+  },
+  {
     id: "proj-rekognition-labeler",
     title: "Image Label Generator using Amazon Rekognition",
     category: "AI",
@@ -511,12 +527,12 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["projects", "project", "smart agriculture", "iot", "chatbot", "rekognition", "s3 website", "lms", "portal", "ums"],
-    answer: "Key Projects:\n1. Enterprise LMS & Employee Portal for UMS BPO — in-development internal platform (Next.js, TypeScript, Supabase/PostgreSQL with Row-Level Security)\n2. Smart Farming Monitoring System — final year thesis (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n3. AWS-Powered AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n4. Image Label Generator using Amazon Rekognition (Python, boto3, S3, Rekognition)\n5. Personal Developer Portfolio Website (React, TypeScript, Tailwind, Vercel)\n6. Static Website Hosting on Amazon S3.",
+    answer: "Key Projects:\n1. Enterprise LMS & Employee Portal for UMS BPO — in-development internal platform (Next.js, TypeScript, Supabase/PostgreSQL with Row-Level Security)\n2. Employee Check-In and Idle Alert System — UMS workforce monitoring tool (screen capture, break-time tracking, automated idle alerts to Super Admin)\n3. Smart Farming Monitoring System — final year thesis (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n4. AWS-Powered AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n5. Image Label Generator using Amazon Rekognition (Python, boto3, S3, Rekognition)\n6. Personal Developer Portfolio Website (React, TypeScript, Tailwind, Vercel)\n7. Static Website Hosting on Amazon S3.",
     category: "Projects"
   },
   {
     keywords: ["contact", "email", "phone", "whatsapp", "location", "reach", "hire", "address"],
-    answer: "You can contact Muhammad Azhar via:\n- Email: azharkhan726200@gmail.com\n- Phone: +92 335 5277018\n- WhatsApp: +92 347 1969863\n- Location: Islamabad, Pakistan\n- LinkedIn: linkedin.com/in/muhammad-azhar-khan",
+    answer: "You can contact Muhammad Azhar via:\n- Email: azharkhan726200@gmail.com\n- Phone: +92 335 5277018\n- WhatsApp: +92 347 1969863\n- Location: Charsadda, KPK, Pakistan\n- LinkedIn: linkedin.com/in/muhammad-azhar-khan",
     category: "Contact"
   },
   {

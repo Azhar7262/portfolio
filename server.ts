@@ -62,7 +62,8 @@ PROJECTS:
 2. AWS-Powered AI Chatbot (AWS Lex, Lambda, DynamoDB, Python).
 3. Image Label Generator using Amazon Rekognition (Python, boto3, Amazon S3, Rekognition).
 4. Personal Developer Portfolio Website (this site — HTML5, CSS3, JavaScript, Vercel).
-5. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3).
+5. Employee Check-In and Idle Alert System — UMS workforce monitoring tool (screen capture, break-time tracking, automated idle alerts to Super Admin).
+6. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3).
 
 Always keep answers polite, helpful, and concise (under 150 words). Format with markdown lists if listing items.`;
 
