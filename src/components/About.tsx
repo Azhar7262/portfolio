@@ -53,7 +53,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
               badge="Professional Profile"
               title="About"
               highlight={PERSONAL_INFO.name}
-              subtitle="AWS Certified Solutions Architect & IT Executive dedicated to cloud engineering, IT operational excellence, and infrastructure security."
+              subtitle="AWS Certified Solutions Architect & Software Engineer building cloud-native applications while supporting enterprise IT infrastructure."
             />
 
             <div className={`overflow-hidden rounded-2xl border transition-colors duration-[320ms] ${dark ? 'border-white/10 bg-white/[0.03]' : 'border-slate-200/80 bg-white'}`}>
@@ -73,7 +73,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                       {PERSONAL_INFO.title.split(' | ')[0]}
                     </p>
                     <p className={`mt-1 text-xs ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
-                      {PERSONAL_INFO.location} · {PERSONAL_INFO.hometown}
+                      {PERSONAL_INFO.location}
                     </p>
                   </div>
                 </div>

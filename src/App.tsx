@@ -33,7 +33,7 @@ function getInitialTheme(): Theme {
   return 'light'; // Light-first professional design.
 }
 
-const BASE_TITLE = 'Muhammad Azhar — IT, Software & Cloud Engineer';
+const BASE_TITLE = 'Muhammad Azhar — Software Engineer & Developer';
 
 const PAGE_TITLES: Record<string, string> = {
   '/': BASE_TITLE,

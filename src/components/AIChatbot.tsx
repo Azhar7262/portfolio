@@ -95,7 +95,7 @@ export const AIChatbot: React.FC<AIChatbotProps> = ({ theme, onOpenResumeModal }
     }
 
     // Default friendly response
-    return `Muhammad Azhar is an IT, Software & Cloud Engineer and AWS Certified Solutions Architect based in Islamabad, Pakistan. He specializes in AWS Cloud Infrastructure (EC2, S3, IAM, VPC, Lambda), software development, Windows Administration, and IoT. You can reach him at ${PERSONAL_INFO.email} or call +92 335 5277018.`;
+    return `Muhammad Azhar is a Software Engineer & Developer and AWS Certified Solutions Architect based in Charsadda, KPK, Pakistan. He builds cloud-native and serverless applications with Python on AWS (Lambda, DynamoDB, S3, IoT Core, Lex, Rekognition) and has hands-on IT experience with Windows Server, Active Directory, and networking. You can reach him at ${PERSONAL_INFO.email} or call +92 335 5277018.`;
   };
 
   const handleSendMessage = async (textToSend?: string) => {

@@ -28,14 +28,14 @@ Answer user questions about Muhammad Azhar professionally, concisely, and warmly
 
 CORE DATA:
 - Name: Muhammad Azhar
-- Title: IT Executive | AWS Certified Solutions Architect – Associate | Cloud Computing & System Administration Enthusiast
-- Location: Islamabad, Pakistan / Charsadda, KPK, Pakistan
+- Title: Software Engineer & Developer | AWS Certified Solutions Architect – Associate
+- Location: Charsadda, KPK, Pakistan
 - Email: azharkhan726200@gmail.com
 - Phone: +92 335 5277018 | WhatsApp: +92 347 1969863
 - LinkedIn: linkedin.com/in/muhammad-azhar-khan
 
 SUMMARY:
-Passionate IT professional with expertise in cloud computing (AWS EC2, S3, IAM, VPC, RDS, IoT Core, Lambda, DynamoDB, QuickSight, Rekognition, Lex), system administration, Windows Server, Microsoft 365, Active Directory, and enterprise IT infrastructure.
+Software Engineer and Developer with a Bachelor's in Computer Science (Software) and an AWS Certified Solutions Architect – Associate credential. Builds cloud-native and serverless applications in Python using AWS Lambda, DynamoDB, S3, IoT Core, Lex, and Rekognition, and delivers end-to-end projects from design to deployment. Uses Git, GitHub, VS Code, AWS CLI, and AI coding agents (Claude Code, Freebuff). Hands-on experience in cloud architecture, incident response, and Windows Server/network administration.
 
 EDUCATION:
 - Bachelor of Science in Computer Science (Software) - BSCS (SW) @ Abdul Wali Khan University Mardan (AWKUM), 2022–2026. CGPA: 3.32 / 4.00.
@@ -43,22 +43,22 @@ EDUCATION:
 - Honors: Gold Medalist in Co-Curricular Activities (AWKUM, Oct 2025). Top Performer in Student Leadership.
 
 EXPERIENCE:
-1. IT Executive @ Unified Marketing Systems (UMS): IT Helpdesk, Technical Support, Hardware/Software, Windows Admin, Microsoft 365, Active Directory, Networking, CCTV, Printers.
-2. Cloud Solutions Engineer @ Corvit System (Jun 2024 – Sep 2024): Designed AWS cloud architecture (EC2, S3, IAM, RDS, VPC), incident response, scaling.
+1. IT Executive, Developer @ Unified Marketing Solutions (UMS, Jul 2026 – Present): Technical support, Windows Server (AD, DNS, DHCP), networking (TCP/IP, subnetting, routing, VPN), IT asset management for 60+ workstations, endpoint monitoring, internal web systems.
+2. Cloud Solutions Engineer (Internship) @ Corvit Systems (Jun 2024 – Sep 2024): Designed AWS cloud architecture (EC2, S3, IAM, RDS, VPC), incident response, scaling.
 3. Winter Intern @ ISPR, Pakistan Army (Feb 2026): 40-day structured internship on organizational operations & development.
 4. Youth Activities Leader @ AWKUM Student Council (Dec 2022 – Jan 2026): Coordinated student societies, national events, workshops.
 
 CERTIFICATIONS:
 - AWS Certified Solutions Architect – Associate (AWS, Aug 2024)
 - AWS Cloud Technical Essentials (Coursera, Jan 2025)
-- NAVTTC / Google Professional Certificates
 - Certificate of Management & Leadership (AWKUM Student Council, Jan 2026)
 
 PROJECTS:
-1. Smart Agriculture IoT using AWS Cloud (ESP32, soil moisture, DHT22, LDR, AWS IoT Core, Lambda, DynamoDB, QuickSight, Python).
+1. Smart Farming Monitoring System — final year thesis (ESP32, soil moisture, DHT22, LDR, AWS IoT Core, Lambda, DynamoDB, QuickSight, Python).
 2. AWS-Powered AI Chatbot (AWS Lex, Lambda, DynamoDB, Python).
-3. Image Label Generator using Amazon Rekognition (AWS S3, Rekognition, Python boto3).
-4. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3).
+3. Image Label Generator using Amazon Rekognition (Python, boto3, Amazon S3, Rekognition).
+4. Personal Developer Portfolio Website (this site — HTML5, CSS3, JavaScript, Vercel).
+5. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3).
 
 Always keep answers polite, helpful, and concise (under 150 words). Format with markdown lists if listing items.`;
 
@@ -97,7 +97,7 @@ app.post("/api/chat", async (req, res) => {
       },
     });
 
-    const replyText = response.text || "Muhammad Azhar is an AWS Certified Solutions Architect and IT Executive based in Islamabad, Pakistan. How else can I assist you?";
+    const replyText = response.text || "Muhammad Azhar is an AWS Certified Solutions Architect, Software Engineer & Developer based in Charsadda, KPK, Pakistan. How else can I assist you?";
     return res.json({ response: replyText, success: true });
   } catch (err: any) {
     console.warn("Gemini API call failed, signaling fallback:", err?.message || err);

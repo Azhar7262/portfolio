@@ -124,7 +124,7 @@ const ContactCta: React.FC<{ dark: boolean }> = ({ dark }) => (
       Ready to build something reliable?
     </h2>
     <p className={`mx-auto mt-3 max-w-xl text-sm leading-relaxed ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
-      I'm actively available for Cloud Engineering, System Administration, and IT Executive roles — remote or on-site, worldwide.
+      I'm actively seeking Software Engineer and Developer roles to build reliable, scalable software — remote or on-site, worldwide.
     </p>
     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
       <Link

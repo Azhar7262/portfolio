@@ -41,7 +41,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ theme, onOpenResum
               </span>
             </h3>
             <p className={`mt-2 text-sm font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
-              AWS Certified Solutions Architect – Associate · IT Executive · BSCS (Software) Graduate
+              AWS Certified Solutions Architect – Associate · Software Engineer & Developer · BSCS (Software) Graduate
             </p>
 
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">

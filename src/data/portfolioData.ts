@@ -3,26 +3,26 @@ import { Github, Linkedin, Mail, MessageSquare } from 'lucide-react';
 
 export const PERSONAL_INFO = {
   name: "Muhammad Azhar",
-  title: "IT, Software & Cloud Engineer | AWS Certified Solutions Architect – Associate | System Administration Enthusiast",
+  title: "Software Engineer & Developer | AWS Certified Solutions Architect – Associate",
   roles: [
-    "IT Executive",
+    "Software Engineer",
+    "Software Developer",
     "AWS Certified",
     "Cloud Engineer",
-    "System Administrator",
-    "Technical Support Engineer",
-    "Cloud Solutions Architect",
+    "IT Executive",
+    "Full-Stack Builder",
     "Problem Solver"
   ],
-  summary: "Passionate IT professional with expertise in cloud computing, system administration, networking, technical support, and IT infrastructure. I enjoy designing scalable cloud solutions, solving complex technical problems, and helping organizations build reliable and secure technology environments. I continuously learn emerging technologies and strive to deliver innovative IT solutions.",
+  summary: "Software Engineer and Developer with a Bachelor's in Computer Science (Software) and an AWS Certified Solutions Architect – Associate credential. Builds cloud-native and serverless applications in Python using AWS Lambda, DynamoDB, S3, IoT Core, Lex, and Rekognition, and delivers end-to-end projects from design to deployment. Uses modern developer tooling (Git, GitHub, VS Code, AWS CLI) and AI coding agents such as Claude Code and Freebuff to accelerate development, debugging, and documentation. Hands-on experience in cloud architecture, incident response, and Windows Server/network administration, plus proven team leadership. Seeking a Software Engineer or Developer role to build reliable, scalable software.",
   aboutDetailed: [
-    "I am Muhammad Azhar, an IT Executive with a strong passion for cloud computing, system administration, networking, and enterprise IT infrastructure. I enjoy learning new technologies, solving technical challenges, improving IT operations, and building scalable cloud-based solutions.",
-    "I have practical experience in IT support, Windows administration, user management, hardware troubleshooting, Microsoft 365, Active Directory, networking fundamentals, and cloud technologies (AWS EC2, S3, IAM, VPC, RDS, IoT Core, Lambda, DynamoDB, QuickSight).",
-    "I am always eager to learn, collaborate, and contribute to innovative organizations while continuously enhancing my technical and professional skills."
+    "I am Muhammad Azhar, a Software Engineer & Developer with a Bachelor's in Computer Science (Software) from AWKUM and an AWS Certified Solutions Architect – Associate credential. I build cloud-native and serverless applications in Python using AWS Lambda, DynamoDB, S3, IoT Core, Lex, and Rekognition, and deliver end-to-end projects from design to deployment.",
+    "I work with modern developer tooling (Git, GitHub, VS Code, AWS CLI) and use AI coding agents such as Claude Code and Freebuff to accelerate development, debugging, and documentation. Alongside development, I bring hands-on experience in cloud architecture, incident response, and Windows Server/network administration (Active Directory, DNS/DHCP, TCP/IP, VPN).",
+    "Currently I serve as IT Executive, Developer at Unified Marketing Solutions — supporting internal systems, managing 60+ workstations, and strengthening endpoint monitoring — while building internal web platforms. I am always eager to learn, collaborate, and contribute to reliable, scalable software."
   ],
   email: "azharkhan726200@gmail.com",
   phone: "+92 335 5277018",
   whatsapp: "+92 347 1969863",
-  location: "Islamabad, Pakistan",
+  location: "Charsadda, KPK, Pakistan",
   hometown: "Charsadda, KPK, Pakistan",
   linkedin: "https://linkedin.com/in/muhammad-azhar-khan",
   github: "https://github.com/muhammad-azhar-khan",
@@ -62,17 +62,17 @@ export const STATS: StatItem[] = [
     icon: "Award"
   },
   {
-    label: "IT Executive",
-    value: "Enterprise IT Support",
-    numericValue: 4,
-    suffix: "+ Yrs",
-    description: "System & Helpdesk Admin",
+    label: "IT & Developer",
+    value: "IT Executive — UMS",
+    numericValue: 60,
+    suffix: "+ Devices",
+    description: "Asset & Infrastructure Management",
     icon: "Server"
   },
   {
     label: "Cloud Solutions",
-    value: "Architecture & IoT",
-    numericValue: 10,
+    value: "Cloud, IoT & AI",
+    numericValue: 5,
     suffix: "+ Projects",
     description: "AWS EC2, S3, VPC, Lambda",
     icon: "Cloud"
@@ -107,7 +107,7 @@ export const EDUCATION_DATA: EducationItem = {
     "Artificial Intelligence"
   ],
   finalYearProject: {
-    title: "Smart Agriculture IoT using AWS Cloud",
+    title: "Smart Farming Monitoring System using AWS Cloud",
     description: "Developed an IoT-based smart agriculture monitoring system using ESP32 microcontrollers, soil moisture, DHT22 temperature/humidity, and LDR sensors integrated with AWS IoT Core for real-time data collection, automated irrigation control, DynamoDB storage, AWS Lambda processing, and Amazon QuickSight data analytics visualization.",
     techStack: ["ESP32", "Arduino IDE", "AWS IoT Core", "AWS Lambda", "DynamoDB", "Amazon QuickSight", "Python"],
     highlights: [
@@ -122,31 +122,29 @@ export const EDUCATION_DATA: EducationItem = {
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: "exp-1",
-    role: "IT Executive",
-    company: "Unified Marketing Systems (UMS)",
+    role: "IT Executive, Developer",
+    company: "Unified Marketing Solutions",
     location: "Pakistan",
-    period: "2024 – Present",
+    period: "Jul 2026 – Present",
     type: "Full-time",
     responsibilities: [
-      "IT Helpdesk Support & Tier-1/2 Technical Support for corporate end-users",
-      "Hardware Troubleshooting, system upgrades, and workstation diagnostics",
-      "Software installation, licensing management, and patch deployments",
-      "Windows Server & Microsoft 365 Administration (Exchange, Teams, SharePoint)",
-      "Active Directory User Management, Group Policy Objects (GPO), and RBAC access control",
-      "Network Troubleshooting (TCP/IP, Routers, Switches, Firewalls, Wi-Fi Access Points)",
-      "Network Printer Management, CCTV Monitoring & Security System Administration",
-      "System Maintenance, IT Asset Management, Email Configuration, and Remote Support"
+      "Provide technical support and troubleshooting for internal systems and end users",
+      "Administer Windows Server environments, including Active Directory, DNS, and DHCP",
+      "Manage core networking infrastructure (TCP/IP, subnetting, routing, VPN) for reliable organizational connectivity",
+      "Oversee IT asset management — tagging and tracking 60+ workstations for inventory and lifecycle control",
+      "Evaluate and support deployment of endpoint monitoring tools to strengthen IT oversight and security posture",
+      "Develop and maintain internal web systems (LMS & employee portal) alongside IT operations"
     ],
-    skills: ["Windows Server", "Active Directory", "Microsoft 365", "Helpdesk", "Network Troubleshooting", "IT Asset Management"],
-    highlight: "Streamlined corporate helpdesk resolution time by 35% through standardized ticketing and Active Directory automation."
+    skills: ["Windows Server", "Active Directory", "DNS & DHCP", "Network Management", "IT Asset Management", "Endpoint Monitoring"],
+    highlight: "Tagged and tracks 60+ workstations under a structured asset management and lifecycle control program."
   },
   {
     id: "exp-2",
-    role: "Cloud Solutions Engineer",
-    company: "Corvit System",
+    role: "Cloud Solutions Engineer (Internship)",
+    company: "Corvit Systems",
     location: "Peshawar, Pakistan",
     period: "Jun 2024 – Sep 2024",
-    type: "Full-time",
+    type: "Internship",
     responsibilities: [
       "Designed and assisted in AWS cloud architecture solutions using EC2, S3, IAM, RDS, and VPC for client and training environments",
       "Responded to cloud operational incidents, troubleshot deployment issues, and supported scaling of cloud-hosted applications",
@@ -163,7 +161,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     period: "Feb 2026",
     type: "Internship",
     responsibilities: [
-      "Completed a structured 40-day intensive in-person internship program focused on organizational operations, media systems, and professional development",
+      "Completed a structured 40-day in-person internship focused on organizational operations, discipline, and professional development",
       "Collaborated on technical workflows, administrative procedures, and team communication exercises"
     ],
     skills: ["Organizational Operations", "Professional Leadership", "System Workflows", "Team Collaboration"],
@@ -188,78 +186,118 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    name: "Cloud / DevOps",
-    iconName: "Cloud",
-    description: "Architecting and deploying resilient solutions on Amazon Web Services",
+    name: "IT Skills",
+    iconName: "Server",
+    description: "Day-to-day IT operations: user support, infrastructure administration, and asset management",
     skills: [
-      { name: "AWS EC2", level: 92, highlight: true, tags: ["Infrastructure", "Compute"] },
+      { name: "IT Support & Helpdesk", level: 94, highlight: true, tags: ["Tier 1/2", "End Users"] },
+      { name: "Windows Server & Active Directory", level: 92, highlight: true, tags: ["Administration", "AD DS"] },
+      { name: "TCP/IP & Subnetting", level: 92, highlight: true, tags: ["Networking"] },
+      { name: "DNS & DHCP Administration", level: 90, tags: ["Core Services"] },
+      { name: "Routing & VPN", level: 88, tags: ["Infrastructure"] },
+      { name: "IT Asset Management", level: 88, highlight: true, tags: ["60+ Workstations", "Lifecycle"] },
+      { name: "Hardware & Endpoint Support", level: 86, tags: ["Diagnostics", "Monitoring"] }
+    ]
+  },
+  {
+    name: "Cloud & Serverless (AWS)",
+    iconName: "Cloud",
+    description: "Cloud-native and serverless development on Amazon Web Services",
+    skills: [
+      { name: "AWS EC2", level: 92, highlight: true, tags: ["Compute"] },
       { name: "AWS S3", level: 95, highlight: true, tags: ["Storage", "Static Web"] },
+      { name: "AWS Lambda", level: 88, highlight: true, tags: ["Serverless", "Python"] },
+      { name: "AWS DynamoDB", level: 82, highlight: true, tags: ["NoSQL"] },
+      { name: "AWS RDS", level: 80, tags: ["SQL"] },
       { name: "AWS IAM", level: 90, highlight: true, tags: ["Security", "Access Control"] },
       { name: "AWS VPC", level: 88, highlight: true, tags: ["Subnets", "Topology"] },
-      { name: "AWS Lambda", level: 85, highlight: true, tags: ["Serverless", "Python"] },
-      { name: "AWS IoT Core", level: 85, highlight: true, tags: ["IoT", "MQTT"] },
       { name: "AWS Route 53", level: 82, tags: ["DNS", "Domain"] },
       { name: "AWS CloudFront", level: 80, tags: ["CDN", "Edge"] },
-      { name: "AWS CLI", level: 86, tags: ["Automation"] }
+      { name: "AWS Elastic Beanstalk", level: 78, tags: ["Deployment"] },
+      { name: "AWS CodeDeploy", level: 78, tags: ["CI/CD"] },
+      { name: "AWS IoT Core", level: 85, highlight: true, tags: ["IoT", "MQTT"] },
+      { name: "Amazon Lex", level: 80, highlight: true, tags: ["Conversational AI"] },
+      { name: "Amazon Rekognition", level: 80, highlight: true, tags: ["Computer Vision"] },
+      { name: "Amazon QuickSight", level: 80, tags: ["BI", "Dashboards"] }
     ]
   },
   {
     name: "Programming",
     iconName: "Code",
-    description: "Writing scripts, automation utilities, and data pipelines",
+    description: "Programming languages for applications, scripts, and data pipelines",
     skills: [
       { name: "Python (boto3, NumPy, Pandas)", level: 88, highlight: true, tags: ["AWS SDK", "Data"] },
-      { name: "Java & C++", level: 78, tags: ["Core CS"] },
-      { name: "R", level: 75, tags: ["Statistics"] },
-      { name: "PowerShell Automation", level: 84, tags: ["Windows", "Onboarding"] }
+      { name: "Java", level: 78, tags: ["OOP"] },
+      { name: "C++", level: 78, tags: ["Core CS"] },
+      { name: "SQL", level: 75, tags: ["Databases"] },
+      { name: "R", level: 75, tags: ["Statistics"] }
+    ]
+  },
+  {
+    name: "Developer Tools",
+    iconName: "Terminal",
+    description: "Modern developer tooling and daily command-line workflows",
+    skills: [
+      { name: "Git & GitHub", level: 90, highlight: true, tags: ["Version Control"] },
+      { name: "VS Code", level: 92, highlight: true, tags: ["Editor"] },
+      { name: "AWS CLI", level: 86, highlight: true, tags: ["Automation"] },
+      { name: "AWS Console", level: 86, tags: ["Cloud Management"] },
+      { name: "Postman", level: 80, tags: ["API Testing"] },
+      { name: "Jupyter Notebook", level: 78, tags: ["Data"] },
+      { name: "Arduino IDE", level: 82, tags: ["Embedded", "IoT"] },
+      { name: "Linux Command Line", level: 82, tags: ["Shell"] },
+      { name: "Overleaf / LaTeX", level: 75, tags: ["Documentation"] }
+    ]
+  },
+  {
+    name: "AI Tools & Coding Agents",
+    iconName: "Brain",
+    description: "AI-assisted development with modern coding agents and LLMs",
+    skills: [
+      { name: "Claude Code", level: 90, highlight: true, tags: ["Coding Agent"] },
+      { name: "Freebuff", level: 88, highlight: true, tags: ["Coding Agent"] },
+      { name: "Claude & ChatGPT", level: 85, highlight: true, tags: ["LLMs"] },
+      { name: "GitHub Copilot", level: 82, tags: ["Autocomplete"] },
+      { name: "Google Gemini", level: 80, tags: ["LLMs"] },
+      { name: "Prompt Engineering", level: 85, highlight: true, tags: ["LLMs"] },
+      { name: "AI-Assisted Development", level: 88, highlight: true, tags: ["Workflow"] }
+    ]
+  },
+  {
+    name: "Software Engineering",
+    iconName: "Layers",
+    description: "Core engineering discipline from design to deployment and documentation",
+    skills: [
+      { name: "SDLC", level: 85, highlight: true, tags: ["Processes"] },
+      { name: "Object-Oriented Programming", level: 85, highlight: true, tags: ["Design"] },
+      { name: "Data Structures & Algorithms", level: 85, highlight: true, tags: ["Core CS"] },
+      { name: "Database Design", level: 80, tags: ["Modeling"] },
+      { name: "REST APIs", level: 82, tags: ["Integration"] },
+      { name: "Debugging", level: 85, tags: ["Quality"] },
+      { name: "Technical Documentation", level: 85, tags: ["Writing"] }
     ]
   },
   {
     name: "Web Development",
     iconName: "Globe",
-    description: "Building responsive interfaces and static hosting architectures",
+    description: "Building responsive web interfaces and deploying static platforms",
     skills: [
-      { name: "HTML5 & CSS3", level: 90, highlight: true, tags: ["Frontend", "Tailwind"] },
-      { name: "JavaScript ES6", level: 85, highlight: true, tags: ["Frontend", "DOM"] },
-      { name: "React Fundamentals", level: 80, tags: ["SPA"] },
-      { name: "S3 + CloudFront Hosting", level: 88, tags: ["Static Sites"] }
+      { name: "HTML5 & CSS3", level: 90, highlight: true, tags: ["Frontend"] },
+      { name: "Responsive Web Design", level: 85, highlight: true, tags: ["UI"] },
+      { name: "JavaScript ES6", level: 85, tags: ["Frontend"] },
+      { name: "Vercel Deployment", level: 85, tags: ["Hosting"] },
+      { name: "Static Site Hosting (S3 + CloudFront)", level: 88, highlight: true, tags: ["AWS"] }
     ]
   },
   {
-    name: "Databases & Analytics",
-    iconName: "Database",
-    description: "NoSQL storage, SQL queries, and BI visualization",
+    name: "DevOps & Methodologies",
+    iconName: "Workflow",
+    description: "Delivery practices, automation, and team methodologies",
     skills: [
-      { name: "AWS DynamoDB", level: 82, highlight: true, tags: ["NoSQL"] },
-      { name: "SQL", level: 75, tags: ["Queries"] },
-      { name: "Amazon QuickSight", level: 80, tags: ["BI", "Dashboards"] }
-    ]
-  },
-  {
-    name: "Networking",
-    iconName: "Network",
-    description: "Configuring, troubleshooting, and securing network topologies",
-    skills: [
-      { name: "TCP/IP & OSI Model", level: 92, highlight: true },
-      { name: "DNS & DHCP", level: 90, highlight: true },
-      { name: "VPN & Remote Tunneling", level: 88, highlight: true },
-      { name: "Routing & Switching", level: 85 },
-      { name: "Wi-Fi & AP Configuration", level: 88 },
-      { name: "Firewall & Security Rules", level: 84 }
-    ]
-  },
-  {
-    name: "Tools & Technologies",
-    iconName: "Wrench",
-    description: "Systems, directory services, version control, and day-to-day tooling",
-    skills: [
-      { name: "Windows Server", level: 92, highlight: true, tags: ["AD DS"] },
-      { name: "Active Directory & GPO", level: 94, highlight: true, tags: ["Domain", "Policies"] },
-      { name: "Microsoft 365 Admin", level: 90, highlight: true, tags: ["Exchange", "Teams"] },
-      { name: "Git & GitHub", level: 90, highlight: true },
-      { name: "Linux (Ubuntu / Amazon Linux)", level: 82 },
-      { name: "Visual Studio Code", level: 92 },
-      { name: "Jira & Agile", level: 85 }
+      { name: "Agile (Scrum, SAFe)", level: 82, highlight: true, tags: ["Methods"] },
+      { name: "CI/CD Concepts", level: 80, tags: ["Pipelines"] },
+      { name: "Monitoring & Automation", level: 82, tags: ["Ops"] },
+      { name: "Version Control", level: 90, highlight: true, tags: ["Git"] }
     ]
   }
 ];
@@ -287,17 +325,7 @@ export const CERTIFICATIONS: Certification[] = [
     description: "Demonstrates core proficiency in AWS compute, networking, storage, database, and security products and services.",
     skillsVerified: ["AWS Fundamentals", "Identity Management", "Compute Options", "Database Selection"]
   },
-  {
-    id: "cert-google-prof",
-    title: "Google Professional Certificates & NAVTTC",
-    organization: "Google & NAVTTC National Program",
-    issueDate: "2024 – 2025",
-    credentialId: "NAV-GGL-883719",
-    verifyUrl: "https://navttc.gov.pk/verify",
-    badgeImage: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80",
-    description: "Specialized vocational and cloud administration certifications focused on IT support, networking fundamentals, and digital transformation.",
-    skillsVerified: ["IT Support", "Networking Protocols", "Security Best Practices", "Helpdesk Operations"]
-  },
+
   {
     id: "cert-leadership",
     title: "Certificate of Management & Leadership",
@@ -340,10 +368,10 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "proj-smart-agri",
-    title: "Smart Agriculture IoT using AWS Cloud",
+    title: "Smart Farming Monitoring System (Final Year Thesis)",
     category: "IoT",
-    description: "A comprehensive cloud-integrated IoT solution monitoring soil moisture, ambient temperature, humidity, and light intensity. Enables automated precision irrigation and real-time visualization dashboards on Amazon QuickSight.",
-    technologies: ["AWS IoT Core", "AWS Lambda", "DynamoDB", "Amazon QuickSight", "ESP32", "Python", "MQTT"],
+    description: "Final year thesis project — a comprehensive cloud-integrated IoT solution monitoring soil moisture, ambient temperature, humidity, and light intensity. Enables automated precision irrigation and real-time visualization dashboards on Amazon QuickSight.",
+    technologies: ["ESP32", "Arduino IDE", "AWS IoT Core", "AWS Lambda", "Amazon DynamoDB", "Amazon QuickSight", "Python", "MQTT"],
     features: [
       "Real-time sensor data telemetry with ESP32 microcontrollers over MQTT",
       "Event-driven automated irrigation triggers powered by serverless AWS Lambda",
@@ -362,7 +390,7 @@ export const PROJECTS: Project[] = [
     title: "AWS-Powered Conversational AI Chatbot",
     category: "AI",
     description: "A cloud-based conversational agent utilizing Amazon Lex for natural language understanding (NLU), integrated with AWS Lambda business logic and DynamoDB user state management.",
-    technologies: ["Amazon Lex", "AWS Lambda", "Python", "Amazon DynamoDB", "AWS IAM"],
+    technologies: ["Amazon Lex", "AWS Lambda", "Python", "Amazon DynamoDB"],
     features: [
       "Natural language intent recognition and contextual slot filling",
       "Serverless execution logic powered by Python AWS Lambda handlers",
@@ -377,11 +405,29 @@ export const PROJECTS: Project[] = [
     featured: true
   },
   {
+    id: "proj-portfolio-website",
+    title: "Personal Developer Portfolio Website",
+    category: "Web",
+    description: "My personal portfolio site — a responsive, multi-page showcase of my cloud, IoT, and AI projects with an interactive resume viewer, project deep-dives, and a built-in AI assistant. Designed, developed, deployed, and updated end-to-end.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Tailwind CSS", "Git & GitHub", "Vercel", "AI Coding Agents"],
+    features: [
+      "Responsive multi-page layout with animated hero, role rotator, and smooth page transitions",
+      "Project galleries with detail modals for features, tech stack, and screenshots",
+      "Built-in AI chatbot assistant answering questions about my experience, skills, and projects",
+      "Interactive resume viewer with print-to-PDF download",
+      "Continuous deployment to Vercel via Git & GitHub (muhammad-azhar-portfolio-xi.vercel.app)"
+    ],
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+    demoUrl: "https://muhammad-azhar-portfolio-xi.vercel.app",
+    date: "2026",
+    featured: false
+  },
+  {
     id: "proj-rekognition-labeler",
     title: "Image Label Generator using Amazon Rekognition",
     category: "AI",
     description: "Automated computer vision pipeline that automatically analyzes images uploaded to S3 buckets, extracts object/facial labels via Rekognition, and records metadata via boto3 script.",
-    technologies: ["AWS S3", "Amazon Rekognition", "Python", "boto3", "AWS IAM"],
+    technologies: ["Python", "boto3", "Amazon S3", "Amazon Rekognition"],
     features: [
       "Automated S3 event triggers invoking Rekognition analysis",
       "Deep learning object detection, scene classification, and text extraction",
@@ -435,7 +481,7 @@ export const PROJECTS: Project[] = [
 export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   {
     keywords: ["who", "who is", "about", "bio", "background", "introduction", "name"],
-    answer: "Muhammad Azhar is an IT Executive and AWS Certified Solutions Architect – Associate based in Islamabad, Pakistan. He holds a BS in Computer Science (Software) from AWKUM with a CGPA of 3.32/4.00, and specializes in AWS Cloud Infrastructure, System Administration, Windows Server, Networking, and IoT Systems.",
+    answer: "Muhammad Azhar is a Software Engineer & Developer and AWS Certified Solutions Architect – Associate based in Charsadda, KPK, Pakistan. He holds a BS in Computer Science (Software) from AWKUM with a CGPA of 3.32/4.00, and specializes in cloud-native and serverless development (Python, AWS Lambda, DynamoDB, S3, IoT Core, Lex, Rekognition), plus Windows Server, networking, and IT administration.",
     category: "About"
   },
   {
@@ -445,12 +491,12 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["job", "work", "experience", "current job", "role", "corvit", "ums", "ispr", "helpdesk"],
-    answer: "Muhammad Azhar currently serves as IT Executive at Unified Marketing Systems (UMS) managing helpdesk support, Windows Admin, M365, AD, and network infrastructure. Previously, he worked as Cloud Solutions Engineer at Corvit System (June–Sept 2024) designing AWS topologies, completed a 40-day internship at ISPR (Feb 2026), and served as Youth Activities Leader at AWKUM Student Council.",
+    answer: "Muhammad Azhar currently serves as IT Executive, Developer at Unified Marketing Solutions (since Jul 2026) — technical support, Windows Server administration (AD, DNS, DHCP), networking, and IT asset management for 60+ workstations. Previously: Cloud Solutions Engineer (Internship) at Corvit Systems (Jun–Sep 2024) designing AWS architectures, Winter Intern at ISPR, Pakistan Army (Feb 2026), and Youth Activities Leader at AWKUM Student Council (Dec 2022 – Jan 2026).",
     category: "Experience"
   },
   {
     keywords: ["skills", "technical skills", "technologies", "programming", "languages", "python", "networking"],
-    answer: "His technical skills include: Cloud & DevOps (AWS EC2, S3, IAM, VPC, Lambda, DynamoDB, QuickSight, IoT Core, Rekognition, Lex), System Admin (Windows Server, Active Directory, Microsoft 365, GPO), Networking (TCP/IP, DNS, DHCP, VPN, Routing/Switching), and Programming (Python boto3, HTML5/CSS3, JS, Java, C++, R, SQL).",
+    answer: "His technical skills include: IT Skills (IT Support & Helpdesk, Windows Server, Active Directory, DNS/DHCP, TCP/IP, Subnetting, Routing, VPN, IT Asset Management), Cloud & Serverless (AWS EC2, S3, Lambda, DynamoDB, RDS, IAM, VPC, Route 53, CloudFront, Elastic Beanstalk, CodeDeploy, IoT Core, Lex, Rekognition, QuickSight), Programming (Python with boto3/NumPy/Pandas, Java, C++, SQL, R), Developer Tools (Git, GitHub, VS Code, AWS CLI, Postman, Jupyter, Arduino IDE), AI Tools & Coding Agents (Claude Code, Freebuff, ChatGPT, GitHub Copilot, Gemini, Prompt Engineering), Software Engineering (SDLC, OOP, DSA, REST APIs), Web Development (HTML5, CSS3, Vercel), and DevOps (Agile Scrum/SAFe, CI/CD).",
     category: "Skills"
   },
   {
@@ -460,12 +506,12 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["certifications", "certified", "certificates", "aws certified", "google", "coursera", "navttc"],
-    answer: "Muhammad Azhar holds multiple credentials:\n1. AWS Certified Solutions Architect – Associate (Aug 2024)\n2. AWS Cloud Technical Essentials (Coursera, Jan 2025)\n3. Google Professional Certificates & NAVTTC Certifications\n4. Certificate of Management & Leadership (AWKUM Student Council, Jan 2026).",
+    answer: "Muhammad Azhar holds the following credentials:\n1. AWS Certified Solutions Architect – Associate (Aug 2024)\n2. AWS Cloud Technical Essentials (Coursera, Jan 2025)\n3. Certificate of Management & Leadership (AWKUM Student Council, Jan 2026).",
     category: "Certifications"
   },
   {
     keywords: ["projects", "project", "smart agriculture", "iot", "chatbot", "rekognition", "s3 website", "lms", "portal", "ums"],
-    answer: "Key Projects:\n1. Enterprise LMS & Employee Portal for UMS BPO — in-development internal platform (Next.js, TypeScript, Supabase/PostgreSQL with Row-Level Security): role-based auth, employee records, attendance tracking with device integration, leave management, document library and management reports\n2. Smart Agriculture IoT using AWS Cloud (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n3. AWS-Powered Conversational AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n4. Image Label Generator using Amazon Rekognition (S3, Rekognition, boto3)\n5. Static Website Hosting on Amazon S3 & CloudFront.",
+    answer: "Key Projects:\n1. Enterprise LMS & Employee Portal for UMS BPO — in-development internal platform (Next.js, TypeScript, Supabase/PostgreSQL with Row-Level Security)\n2. Smart Farming Monitoring System — final year thesis (ESP32, AWS IoT Core, Lambda, DynamoDB, QuickSight)\n3. AWS-Powered AI Chatbot (Amazon Lex, Lambda, DynamoDB)\n4. Image Label Generator using Amazon Rekognition (Python, boto3, S3, Rekognition)\n5. Personal Developer Portfolio Website (React, TypeScript, Tailwind, Vercel)\n6. Static Website Hosting on Amazon S3.",
     category: "Projects"
   },
   {
@@ -480,7 +526,7 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["available", "hiring", "hire me", "available for work", "freelance", "full-time", "job offer"],
-    answer: "Yes! Muhammad Azhar is actively available for full-time Cloud Solutions Architect, Cloud Engineer, System Administrator, and IT Executive positions, both remote and on-site globally.",
+    answer: "Yes! Muhammad Azhar is actively seeking Software Engineer and Developer roles to build reliable, scalable software, and is also open to Cloud Engineer and IT positions — remote and on-site, globally.",
     category: "Career"
   }
 ];

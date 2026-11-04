@@ -15,6 +15,20 @@ interface CategoryDef {
 
 const CATEGORIES: CategoryDef[] = [
   {
+    name: 'IT Skills',
+    iconName: 'Server',
+    description: 'Day-to-day IT operations: user support, infrastructure administration, and asset management.',
+    skills: [
+      { name: 'IT Support & Helpdesk', iconName: 'Wrench', category: 'IT Skills', description: 'Tier-1/2 technical support and troubleshooting for internal systems and end users', concepts: ['Ticketing', 'Remote support', 'User training', 'Escalation'], projects: ['UMS IT Operations'], related: ['Windows Server', 'Networking'], level: 'Advanced' },
+      { name: 'Windows Server', iconName: 'Server', category: 'IT Skills', description: 'Windows Server administration including Active Directory, DNS, and DHCP', concepts: ['AD DS', 'Group Policy', 'DNS/DHCP roles', 'User management'], projects: ['Enterprise Active Directory Lab', 'UMS IT Operations'], related: ['Active Directory', 'Networking'], level: 'Advanced' },
+      { name: 'Active Directory', iconName: 'Server', category: 'IT Skills', description: 'Directory services, domain administration, and access control', concepts: ['OUs', 'GPOs', 'Accounts & groups', 'RBAC'], projects: ['Enterprise Active Directory Lab'], related: ['Windows Server', 'DNS/DHCP'], level: 'Advanced' },
+      { name: 'TCP/IP & Subnetting', iconName: 'Network', category: 'IT Skills', description: 'Core networking: IP addressing, subnetting, and connectivity troubleshooting', concepts: ['Subnet masks', 'CIDR', 'Routing tables', 'Troubleshooting'], projects: ['UMS IT Operations'], related: ['DNS/DHCP', 'Routing & VPN'], level: 'Advanced' },
+      { name: 'Routing & VPN', iconName: 'Route', category: 'IT Skills', description: 'Routing configuration and secure remote connectivity', concepts: ['Static & dynamic routing', 'VPN tunnels', 'Firewalls'], projects: ['UMS IT Operations'], related: ['TCP/IP', 'Linux'], level: 'Intermediate' },
+      { name: 'IT Asset Management', iconName: 'Monitor', category: 'IT Skills', description: 'Inventory, tagging, and lifecycle control for organizational hardware', concepts: ['Asset tagging', 'Lifecycle planning', 'Endpoint monitoring'], projects: ['UMS Asset Program (60+ workstations)'], related: ['IT Support & Helpdesk', 'Windows Server'], level: 'Advanced' },
+      { name: 'Hardware Diagnostics', iconName: 'Cpu', category: 'IT Skills', description: 'Hands-on troubleshooting, upgrades, and workstation diagnostics', concepts: ['Diagnostics', 'Upgrades', 'Peripheral setup'], projects: ['UMS IT Operations'], related: ['IT Asset Management'], level: 'Intermediate' },
+    ],
+  },
+  {
     name: 'Development',
     iconName: 'Code',
     description: 'Programming languages, frontend frameworks, APIs, and core software engineering fundamentals.',

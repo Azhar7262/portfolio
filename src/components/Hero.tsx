@@ -8,22 +8,22 @@ interface HeroProps {
   theme: 'dark' | 'light';
 }
 
-type Role = 'IT, Software & Cloud Engineer' | 'Software Engineer' | 'System Architect';
+type Role = 'Software Engineer' | 'Software Developer' | 'Cloud Engineer' | 'IT Executive';
 
 export const Hero: React.FC<HeroProps> = ({ theme }) => {
   const dark = theme === 'dark';
-  const [selected, setSelected] = useState<Role>('IT, Software & Cloud Engineer');
+  const [selected, setSelected] = useState<Role>('Software Engineer');
   const intervalRef = useRef<number | null>(null);
 
   const stats = [
     { label: 'AWS Certified', value: 'SAA', description: 'Solutions Architect — Associate', icon: ShieldCheck },
-    { label: 'Experience', value: '4+', description: 'Enterprise IT & cloud infrastructure', icon: Zap },
-    { label: 'Projects', value: '15+', description: 'Cloud, AI, IoT, and systems', icon: Cloud },
+    { label: 'IT Ops', value: '60+', description: 'Workstations managed at UMS', icon: Zap },
+    { label: 'Projects', value: '5+', description: 'Cloud, AI, IoT, and web', icon: Cloud },
     { label: 'Degree', value: '3.32', description: 'BS Computer Science, AWKUM', icon: Briefcase },
   ];
 
   useEffect(() => {
-    const rotators: Role[] = ['IT, Software & Cloud Engineer', 'Software Engineer', 'System Architect'];
+    const rotators: Role[] = ['Software Engineer', 'Software Developer', 'Cloud Engineer', 'IT Executive'];
     const idx = rotators.indexOf(selected);
     if (idx === -1) return;
     const step = () => {

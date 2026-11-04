@@ -75,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme, onOpenResu
                 Muhammad Azhar
               </span>
               <span className={`block text-[11px] font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
-                IT, Software & Cloud Engineer
+                Software Engineer & Developer
               </span>
             </div>
           </Link>
