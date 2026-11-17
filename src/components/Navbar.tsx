@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme, onOpenResu
               <img
                 src="/profile.jpg"
                 alt="Muhammad Azhar"
-                className="h-full w-full rounded-[12px] object-cover"
+                className="h-full w-full rounded-[12px] object-cover object-top"
               />
             </div>
             <div>

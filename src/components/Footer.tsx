@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <img
                     src="/profile.jpg"
                     alt="Muhammad Azhar"
-                    className="h-full w-full rounded-[12px] object-cover"
+                    className="h-full w-full rounded-[12px] object-cover object-top"
                   />
                 </div>
                 <div>

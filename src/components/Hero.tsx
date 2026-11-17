@@ -142,29 +142,57 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
               </a>
             </div>
 
-            {/* Main Heading */}
-            <div className="space-y-3">
-              <p className={`text-sm font-bold uppercase tracking-[0.2em] ${dark ? 'text-primary-300' : 'text-primary-600'}`}>
-                Software Engineer & Developer
-              </p>
-              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] ${dark ? 'text-white' : 'text-slate-900'}`}>
-                Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-primary-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-                  Muhammad Azhar
-                </span>
-              </h1>
-              
-              {/* Dynamic Role Rotator with clean wrapping */}
-              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-1">
-                <span className={`text-sm sm:text-base font-semibold ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Specializing in:
-                </span>
-                <span
-                  key={roleIndex}
-                  className="inline-block animate-fade-in font-mono text-sm sm:text-base font-bold text-primary-400"
-                >
-                  {ROLES[roleIndex]}
-                </span>
+            {/* Main Heading with Backdrop Portrait */}
+            <div className="relative space-y-3 py-1">
+              {/* Atmospheric Portrait Backdrop directly behind "Hi, I'm Muhammad Azhar" */}
+              <div
+                className="pointer-events-none absolute -right-2 sm:right-2 lg:-right-6 -top-8 sm:-top-12 -bottom-6 w-52 sm:w-64 md:w-80 select-none overflow-hidden rounded-3xl opacity-20 sm:opacity-25 dark:opacity-30 mix-blend-luminosity transition-all duration-300"
+                aria-hidden="true"
+              >
+                <div
+                  className={`absolute inset-0 z-10 ${
+                    dark
+                      ? 'bg-gradient-to-r from-[#0b0d17] via-[#0b0d17]/70 to-transparent'
+                      : 'bg-gradient-to-r from-slate-50 via-slate-50/70 to-transparent'
+                  }`}
+                />
+                <div
+                  className={`absolute inset-0 z-10 ${
+                    dark
+                      ? 'bg-gradient-to-t from-[#0b0d17] via-transparent to-[#0b0d17]/40'
+                      : 'bg-gradient-to-t from-slate-50 via-transparent to-slate-50/40'
+                  }`}
+                />
+                <img
+                  src="/profile.jpg"
+                  alt=""
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+
+              <div className="relative z-10">
+                <p className={`text-sm font-bold uppercase tracking-[0.2em] ${dark ? 'text-primary-300' : 'text-primary-600'}`}>
+                  Software Engineer & Developer
+                </p>
+                <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] ${dark ? 'text-white' : 'text-slate-900'}`}>
+                  Hi, I'm{' '}
+                  <span className="bg-gradient-to-r from-primary-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    Muhammad Azhar
+                  </span>
+                </h1>
+                
+                {/* Dynamic Role Rotator with clean wrapping */}
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-2">
+                  <span className={`text-sm sm:text-base font-semibold ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    Specializing in:
+                  </span>
+                  <span
+                    key={roleIndex}
+                    className="inline-block animate-fade-in font-mono text-sm sm:text-base font-bold text-primary-400"
+                  >
+                    {ROLES[roleIndex]}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -279,54 +307,77 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           {/* Right Column: Interactive Bento Showcase */}
           <div className="lg:col-span-5 space-y-4">
             
-            {/* Top Bento Card: Profile & Status */}
+            {/* Top Bento Card: Executive Portrait Showcase */}
             <div
-              className={`relative overflow-hidden rounded-3xl border p-6 shadow-2xl transition-all duration-300 hover:border-primary-500/30 ${
+              className={`group relative overflow-hidden rounded-3xl border shadow-2xl transition-all duration-300 hover:border-primary-500/40 ${
                 dark
                   ? 'border-white/10 bg-gradient-to-br from-slate-900/90 via-slate-950 to-slate-900/80 shadow-black/40'
                   : 'border-slate-200/80 bg-white shadow-slate-200/50'
               }`}
             >
-              <div className="flex items-center gap-5">
-                <div className="relative shrink-0">
-                  <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-primary-500 to-cyan-400 opacity-60 blur-md" />
-                  <div className="relative h-20 w-20 overflow-hidden rounded-2xl border-2 border-white shadow-xl">
-                    <img
-                      src="/profile.jpg"
-                      alt="Muhammad Azhar"
-                      className="h-full w-full object-cover"
-                      loading="eager"
-                    />
-                  </div>
-                  <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-slate-900 bg-emerald-500" />
+              {/* Photo Showcase Container */}
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/profile.jpg"
+                  alt="Muhammad Azhar — Software Engineer & AWS Solutions Architect"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="eager"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${
+                    dark
+                      ? 'from-[#0c0e18] via-[#0c0e18]/30 to-transparent'
+                      : 'from-slate-950/85 via-slate-950/20 to-transparent'
+                  }`}
+                />
+
+                {/* Live Availability Beacon Badge */}
+                <div className="absolute top-3.5 left-3.5 z-10">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/85 px-3 py-1 text-[11px] font-semibold text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/50">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    Available for Hire
                   </span>
                 </div>
 
-                <div className="min-w-0 flex-1">
-                  <h3 className={`text-lg font-bold tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
-                    Muhammad Azhar
-                  </h3>
-                  <p className={`text-xs font-semibold ${dark ? 'text-primary-300' : 'text-primary-700'}`}>
-                    Software Engineer & Developer
-                  </p>
-                  <p className={`mt-1 flex items-center gap-1.5 text-xs ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-                    <MapPin className="h-3.5 w-3.5 text-primary-400 shrink-0" />
-                    <span>Charsadda, KPK, Pakistan</span>
-                  </p>
+                {/* Floating Credential Chip */}
+                <div className="absolute top-3.5 right-3.5 z-10">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-950/85 px-3 py-1 text-[11px] font-semibold text-amber-300 backdrop-blur-md">
+                    <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
+                    <span>AWS Certified</span>
+                  </span>
+                </div>
+
+                {/* Identity Overlay on Image */}
+                <div className="absolute bottom-3.5 inset-x-4 z-10 text-white">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <h3 className="text-xl font-black tracking-tight text-white drop-shadow-sm">
+                        Muhammad Azhar
+                      </h3>
+                      <p className="text-xs font-semibold text-primary-300">
+                        Software Engineer & Developer
+                      </p>
+                    </div>
+                    <p className="flex items-center gap-1 text-[11px] text-slate-300 shrink-0">
+                      <MapPin className="h-3 w-3 text-primary-400" />
+                      <span>Pakistan</span>
+                    </p>
+                  </div>
                 </div>
               </div>
 
               {/* Verified Badges inside Card */}
-              <div className="mt-5 grid grid-cols-2 gap-2 text-xs">
+              <div className="p-4 grid grid-cols-2 gap-2.5 text-xs">
                 <div className={`rounded-xl border p-2.5 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'}`}>
                   <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Active Operations</span>
                   <span className={`block font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>60+ Workstations</span>
                 </div>
                 <div className={`rounded-xl border p-2.5 ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'}`}>
-                  <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>AWS Credential</span>
-                  <span className={`block font-bold text-amber-400`}>Solutions Architect</span>
+                  <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Academic Honor</span>
+                  <span className="block font-bold text-amber-400">AWKUM Gold Medal</span>
                 </div>
               </div>
             </div>
