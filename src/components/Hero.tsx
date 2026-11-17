@@ -86,23 +86,23 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
     }
   };
 
-  const textFillColor = dark ? '#f1e6d4' : '#141820';
+  const textFillColor = dark ? '#ebddc2' : '#181818';
   const strokeStyle = {
-    WebkitTextStroke: dark ? '2px #f1e6d4' : '2px #141820',
+    WebkitTextStroke: dark ? '2px #ebddc2' : '2px #181818',
   };
 
   return (
     <section
       id="hero"
       className={`relative min-h-[calc(100vh-72px)] flex flex-col justify-between overflow-hidden pt-20 sm:pt-24 pb-8 transition-colors duration-300 ${
-        dark ? 'bg-[#0e1015]' : 'bg-[#f7f5f0]'
+        dark ? 'bg-[#181818]' : 'bg-[#f7f4ee]'
       }`}
     >
-      {/* Background ambient lighting */}
+      {/* Background ambient warm lighting */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-[750px] rounded-full blur-[160px] opacity-20 pointer-events-none ${
-            dark ? 'bg-primary-600' : 'bg-amber-200'
+          className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full blur-[180px] pointer-events-none ${
+            dark ? 'bg-[#ebddc2]/[0.05]' : 'bg-[#ebddc2]/30'
           }`}
         />
       </div>
@@ -115,20 +115,20 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           <div className="space-y-1">
             <span
               className={`block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] ${
-                dark ? 'text-[#c8bfae]' : 'text-slate-600'
+                dark ? 'text-[#9f9890]' : 'text-[#6e675f]'
               }`}
             >
               Creative Presentation • Portfolio
             </span>
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ebddc2] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ebddc2]" />
               </span>
               <span
                 key={roleIndex}
                 className={`animate-fade-in text-xs sm:text-sm font-bold tracking-tight ${
-                  dark ? 'text-white' : 'text-slate-900'
+                  dark ? 'text-[#ebddc2]' : 'text-[#181818]'
                 }`}
               >
                 {ROLES[roleIndex]}
@@ -140,7 +140,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           <Link
             to="/projects"
             className={`group inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:opacity-80 ${
-              dark ? 'text-[#f1e6d4]' : 'text-slate-900'
+              dark ? 'text-[#ebddc2]' : 'text-[#181818]'
             }`}
           >
             <span>Explore Works</span>
@@ -165,26 +165,34 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           </div>
 
           {/* Layer 2 (MIDDLE): Centered Vertical Portrait Card */}
-          <div className="relative z-20 w-[260px] sm:w-[340px] md:w-[410px] lg:w-[460px] h-[400px] sm:h-[490px] md:h-[560px] lg:h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 dark:border-white/10 bg-[#16181f]">
+          <div className={`relative z-20 w-[260px] sm:w-[340px] md:w-[410px] lg:w-[460px] h-[400px] sm:h-[490px] md:h-[560px] lg:h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border ${
+            dark ? 'border-[#ebddc2]/15 bg-[#181818]' : 'border-[#181818]/10 bg-white'
+          }`}>
             <img
               src={profilePhoto}
               alt="Muhammad Azhar"
-              className="h-full w-full object-cover object-top filter contrast-[1.03]"
+              className="h-full w-full object-cover object-top filter contrast-[1.08] brightness-[0.95] saturate-[1.06] sepia-[0.06]"
               loading="eager"
             />
-            {/* Subtle bottom vignette to ground the photo */}
-            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+            
+            {/* Cinematic top & bottom vignettes */}
+            <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${
+              dark ? 'from-[#181818]/40' : 'from-black/20'
+            } to-transparent pointer-events-none`} />
+            <div className={`absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t ${
+              dark ? 'from-[#181818] via-[#181818]/50' : 'from-black/70 via-black/30'
+            } to-transparent pointer-events-none`} />
             
             {/* Live badge overlay at bottom of the photo */}
             <div className="absolute bottom-3.5 inset-x-4 flex items-center justify-between text-white text-xs">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-black/60 px-3 py-1 font-semibold backdrop-blur-md">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ebddc2]/30 bg-black/60 px-3 py-1 font-semibold text-[#ebddc2] backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ebddc2] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ebddc2]" />
                 </span>
                 AWS Certified
               </span>
-              <span className="text-[11px] font-mono text-slate-300 bg-black/50 px-2.5 py-1 rounded-full backdrop-blur-md">
+              <span className="text-[11px] font-mono text-[#c8bfb5] bg-black/60 border border-white/10 px-2.5 py-1 rounded-full backdrop-blur-md">
                 60+ Workstations
               </span>
             </div>
@@ -206,17 +214,19 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
         </div>
 
         {/* 3. BOTTOM METADATA ROW */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 pb-2 border-t pt-4 border-white/10">
+        <div className={`flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 pb-2 border-t pt-4 ${
+          dark ? 'border-[#ebddc2]/15' : 'border-[#181818]/15'
+        }`}>
           
           {/* Bottom Left: Identity & Degree */}
           <div className="space-y-1">
-            <h1 className={`text-xl sm:text-2xl font-black tracking-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
+            <h1 className={`text-xl sm:text-2xl font-black tracking-tight ${dark ? 'text-[#ebddc2]' : 'text-[#181818]'}`}>
               Muhammad Azhar
             </h1>
-            <p className={`text-xs sm:text-sm font-semibold ${dark ? 'text-[#c8bfae]' : 'text-slate-600'}`}>
+            <p className={`text-xs sm:text-sm font-semibold ${dark ? 'text-[#9f9890]' : 'text-[#6e675f]'}`}>
               Software Engineer & AWS Solutions Architect
             </p>
-            <p className={`text-xs ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
+            <p className={`text-xs ${dark ? 'text-[#7e776e]' : 'text-slate-500'}`}>
               AWKUM Gold Medalist • BS CS (3.32 CGPA)
             </p>
           </div>
@@ -225,7 +235,11 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-primary-500 via-purple-600 to-cyan-500 px-4 py-2 text-xs font-bold text-white shadow-md shadow-primary-500/20 transition-all hover:scale-105"
+              className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all hover:scale-105 shadow-md ${
+                dark
+                  ? 'bg-[#ebddc2] text-[#181818] hover:bg-[#dfd1b5] shadow-black/40'
+                  : 'bg-[#181818] text-[#f7f4ee] hover:bg-[#2c2b29]'
+              }`}
             >
               <span>Projects</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -237,11 +251,11 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                 onClick={onOpenResumeModal}
                 className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition-all hover:scale-105 ${
                   dark
-                    ? 'border-white/10 bg-white/5 text-slate-200 hover:bg-white/10'
-                    : 'border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
+                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/40'
+                    : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
                 }`}
               >
-                <FileText className="h-3.5 w-3.5 text-primary-400" />
+                <FileText className="h-3.5 w-3.5 text-[#ebddc2]" />
                 <span>Resume</span>
               </button>
             ) : (
@@ -249,11 +263,11 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                 to="/resume"
                 className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition-all hover:scale-105 ${
                   dark
-                    ? 'border-white/10 bg-white/5 text-slate-200 hover:bg-white/10'
-                    : 'border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
+                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/40'
+                    : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
                 }`}
               >
-                <FileText className="h-3.5 w-3.5 text-primary-400" />
+                <FileText className="h-3.5 w-3.5 text-[#ebddc2]" />
                 <span>Resume</span>
               </Link>
             )}
@@ -265,21 +279,21 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                 copiedEmail
                   ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
                   : dark
-                    ? 'border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
-                    : 'border-slate-300 bg-white text-slate-700'
+                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10'
+                    : 'border-[#181818]/30 bg-white text-[#181818]'
               }`}
             >
-              {copiedEmail ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-slate-400" />}
+              {copiedEmail ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-[#9f9890]" />}
               <span>{copiedEmail ? 'Copied!' : 'Email'}</span>
             </button>
           </div>
 
           {/* Bottom Right: Location & Domain */}
           <div className="space-y-1 text-left sm:text-right">
-            <span className={`block text-xs font-mono font-semibold ${dark ? 'text-[#c8bfae]' : 'text-slate-600'}`}>
+            <span className={`block text-xs font-mono font-semibold ${dark ? 'text-[#ebddc2]' : 'text-[#181818]'}`}>
               Charsadda, KPK, Pakistan
             </span>
-            <span className={`block text-xs font-mono ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
+            <span className={`block text-xs font-mono ${dark ? 'text-[#9f9890]' : 'text-[#6e675f]'}`}>
               azharkhan726200@gmail.com
             </span>
           </div>
@@ -293,17 +307,17 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
         <div
           className={`overflow-hidden rounded-2xl border transition-all ${
             dark
-              ? 'border-white/10 bg-[#0d0f17]/90 shadow-2xl'
+              ? 'border-[#ebddc2]/15 bg-[#141414] shadow-2xl'
               : 'border-slate-200 bg-white shadow-xl'
           }`}
         >
           {/* Header Bar */}
-          <div className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-white/10 bg-white/[0.02]' : 'border-slate-100 bg-slate-50'}`}>
+          <div className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-[#ebddc2]/10 bg-[#181818]' : 'border-slate-100 bg-slate-50'}`}>
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-              <span className={`ml-2 text-xs font-mono font-bold ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
+              <span className={`ml-2 text-xs font-mono font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-700'}`}>
                 Verified Architectural Pipeline
               </span>
             </div>
@@ -319,8 +333,8 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                   onClick={() => setActiveTab(idx)}
                   className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-colors ${
                     activeTab === idx
-                      ? 'bg-primary-500/20 text-primary-300 border border-primary-500/40'
-                      : dark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[#ebddc2]/15 text-[#ebddc2] border border-[#ebddc2]/30'
+                      : dark ? 'text-[#9f9890] hover:text-[#ebddc2]' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   <span className="hidden sm:inline">{tab.label}</span>
@@ -331,29 +345,29 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
           </div>
 
           {/* Code Body */}
-          <div className={`p-4 font-mono text-xs leading-relaxed overflow-x-auto ${dark ? 'bg-[#08090f] text-emerald-300' : 'bg-slate-950 text-emerald-400'}`}>
+          <div className={`p-4 font-mono text-xs leading-relaxed overflow-x-auto ${dark ? 'bg-[#0f0f10] text-[#ebddc2]' : 'bg-slate-950 text-emerald-400'}`}>
             <pre>
               <code>{CODE_TABS[activeTab].content}</code>
             </pre>
           </div>
 
           {/* Quick Metrics Bar */}
-          <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 border-t p-3 text-xs ${dark ? 'border-white/10 bg-white/[0.01]' : 'border-slate-100 bg-slate-50'}`}>
+          <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 border-t p-3 text-xs ${dark ? 'border-[#ebddc2]/10 bg-[#181818]' : 'border-slate-100 bg-slate-50'}`}>
             <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Cloud Credential</span>
-              <span className="block font-bold text-amber-400">AWS Solutions Architect</span>
+              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Cloud Credential</span>
+              <span className="block font-bold text-[#ebddc2]">AWS Solutions Architect</span>
             </div>
             <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Enterprise Ops</span>
-              <span className={`block font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>60+ Workstations (UMS)</span>
+              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Enterprise Ops</span>
+              <span className={`block font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>60+ Workstations (UMS)</span>
             </div>
             <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Academic Excellence</span>
-              <span className="block font-bold text-amber-400">AWKUM Gold Medalist</span>
+              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Academic Excellence</span>
+              <span className="block font-bold text-[#ebddc2]">AWKUM Gold Medalist</span>
             </div>
             <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-slate-400' : 'text-slate-500'}`}>Degree & GPA</span>
-              <span className={`block font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>BSCS (3.32 CGPA)</span>
+              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Degree & GPA</span>
+              <span className={`block font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>BSCS (3.32 CGPA)</span>
             </div>
           </div>
         </div>
