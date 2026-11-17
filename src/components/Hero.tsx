@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../data/portfolioData';
 import {
-  ShieldCheck, ArrowRight, FileText, Send, MapPin,
-  GraduationCap, CheckCircle2, Terminal, Copy, Check, ExternalLink,
-  Sparkles, Award, Zap, Cloud
+  ShieldCheck, ArrowRight, FileText, MapPin,
+  Terminal, Copy, Check, ExternalLink
 } from 'lucide-react';
 
 interface HeroProps {
@@ -23,6 +22,7 @@ const CODE_TABS = [
   {
     id: 'serverless',
     label: 'lambda_handler.py',
+    shortLabel: 'lambda.py',
     content: `# AWS Lambda Serverless Microservice
 import boto3, json, os
 
@@ -40,6 +40,7 @@ def handler(event, context):
   {
     id: 'cloud',
     label: 'infrastructure.sh',
+    shortLabel: 'infra.sh',
     content: `#!/usr/bin/env bash
 # Deploy Multi-Tier Cloud Topology
 aws cloudformation deploy \\
@@ -53,6 +54,7 @@ echo "✔ Architecture verified: 3 AZs, NAT Gateways, Private Subnets"`
   {
     id: 'monitoring',
     label: 'ums_telemetry.log',
+    shortLabel: 'ums.log',
     content: `[INFO] UMS IT Operations Monitoring
 [STATUS] 60+ Active Workstations Tagged & Monitored
 [HEALTH] Active Directory & DNS/DHCP: OPTIMAL
@@ -76,9 +78,11 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
   }, []);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(PERSONAL_INFO.email);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2500);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(PERSONAL_INFO.email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    }
   };
 
   return (
@@ -87,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
       className="relative flex min-h-[calc(100vh-72px)] flex-col justify-center overflow-hidden pb-16 pt-24 sm:pt-28 lg:pt-32"
     >
       {/* Ambient background glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
           className={`absolute -top-32 left-1/4 h-[520px] w-[620px] rounded-full blur-[140px] transition-opacity duration-1000 ${
             dark ? 'bg-primary-600/15' : 'bg-primary-500/10'
@@ -150,8 +154,8 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                 </span>
               </h1>
               
-              {/* Dynamic Role Rotator */}
-              <div className="flex items-center gap-2 pt-1">
+              {/* Dynamic Role Rotator with clean wrapping */}
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-1">
                 <span className={`text-sm sm:text-base font-semibold ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
                   Specializing in:
                 </span>
@@ -217,6 +221,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                       ? 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
                 }`}
+                aria-label="Copy email address to clipboard"
                 title="Copy email to clipboard"
               >
                 {copiedEmail ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4 text-slate-400" />}
@@ -290,6 +295,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                       src="/profile.jpg"
                       alt="Muhammad Azhar"
                       className="h-full w-full object-cover"
+                      loading="eager"
                     />
                   </div>
                   <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
@@ -333,33 +339,36 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                   : 'border-slate-200/90 bg-slate-950 text-slate-100 shadow-slate-300/40'
               }`}
             >
-              {/* Window Header */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-3">
-                <div className="flex items-center gap-1.5">
+              {/* Window Header with mobile-friendly tabs */}
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-3 sm:px-4 py-3">
+                <div className="flex items-center gap-1.5 shrink-0">
                   <span className="h-3 w-3 rounded-full bg-red-500/80" />
                   <span className="h-3 w-3 rounded-full bg-amber-500/80" />
                   <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
                 </div>
 
-                {/* Tabs */}
-                <div className="flex items-center gap-1">
+                {/* Tabs with shortLabel fallback for mobile */}
+                <div className="flex items-center gap-1 overflow-x-auto px-2" role="tablist">
                   {CODE_TABS.map((tab, idx) => (
                     <button
                       key={tab.id}
                       type="button"
+                      role="tab"
+                      aria-selected={activeTab === idx}
                       onClick={() => setActiveTab(idx)}
-                      className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-colors ${
+                      className={`rounded-lg px-2 sm:px-2.5 py-1 font-mono text-[11px] font-medium transition-colors shrink-0 ${
                         activeTab === idx
-                          ? 'bg-white/10 text-primary-300'
+                          ? 'bg-white/15 text-primary-300 border border-primary-500/30'
                           : 'text-slate-400 hover:text-slate-200'
                       }`}
                     >
-                      {tab.label}
+                      <span className="hidden sm:inline">{tab.label}</span>
+                      <span className="sm:hidden">{tab.shortLabel}</span>
                     </button>
                   ))}
                 </div>
 
-                <Terminal className="h-3.5 w-3.5 text-slate-500" />
+                <Terminal className="h-3.5 w-3.5 text-slate-500 shrink-0" />
               </div>
 
               {/* Code Snippet Display */}
