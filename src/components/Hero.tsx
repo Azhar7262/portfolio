@@ -4,7 +4,7 @@ import { PERSONAL_INFO, SOCIAL_LINKS } from '../data/portfolioData';
 import profilePhoto from '../assets/profile.jpg';
 import {
   ShieldCheck, ArrowRight, FileText, MapPin,
-  Terminal, Copy, Check, ExternalLink, Mail, Sparkles
+  Terminal, Copy, Check, ExternalLink, Mail
 } from 'lucide-react';
 
 interface HeroProps {
@@ -94,78 +94,88 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
   return (
     <section
       id="hero"
-      className={`relative min-h-[calc(100vh-72px)] flex flex-col justify-between overflow-hidden pt-20 sm:pt-24 pb-8 transition-colors duration-300 ${
+      className={`relative min-h-[calc(100vh-72px)] flex flex-col justify-between overflow-hidden pt-20 sm:pt-24 pb-12 transition-colors duration-300 ${
         dark ? 'bg-[#181818]' : 'bg-[#f7f4ee]'
       }`}
     >
-      {/* Background ambient warm lighting */}
+      {/* Background ambient warm spotlight */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full blur-[180px] pointer-events-none ${
-            dark ? 'bg-[#ebddc2]/[0.05]' : 'bg-[#ebddc2]/30'
+          className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-[800px] rounded-full blur-[180px] pointer-events-none ${
+            dark ? 'bg-[#ebddc2]/[0.05]' : 'bg-[#ebddc2]/25'
           }`}
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col flex-1 justify-between gap-6">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
         
-        {/* 1. TOP METADATA ROW */}
-        <div className="flex items-center justify-between gap-4 pt-2">
-          {/* Top Left: Category & Role */}
-          <div className="space-y-1">
+        {/* 1. TOP STATUS ROW: Real Credentials & Roles */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-b pb-4 border-[#ebddc2]/10">
+          <div className="flex flex-wrap items-center gap-2.5">
             <span
-              className={`block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] ${
-                dark ? 'text-[#9f9890]' : 'text-[#6e675f]'
+              className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold tracking-wide ${
+                dark
+                  ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                  : 'border-emerald-600/20 bg-emerald-50 text-emerald-700'
               }`}
             >
-              Creative Presentation • Portfolio
-            </span>
-            <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ebddc2] opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ebddc2]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              <span
-                key={roleIndex}
-                className={`animate-fade-in text-xs sm:text-sm font-bold tracking-tight ${
-                  dark ? 'text-[#ebddc2]' : 'text-[#181818]'
-                }`}
-              >
-                {ROLES[roleIndex]}
-              </span>
-            </div>
+              Available for Software Engineer & Cloud Roles
+            </span>
+
+            <a
+              href="https://aws.amazon.com/verification"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all hover:scale-105 ${
+                dark
+                  ? 'border-amber-500/30 bg-amber-500/10 text-amber-300 hover:border-amber-500/50'
+                  : 'border-amber-500/30 bg-amber-50 text-amber-800 hover:border-amber-500/60'
+              }`}
+            >
+              <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
+              <span>AWS Certified Solutions Architect</span>
+              <ExternalLink className="h-3 w-3 opacity-60" />
+            </a>
           </div>
 
-          {/* Top Right: Explore Link & Arrow */}
           <Link
             to="/projects"
             className={`group inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:opacity-80 ${
               dark ? 'text-[#ebddc2]' : 'text-[#181818]'
             }`}
           >
-            <span>Explore Works</span>
+            <span>Explore Projects</span>
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
           </Link>
         </div>
 
-        {/* 2. ICONIC CENTERPIECE: PORTRAIT WITH "PORTFOLIO" CUTOUT OVERLAY */}
-        <div className="relative my-auto flex items-center justify-center py-4 sm:py-6">
+        {/* 2. CENTERPIECE: TYPOGRAPHIC CUTOUT DESIGN WITH "AZHAR" & PORTRAIT */}
+        <div className="relative flex items-center justify-center py-4 sm:py-6">
           
-          {/* Layer 1 (BEHIND Image): Solid Letters */}
+          {/* Layer 1 (BEHIND Image): Solid Name Letters */}
           <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-10 overflow-hidden"
+            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-10 overflow-hidden"
             aria-hidden="true"
           >
+            <span className={`block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.45em] mb-1 sm:mb-2 ${
+              dark ? 'text-[#9f9890]' : 'text-[#6e675f]'
+            }`}>
+              MUHAMMAD
+            </span>
             <span
-              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[20vw] sm:text-[18vw] md:text-[17vw] lg:text-[15.5vw] tracking-wider leading-none select-none"
+              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none"
               style={{ color: textFillColor }}
             >
-              PORTFOLIO
+              AZHAR
             </span>
           </div>
 
           {/* Layer 2 (MIDDLE): Centered Vertical Portrait Card */}
-          <div className={`relative z-20 w-[260px] sm:w-[340px] md:w-[410px] lg:w-[460px] h-[400px] sm:h-[490px] md:h-[560px] lg:h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border ${
+          <div className={`relative z-20 w-[260px] sm:w-[330px] md:w-[390px] lg:w-[440px] h-[390px] sm:h-[480px] md:h-[540px] lg:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border ${
             dark ? 'border-[#ebddc2]/15 bg-[#181818]' : 'border-[#181818]/10 bg-white'
           }`}>
             <img
@@ -175,7 +185,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
               loading="eager"
             />
             
-            {/* Cinematic top & bottom vignettes */}
+            {/* Cinematic top & bottom dark vignettes */}
             <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${
               dark ? 'from-[#181818]/40' : 'from-black/20'
             } to-transparent pointer-events-none`} />
@@ -200,177 +210,226 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
 
           {/* Layer 3 (IN FRONT of Image): Outlined Stroke Letters with Transparent Fill */}
           <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-30 overflow-hidden"
+            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-30 overflow-hidden"
             aria-hidden="true"
           >
+            <span className="block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.45em] mb-1 sm:mb-2 opacity-0 select-none">
+              MUHAMMAD
+            </span>
             <span
-              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[20vw] sm:text-[18vw] md:text-[17vw] lg:text-[15.5vw] tracking-wider leading-none select-none text-transparent"
+              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none text-transparent"
               style={strokeStyle}
             >
-              PORTFOLIO
+              AZHAR
             </span>
           </div>
 
         </div>
 
-        {/* 3. BOTTOM METADATA ROW */}
-        <div className={`flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 pb-2 border-t pt-4 ${
-          dark ? 'border-[#ebddc2]/15' : 'border-[#181818]/15'
-        }`}>
+        {/* 3. HEADLINE, BIO & ACTION DETAILS */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
           
-          {/* Bottom Left: Identity & Degree */}
-          <div className="space-y-1">
-            <h1 className={`text-xl sm:text-2xl font-black tracking-tight ${dark ? 'text-[#ebddc2]' : 'text-[#181818]'}`}>
-              Muhammad Azhar
-            </h1>
-            <p className={`text-xs sm:text-sm font-semibold ${dark ? 'text-[#9f9890]' : 'text-[#6e675f]'}`}>
-              Software Engineer & AWS Solutions Architect
-            </p>
-            <p className={`text-xs ${dark ? 'text-[#7e776e]' : 'text-slate-500'}`}>
-              AWKUM Gold Medalist • BS CS (3.32 CGPA)
-            </p>
-          </div>
-
-          {/* Center-Right Quick Actions */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <Link
-              to="/projects"
-              className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all hover:scale-105 shadow-md ${
-                dark
-                  ? 'bg-[#ebddc2] text-[#181818] hover:bg-[#dfd1b5] shadow-black/40'
-                  : 'bg-[#181818] text-[#f7f4ee] hover:bg-[#2c2b29]'
-              }`}
-            >
-              <span>Projects</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-
-            {onOpenResumeModal ? (
-              <button
-                type="button"
-                onClick={onOpenResumeModal}
-                className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition-all hover:scale-105 ${
-                  dark
-                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/40'
-                    : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
-                }`}
-              >
-                <FileText className="h-3.5 w-3.5 text-[#ebddc2]" />
-                <span>Resume</span>
-              </button>
-            ) : (
-              <Link
-                to="/resume"
-                className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition-all hover:scale-105 ${
-                  dark
-                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/40'
-                    : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
-                }`}
-              >
-                <FileText className="h-3.5 w-3.5 text-[#ebddc2]" />
-                <span>Resume</span>
-              </Link>
-            )}
-
-            <button
-              type="button"
-              onClick={handleCopyEmail}
-              className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all hover:scale-105 ${
-                copiedEmail
-                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-                  : dark
-                    ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10'
-                    : 'border-[#181818]/30 bg-white text-[#181818]'
-              }`}
-            >
-              {copiedEmail ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-[#9f9890]" />}
-              <span>{copiedEmail ? 'Copied!' : 'Email'}</span>
-            </button>
-          </div>
-
-          {/* Bottom Right: Location & Domain */}
-          <div className="space-y-1 text-left sm:text-right">
-            <span className={`block text-xs font-mono font-semibold ${dark ? 'text-[#ebddc2]' : 'text-[#181818]'}`}>
-              Charsadda, KPK, Pakistan
-            </span>
-            <span className={`block text-xs font-mono ${dark ? 'text-[#9f9890]' : 'text-[#6e675f]'}`}>
-              azharkhan726200@gmail.com
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* 4. TECHNICAL BENCHMARK DRAWER (EXPANDABLE TERMINAL & METRICS) */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
-        <div
-          className={`overflow-hidden rounded-2xl border transition-all ${
-            dark
-              ? 'border-[#ebddc2]/15 bg-[#141414] shadow-2xl'
-              : 'border-slate-200 bg-white shadow-xl'
-          }`}
-        >
-          {/* Header Bar */}
-          <div className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-[#ebddc2]/10 bg-[#181818]' : 'border-slate-100 bg-slate-50'}`}>
-            <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-              <span className={`ml-2 text-xs font-mono font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-700'}`}>
-                Verified Architectural Pipeline
-              </span>
+          {/* Left Column: Heading, Bio, Actions */}
+          <div className="lg:col-span-7 space-y-5 text-left">
+            <div className="space-y-2">
+              <p className={`text-xs font-bold uppercase tracking-[0.25em] ${dark ? 'text-[#9f9890]' : 'text-slate-600'}`}>
+                Software Engineer & Developer
+              </p>
+              <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>
+                Hi, I'm{' '}
+                <span className="text-[#ebddc2] underline decoration-[#ebddc2]/40 underline-offset-8">
+                  Muhammad Azhar
+                </span>
+              </h1>
+              
+              {/* Dynamic Role Rotator */}
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-1">
+                <span className={`text-sm font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-600'}`}>
+                  Specializing in:
+                </span>
+                <span
+                  key={roleIndex}
+                  className="inline-block animate-fade-in font-mono text-sm sm:text-base font-bold text-[#ebddc2]"
+                >
+                  {ROLES[roleIndex]}
+                </span>
+              </div>
             </div>
 
-            {/* Tabs */}
-            <div className="flex items-center gap-1 overflow-x-auto" role="tablist">
-              {CODE_TABS.map((tab, idx) => (
+            {/* Professional Summary */}
+            <p className={`text-sm sm:text-base leading-relaxed max-w-2xl ${dark ? 'text-[#c8bfb5]' : 'text-slate-700'}`}>
+              Computer Science graduate (AWKUM Gold Medalist) and AWS Certified Solutions Architect. 
+              I design and build reliable, cloud-native software and serverless systems with Python, AWS Lambda, DynamoDB, and Next.js, while managing 60+ workstations as IT Executive at UMS.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Link
+                to="/projects"
+                className={`inline-flex items-center gap-2 rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-wider transition-all hover:scale-105 shadow-md ${
+                  dark
+                    ? 'bg-[#ebddc2] text-[#181818] hover:bg-[#dfd1b5] shadow-black/40'
+                    : 'bg-[#181818] text-[#f7f4ee] hover:bg-[#2c2b29]'
+                }`}
+              >
+                <span>Explore Projects</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              {onOpenResumeModal ? (
                 <button
-                  key={tab.id}
                   type="button"
-                  role="tab"
-                  aria-selected={activeTab === idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-colors ${
-                    activeTab === idx
-                      ? 'bg-[#ebddc2]/15 text-[#ebddc2] border border-[#ebddc2]/30'
-                      : dark ? 'text-[#9f9890] hover:text-[#ebddc2]' : 'text-slate-600 hover:text-slate-900'
+                  onClick={onOpenResumeModal}
+                  className={`inline-flex items-center gap-2 rounded-xl border px-4 py-3 text-xs font-bold transition-all hover:scale-105 ${
+                    dark
+                      ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/50'
+                      : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
                   }`}
                 >
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.shortLabel}</span>
+                  <FileText className="h-4 w-4 text-[#ebddc2]" />
+                  <span>View Resume</span>
                 </button>
-              ))}
+              ) : (
+                <Link
+                  to="/resume"
+                  className={`inline-flex items-center gap-2 rounded-xl border px-4 py-3 text-xs font-bold transition-all hover:scale-105 ${
+                    dark
+                      ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10 hover:border-[#ebddc2]/50'
+                      : 'border-[#181818]/30 bg-white text-[#181818] hover:bg-slate-50'
+                  }`}
+                >
+                  <FileText className="h-4 w-4 text-[#ebddc2]" />
+                  <span>Resume</span>
+                </Link>
+              )}
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className={`inline-flex items-center gap-2 rounded-xl border px-4 py-3 text-xs font-semibold transition-all hover:scale-105 ${
+                  copiedEmail
+                    ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                    : dark
+                      ? 'border-[#ebddc2]/25 text-[#ebddc2] hover:bg-[#ebddc2]/10'
+                      : 'border-[#181818]/30 bg-white text-[#181818]'
+                }`}
+              >
+                {copiedEmail ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4 text-[#9f9890]" />}
+                <span>{copiedEmail ? 'Email Copied!' : 'Copy Email'}</span>
+              </button>
+            </div>
+
+            {/* Quick Highlights Grid */}
+            <div className={`grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t ${dark ? 'border-[#ebddc2]/10' : 'border-slate-200'}`}>
+              <div className="space-y-0.5">
+                <span className={`block text-[11px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Credentials</span>
+                <span className={`block text-xs font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>AWS SAA-C03</span>
+              </div>
+              <div className="space-y-0.5">
+                <span className={`block text-[11px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Education</span>
+                <span className={`block text-xs font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>BS CS (3.32 GPA)</span>
+              </div>
+              <div className="space-y-0.5">
+                <span className={`block text-[11px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Current Role</span>
+                <span className={`block text-xs font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>IT Exec @ UMS</span>
+              </div>
+              <div className="space-y-0.5">
+                <span className={`block text-[11px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Honors</span>
+                <span className={`block text-xs font-bold text-amber-400`}>AWKUM Gold Medal</span>
+              </div>
+            </div>
+
+            {/* Social Links Row */}
+            <div className="flex items-center gap-3 pt-1">
+              <span className={`text-xs font-bold uppercase tracking-wider ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>
+                Connect:
+              </span>
+              <div className="flex items-center gap-2">
+                {SOCIAL_LINKS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className={`flex h-9 w-9 items-center justify-center rounded-xl border transition-all hover:scale-105 ${
+                      dark
+                        ? 'border-[#ebddc2]/20 bg-white/5 text-[#ebddc2] hover:border-[#ebddc2]/40 hover:bg-[#ebddc2]/10'
+                        : 'border-[#181818]/20 bg-white text-[#181818] hover:border-[#181818]/40'
+                    }`}
+                  >
+                    <s.icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column: Verified Architectural Pipeline Terminal */}
+          <div className="lg:col-span-5">
+            <div
+              className={`overflow-hidden rounded-2xl border transition-all ${
+                dark
+                  ? 'border-[#ebddc2]/15 bg-[#141414] shadow-2xl'
+                  : 'border-slate-200 bg-white shadow-xl'
+              }`}
+            >
+              {/* Header Bar */}
+              <div className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-[#ebddc2]/10 bg-[#181818]' : 'border-slate-100 bg-slate-50'}`}>
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                  <span className={`ml-2 text-xs font-mono font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-700'}`}>
+                    Verified Pipeline
+                  </span>
+                </div>
+
+                {/* Tabs */}
+                <div className="flex items-center gap-1 overflow-x-auto" role="tablist">
+                  {CODE_TABS.map((tab, idx) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={activeTab === idx}
+                      onClick={() => setActiveTab(idx)}
+                      className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-colors ${
+                        activeTab === idx
+                          ? 'bg-[#ebddc2]/15 text-[#ebddc2] border border-[#ebddc2]/30'
+                          : dark ? 'text-[#9f9890] hover:text-[#ebddc2]' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      <span className="hidden sm:inline">{tab.label}</span>
+                      <span className="sm:hidden">{tab.shortLabel}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Code Body */}
+              <div className={`p-4 font-mono text-xs leading-relaxed overflow-x-auto min-h-[170px] ${dark ? 'bg-[#0f0f10] text-[#ebddc2]' : 'bg-slate-950 text-emerald-400'}`}>
+                <pre>
+                  <code>{CODE_TABS[activeTab].content}</code>
+                </pre>
+              </div>
+
+              {/* Status Footer */}
+              <div className={`flex items-center justify-between border-t px-4 py-2 text-[11px] font-mono ${
+                dark ? 'border-[#ebddc2]/10 bg-[#181818] text-[#9f9890]' : 'border-slate-100 bg-slate-50 text-slate-500'
+              }`}>
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Production Ready</span>
+                </div>
+                <span>Python • AWS Lambda • DynamoDB</span>
+              </div>
             </div>
           </div>
 
-          {/* Code Body */}
-          <div className={`p-4 font-mono text-xs leading-relaxed overflow-x-auto ${dark ? 'bg-[#0f0f10] text-[#ebddc2]' : 'bg-slate-950 text-emerald-400'}`}>
-            <pre>
-              <code>{CODE_TABS[activeTab].content}</code>
-            </pre>
-          </div>
-
-          {/* Quick Metrics Bar */}
-          <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 border-t p-3 text-xs ${dark ? 'border-[#ebddc2]/10 bg-[#181818]' : 'border-slate-100 bg-slate-50'}`}>
-            <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Cloud Credential</span>
-              <span className="block font-bold text-[#ebddc2]">AWS Solutions Architect</span>
-            </div>
-            <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Enterprise Ops</span>
-              <span className={`block font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>60+ Workstations (UMS)</span>
-            </div>
-            <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Academic Excellence</span>
-              <span className="block font-bold text-[#ebddc2]">AWKUM Gold Medalist</span>
-            </div>
-            <div>
-              <span className={`block text-[10px] font-semibold ${dark ? 'text-[#9f9890]' : 'text-slate-500'}`}>Degree & GPA</span>
-              <span className={`block font-bold ${dark ? 'text-[#ebddc2]' : 'text-slate-900'}`}>BSCS (3.32 CGPA)</span>
-            </div>
-          </div>
         </div>
+
       </div>
 
     </section>
