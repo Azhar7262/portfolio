@@ -88,8 +88,15 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
   };
 
   const textFillColor = dark ? '#ffffff' : '#0f172a';
-  const strokeStyle = {
-    WebkitTextStroke: dark ? '2px #ffffff' : '2px #0f172a',
+  const strokeStyle: React.CSSProperties = {
+    WebkitTextStroke: dark ? '3px #ffffff' : '3px #0f172a',
+    color: dark ? 'rgba(255, 255, 255, 0.35)' : 'rgba(15, 23, 42, 0.25)',
+    filter: dark
+      ? 'drop-shadow(0 0 12px rgba(0, 0, 0, 0.95)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9))'
+      : 'drop-shadow(0 2px 6px rgba(255, 255, 255, 0.9))',
+    textShadow: dark
+      ? '0 0 28px rgba(167, 139, 250, 0.55), 0 0 50px rgba(34, 211, 238, 0.35)'
+      : 'none',
   };
 
   return (
@@ -187,14 +194,17 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
             className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-10 overflow-hidden"
             aria-hidden="true"
           >
-            <span className={`block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.45em] mb-1 sm:mb-2 ${
-              dark ? 'text-primary-400/90' : 'text-primary-600'
+            <span className={`block text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.45em] mb-1 sm:mb-2 ${
+              dark ? 'text-primary-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]' : 'text-primary-700'
             }`}>
               MUHAMMAD
             </span>
             <span
-              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none drop-shadow-sm"
-              style={{ color: textFillColor }}
+              className={`font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none ${
+                dark
+                  ? 'text-white drop-shadow-[0_4px_35px_rgba(124,58,237,0.55)] drop-shadow-[0_0_80px_rgba(34,211,238,0.3)]'
+                  : 'text-slate-900 drop-shadow-[0_4px_20px_rgba(124,58,237,0.15)]'
+              }`}
             >
               AZHAR
             </span>
@@ -222,13 +232,12 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
               loading="eager"
             />
             
-            {/* Smooth gradient vignettes */}
-            <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${
-              dark ? 'from-[#0b0d17]/50' : 'from-black/20'
-            } to-transparent pointer-events-none z-10`} />
-            <div className={`absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t ${
-              dark ? 'from-[#0b0d17] via-[#0b0d17]/60' : 'from-slate-950/80 via-slate-950/30'
-            } to-transparent pointer-events-none z-10`} />
+            {/* Cinematic dark grading & vignette so foreground typography has crystal-clear contrast */}
+            <div className={`absolute inset-0 pointer-events-none z-10 ${
+              dark
+                ? 'bg-gradient-to-b from-[#0b0d17]/75 via-[#0b0d17]/30 to-[#0b0d17]/90'
+                : 'bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/55'
+            }`} />
             
             {/* Live badge overlay at bottom of the photo */}
             <div className="absolute bottom-3.5 inset-x-4 flex items-center justify-between text-white text-xs z-20">
@@ -245,7 +254,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
             </div>
           </motion.div>
 
-          {/* Layer 3 (IN FRONT of Image): Outlined Stroke Letters with Transparent Fill */}
+          {/* Layer 3 (IN FRONT of Image): High-Contrast Crisp Stroke Letters with Frosted Fill */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -253,11 +262,13 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
             className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-30 overflow-hidden"
             aria-hidden="true"
           >
-            <span className="block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.45em] mb-1 sm:mb-2 opacity-0 select-none">
+            <span className={`block text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.45em] mb-1 sm:mb-2 ${
+              dark ? 'text-primary-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]' : 'text-primary-700'
+            }`}>
               MUHAMMAD
             </span>
             <span
-              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none text-transparent"
+              className="font-['Bebas_Neue',_'Impact',_sans-serif] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] tracking-wider leading-none select-none"
               style={strokeStyle}
             >
               AZHAR
