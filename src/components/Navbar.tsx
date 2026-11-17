@@ -5,6 +5,7 @@ import {
   Menu, X, Send, FileText, Moon, Sun
 } from 'lucide-react';
 import { NAV_LINKS } from '../data/portfolioData';
+import profilePhoto from '../assets/profile.jpg';
 
 interface NavbarProps {
   theme: 'dark' | 'light';
@@ -65,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme, onOpenResu
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-400 via-primary-500 to-accent-400 p-0.5 shadow-lg shadow-primary-500/30 transition-transform duration-300 hover:scale-105">
               <img
-                src="/profile.jpg"
+                src={profilePhoto}
                 alt="Muhammad Azhar"
                 className="h-full w-full rounded-[12px] object-cover object-top"
               />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import profilePhoto from '../assets/profile.jpg';
 import { Github, Linkedin, Mail, MessageSquare, ArrowUp, X } from 'lucide-react';
 
 interface FooterProps {
@@ -50,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-400 via-primary-500 to-accent-400 p-0.5">
                   <img
-                    src="/profile.jpg"
+                    src={profilePhoto}
                     alt="Muhammad Azhar"
                     className="h-full w-full rounded-[12px] object-cover object-top"
                   />

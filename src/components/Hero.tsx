@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../data/portfolioData';
+import profilePhoto from '../assets/profile.jpg';
 import {
   ShieldCheck, ArrowRight, FileText, MapPin,
   Terminal, Copy, Check, ExternalLink
@@ -164,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
                   }`}
                 />
                 <img
-                  src="/profile.jpg"
+                  src={profilePhoto}
                   alt=""
                   className="h-full w-full object-cover object-top"
                 />
@@ -318,7 +319,7 @@ export const Hero: React.FC<HeroProps> = ({ theme, onOpenResumeModal }) => {
               {/* Photo Showcase Container */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/profile.jpg"
+                  src={profilePhoto}
                   alt="Muhammad Azhar — Software Engineer & AWS Solutions Architect"
                   className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="eager"

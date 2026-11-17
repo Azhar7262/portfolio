@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import profilePhoto from '../assets/profile.jpg';
 import { Cloud, Server, Network, Cpu, Award, GraduationCap, ShieldCheck, Zap, Mail, ArrowRight } from 'lucide-react';
 import { SectionHeading } from './ui';
 
@@ -62,7 +63,7 @@ export const About: React.FC<AboutProps> = ({ theme }) => {
                   <div className="relative shrink-0">
                     <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-primary-500/30 via-primary-500/15 to-accent-400/20" />
                     <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-2xl overflow-hidden border-4 shadow-xl shadow-primary-500/20">
-                      <img src="/profile.jpg" alt={`${PERSONAL_INFO.name} — portrait`} className="h-full w-full object-cover object-top" />
+                      <img src={profilePhoto} alt={`${PERSONAL_INFO.name} — portrait`} className="h-full w-full object-cover object-top" />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
