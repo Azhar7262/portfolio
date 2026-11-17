@@ -56,7 +56,16 @@ const AnimatedRoutes: React.FC<{
   onOpenResumeModal: () => void;
 }> = ({ location, theme, onSelectProject, onSelectCert, onOpenResumeModal }) => (
   <Routes location={location}>
-    <Route path="/" element={<HomePage theme={theme} />} />
+    <Route
+      path="/"
+      element={
+        <HomePage
+          theme={theme}
+          onSelectProject={onSelectProject}
+          onOpenResumeModal={onOpenResumeModal}
+        />
+      }
+    />
     <Route path="/about" element={<AboutPage theme={theme} />} />
     <Route path="/skills" element={<SkillsPage theme={theme} />} />
     <Route path="/experience" element={<ExperiencePage theme={theme} />} />

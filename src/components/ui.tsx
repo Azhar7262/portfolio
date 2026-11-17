@@ -289,19 +289,34 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   id,
 }) => {
   const dark = theme === 'dark';
-  const headingEl = id ? <h2 id={id}>{title}</h2> : <h2>{title}</h2>;
+  const headingEl = (
+    <h2
+      id={id}
+      className={`mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight ${
+        dark ? 'text-white' : 'text-slate-900'
+      }`}
+    >
+      {title}{' '}
+      {highlight && (
+        <span className="bg-gradient-to-r from-primary-400 via-purple-500 to-accent-400 bg-clip-text text-transparent">
+          {highlight}
+        </span>
+      )}
+    </h2>
+  );
 
   return (
     <div
-      id={id}
-      className="relative max-w-2xl mx-auto text-center mb-8 sm:mb-10 px-2"
+      className="relative max-w-2xl mx-auto text-center mb-10 sm:mb-14 px-2"
     >
       <div
-        className={`inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] ${
-          dark ? 'bg-white/8 text-primary-300' : 'bg-primary-100 text-primary-700'
+        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.16em] border ${
+          dark
+            ? 'border-primary-500/30 bg-primary-500/10 text-primary-300'
+            : 'border-primary-300/40 bg-primary-50 text-primary-700'
         }`}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-primary-400/70 animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" />
         {badge}
       </div>
 
@@ -309,7 +324,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 
       {subtitle && (
         <p
-          className={`mt-4 text-sm sm:text-base leading-relaxed ${
+          className={`mt-3.5 text-sm sm:text-base leading-relaxed ${
             dark ? 'text-ink-soft' : 'text-ink-faint'
           }`}
         >
@@ -318,17 +333,17 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       )}
 
       {action && (
-        <div className="mt-6">{action}</div>
+        <div className="mt-5">{action}</div>
       )}
 
       <div
-        className={`mx-auto mt-6 h-0.5 w-28 overflow-hidden rounded-full ${
-          dark ? 'bg-white/5' : 'bg-slate-900/10'
+        className={`mx-auto mt-6 h-0.5 w-24 overflow-hidden rounded-full ${
+          dark ? 'bg-white/10' : 'bg-slate-200'
         }`}
       >
         <div
-          className="h-full rounded-full bg-gradient-to-r from-primary-400 via-primary-vibrant to-accent-400"
-          style={{ width: '60%', animation: 'shimmer 3.2s ease-in-out infinite' }}
+          className="h-full rounded-full bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400"
+          style={{ width: '70%', animation: 'shimmer 3.2s ease-in-out infinite' }}
         />
       </div>
     </div>
