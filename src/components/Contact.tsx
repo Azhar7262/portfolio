@@ -27,7 +27,6 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          ...PERSONAL_INFO,
         }),
       });
       const data = await res.json();

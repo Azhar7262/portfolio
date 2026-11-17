@@ -157,7 +157,7 @@ export const Projects: React.FC<ProjectsProps> = ({ theme, onSelectProject }) =>
                         Source
                       </a>
                     )}
-                    {project.demoUrl && (
+                    {project.demoUrl && !project.demoUrl.startsWith('#') && (
                       <a
                         href={project.demoUrl}
                         target="_blank"

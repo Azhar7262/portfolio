@@ -1,3 +1,11 @@
+import fs from 'node:fs';
+if (fs.realpathSync && fs.realpathSync.native) {
+  fs.realpathSync.native = fs.realpathSync;
+}
+if (fs.realpath && fs.realpath.native) {
+  fs.realpath.native = fs.realpath;
+}
+
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';

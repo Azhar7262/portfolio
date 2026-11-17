@@ -58,14 +58,29 @@ CERTIFICATIONS:
 - Certificate of Management & Leadership (AWKUM Student Council, Jan 2026)
 
 PROJECTS:
-1. Smart Farming Monitoring System — final year thesis (ESP32, soil moisture, DHT22, LDR, AWS IoT Core, Lambda, DynamoDB, QuickSight, Python).
-2. AWS-Powered AI Chatbot (AWS Lex, Lambda, DynamoDB, Python).
-3. Image Label Generator using Amazon Rekognition (Python, boto3, Amazon S3, Rekognition).
-4. Personal Developer Portfolio Website (this site — HTML5, CSS3, JavaScript, Vercel).
+1. Enterprise LMS & Employee Portal — UMS BPO (Next.js, TypeScript, Tailwind CSS, Supabase/PostgreSQL with Row-Level Security, Hikvision integration). Role-based access for Super Admin, HR, department managers, and employees.
+2. Smart Farming Monitoring System — final year thesis (ESP32, soil moisture, DHT22, LDR, AWS IoT Core, Lambda, DynamoDB, QuickSight, Python).
+3. AWS-Powered AI Chatbot (AWS Lex, Lambda, DynamoDB, Python).
+4. Personal Developer Portfolio Website (React, TypeScript, Tailwind CSS, Vercel).
 5. Employee Check-In and Idle Alert System — UMS workforce monitoring tool (screen capture, break-time tracking, automated idle alerts to Super Admin).
-6. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3).
+6. Image Label Generator using Amazon Rekognition (Python, boto3, Amazon S3, Rekognition).
+7. Static Website Hosting on Amazon S3 (AWS S3, HTML5, CSS3, CloudFront).
 
 Always keep answers polite, helpful, and concise (under 150 words). Format with markdown lists if listing items.`;
+
+app.post("/api/contact", (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, error: "Name, email, and message are required." });
+    }
+    console.log(`[Contact Form Received] From: ${name} (${email}) | Subject: ${subject || "No Subject"}`);
+    console.log(`[Contact Form Message]: ${message}`);
+    return res.json({ success: true, message: "Thank you for reaching out! Your message has been received." });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, error: err?.message || "Failed to process message." });
+  }
+});
 
 app.post("/api/chat", async (req, res) => {
   try {
