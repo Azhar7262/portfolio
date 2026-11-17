@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types';
-import { Layers, Monitor, Code2, Github, LayoutDashboard, CloudCog, Server, Brain, Wrench, X } from 'lucide-react';
+import { Layers, Monitor, Code2, Github, LayoutDashboard, CloudCog, Server, Brain, Wrench } from 'lucide-react';
 import { SectionHeading } from './ui';
 
 interface ProjectsProps {

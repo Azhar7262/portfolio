@@ -12,11 +12,13 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
+    setErrorMessage(null);
     setIsSubmitting(true);
     try {
       const res = await fetch('/api/contact', {
@@ -35,10 +37,10 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setSubmitted(false), 6000);
       } else {
-        setSubmitted(false);
+        setErrorMessage(data?.error || 'Failed to send message. Please try again or reach out directly.');
       }
     } catch {
-      setSubmitted(false);
+      setErrorMessage('Network error occurred. Please try again or contact via Email / WhatsApp directly.');
     }
     setIsSubmitting(false);
   };
@@ -72,10 +74,20 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
       icon: <MessageSquare className="h-5 w-5 text-accent-300" />,
       area: 'whatsapp',
     },
+    {
+      label: 'LinkedIn Profile',
+      value: 'muhammad-azhar-khan',
+      subtext: 'Professional Network',
+      href: PERSONAL_INFO.linkedin,
+      icon: <Linkedin className="h-5 w-5 text-primary-300" />,
+      area: 'linkedin',
+    },
   ];
 
-  const inputClass = `w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink-soft transition-all focus:border-primary-400/40 focus:outline-none focus:ring-2 focus:ring-primary-500/20 ${
-    dark ? 'bg-white/5' : 'bg-white'
+  const inputClass = `w-full rounded-xl border px-4 py-3 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-500/20 ${
+    dark
+      ? 'border-white/10 bg-white/5 text-[#f1f5f9] placeholder:text-ink-soft focus:border-primary-400/40'
+      : 'border-slate-300 bg-white text-[#0b0d17] placeholder:text-slate-400 focus:border-primary-500'
   }`;
 
 
@@ -148,6 +160,11 @@ export const Contact: React.FC<ContactProps> = ({ theme }) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+                  {errorMessage && (
+                    <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-xs font-medium text-red-400">
+                      {errorMessage}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-1.5">
                       <label htmlFor="name" className={`text-xs font-semibold uppercase tracking-wide ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>

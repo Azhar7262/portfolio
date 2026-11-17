@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Project, Certification } from '../types';
 import { PERSONAL_INFO, EDUCATION_DATA, EXPERIENCE_DATA, CERTIFICATIONS } from '../data/portfolioData';
-import { X, Download, ExternalLink, Printer, ShieldCheck, CheckCircle2, Award, FileText, Code, Monitor, Github } from 'lucide-react';
+import { X, Download, ExternalLink, Printer, ShieldCheck, CheckCircle2, Award, FileText, Code, Monitor, Github, Layers } from 'lucide-react';
 
 interface ModalsProps {
   theme: 'dark' | 'light';
@@ -268,6 +268,23 @@ export const Modals: React.FC<ModalsProps> = ({
               </div>
             </div>
 
+            {/* Cloud Architecture Diagram */}
+            {selectedProject.architectureDiagram && (
+              <div className="mt-5">
+                <h5 className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide ${dark ? 'text-ink-soft' : 'text-ink-faint'}`}>
+                  <Layers className="h-3.5 w-3.5 text-primary-400" />
+                  Cloud Architecture Topology
+                </h5>
+                <div className={`mt-2 overflow-hidden rounded-xl border ${dark ? 'border-white/10' : 'border-slate-200'}`}>
+                  <img
+                    src={selectedProject.architectureDiagram}
+                    alt={`${selectedProject.title} cloud architecture topology`}
+                    className="w-full max-h-72 object-cover transition-transform duration-300 hover:scale-[1.01]"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Role-based dashboard screenshots */}
             {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
               <div className="mt-5">
@@ -302,7 +319,7 @@ export const Modals: React.FC<ModalsProps> = ({
                   View GitHub Repository
                 </a>
               )}
-              {selectedProject.demoUrl && (
+              {selectedProject.demoUrl && !selectedProject.demoUrl.startsWith('#') && (
                 <a
                   href={selectedProject.demoUrl}
                   target="_blank"
